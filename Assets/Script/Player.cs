@@ -38,12 +38,7 @@ public class Player : Entity
 		Debug.Log(rc.transform.name);
         if (rc.collider != null)
         {
-			Debug.Log("Enemy detected");
-			if (rc.collider.GetComponent<Entity>() != null)
-            {
-				
-                //rc.collider.GetComponent<Entity>().TakeDamage(statistic.attack);
-            }
+			
         }
     }
 
