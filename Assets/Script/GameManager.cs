@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
     private static GameManager _instance;
 
     private Player player;
-    private List<Enemy> listEnemies
+    private List<Enemy> listEnemies = new List<Enemy>();
 
     private GameManager()
     {
@@ -16,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager GetInstance()
     {
-        if(_Instance)
         return _instance;
     }
 }
