@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class BaseData
+public class BaseData
 {
     private Rigidbody2D _myRigidbody;
-    public Animator _myAnimator;
-    public Sprite _battleSprite;
 
     [Header ("General")]
     public string _myName;
-    public Statistic _myStatistic;
     public int speed;
-    
+    public Statistic _myStatistic;  // class en abstract - non visible dans l'éditeur
+    public Animator _myAnimator;
+    public Sprite _battleSprite;
+   
     [Header ("Health Status")]
     public int healthPoint;
     public ENITY_STATE entityState = ENITY_STATE.ALIVE;
