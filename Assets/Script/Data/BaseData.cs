@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class BaseData
 {
-    private Rigidbody2D _myRigidbody;
+    protected Rigidbody2D _myRigidbody { get; set; }
+    protected Collider2D col { get; set; }
 
     [Header ("General")]
     public string _myName;
