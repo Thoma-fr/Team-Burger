@@ -14,6 +14,7 @@ public class BaseData
     public Statistic _myStatistic;  // class en abstract - non visible dans l'éditeur
     public Animator _myAnimator;
     public Sprite _battleSprite;
+    public Sprite _adventureSprite;
    
     [Header ("Health Status")]
     public int healthPoint;

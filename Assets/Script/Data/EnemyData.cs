@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyData : ScriptableObject
 {
-    [SerializeField] private BaseData _myBaseData;
+    public BaseData _myBaseData;
     
     [Header ("Combat Settings")]
     public bool alwaysRun;

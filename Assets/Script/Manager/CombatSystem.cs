@@ -4,75 +4,102 @@ using UnityEngine;
 
 public class CombatSystem : MonoBehaviour
 {
-    public enum BATTLE_STATE
-    {
-        NONE,
-        INIT,
-        INTRO,
-        START,
-        CHOICE,
-        FIGHT,
-        END,
-    }
+	public enum BATTLE_STATE
+	{
+		NONE,
+		INTRO,
+		START,
+		CHOICE,
+		FIGHT,
+		END,
+	}
 
-    private BATTLE_STATE state = BATTLE_STATE.NONE;
-    private BATTLE_STATE lastState = BATTLE_STATE.NONE;
+	private static CombatSystem _instance;
 
-    public float durationINTRO_START;
+	private BATTLE_STATE state = BATTLE_STATE.NONE;
+	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
-    void Start()
-    {
-        ///Init battle System
-        state = BATTLE_STATE.INIT;
-    }
+	private EnemyData enemy = null;
+	private Player player;
 
-    void Update()
-    {
-        if (state == lastState)
-            return;
+	public float durationINTRO_START;
 
-        lastState = state;
+	void Start()
+	{
+		///Init battle System
+		state = BATTLE_STATE.INTRO;
+	}
 
-        switch (state)
-        {
-            case BATTLE_STATE.INIT:
+	void Update()
+	{
+		if (state == lastState)
+			return;
 
-                Debug.Log("INIT");
-                state = BATTLE_STATE.INTRO;
-                break;
+		lastState = state;
 
-            case BATTLE_STATE.INTRO:
+		switch (state)
+		{
+			case BATTLE_STATE.INTRO:
 
-                Debug.Log("INTRO");
-                StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, durationINTRO_START));
-                break;
+				if (enemy)
+				{
+					state = BATTLE_STATE.START;
+					Debug.Log("Play animation fondu");
+					StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, durationINTRO_START));
+				}
+				else
+				{
+					state = BATTLE_STATE.NONE;
+				}
 
-            case BATTLE_STATE.START:
+				break;
 
-                Debug.Log("START");
-                break;
+			case BATTLE_STATE.START:
 
-            case BATTLE_STATE.CHOICE:
 
-                Debug.Log("CHOICE");
-                break;
 
-            case BATTLE_STATE.FIGHT:
+				Debug.Log("Play animation start");
+				break;
 
-                Debug.Log("FIGHT");
-                break;
+			case BATTLE_STATE.CHOICE:
 
-            case BATTLE_STATE.END:
+				Debug.Log("CHOICE");
+				break;
 
-                Debug.Log("END");
-                break;
+			case BATTLE_STATE.FIGHT:
 
-        }
-    }
+				Debug.Log("FIGHT");
+				break;
 
-    private IEnumerator NextStateWithDelay(BATTLE_STATE _nextState, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        state = _nextState;
-    }
+			case BATTLE_STATE.END:
+
+				Debug.Log("END");
+				break;
+
+		}
+	}
+
+	private IEnumerator NextStateWithDelay(BATTLE_STATE _nextState, float duration)
+	{
+		yield return new WaitForSeconds(duration);
+		state = _nextState;
+	}
+
+	public void StartBattle(EnemyData value, Player playerVal)
+	{
+		state = BATTLE_STATE.INTRO;
+		player = playerVal;
+		enemy = value;
+	}
+
+	private CombatSystem() { }
+
+	public static CombatSystem GetInstance()
+	{
+		if(_instance == null)
+		{
+			_instance = new CombatSystem();
+		}
+		return _instance;
+	}
 }

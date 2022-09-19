@@ -11,6 +11,8 @@ public class Player : Entity
 		sprite = GetComponent<Sprite>();
 		col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
+
+		statistic = new Statistic(100, 10);
 	}
 
 	private void Update()
@@ -38,7 +40,8 @@ public class Player : Entity
 		Debug.Log(rc.transform.name);
         if (rc.collider != null)
         {
-			
+			EnemyData enemyData = rc.transform.gameObject.GetComponent<Enemy>().data;
+			CombatSystem.GetInstance().StartBattle(enemyData, this);
         }
     }
 
