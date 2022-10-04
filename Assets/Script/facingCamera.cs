@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class facingCamera : MonoBehaviour
 {
+    public Camera camToFace;
     // Start is called before the first frame update
     void Start()
     {
