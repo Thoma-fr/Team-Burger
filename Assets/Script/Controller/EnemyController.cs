@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class EnemyController : BaseController
 {
-    public EnemyData data;
+    [SerializeField] private ANIMAL m_animal;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        col = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        m_animal = GameManager.GetInstance().listEnemyData.allEnemiesData[Random.Range(0, GameManager.GetInstance().listEnemyData.allEnemiesData.Count)].animal;
     }
 
     // Update is called once per frame
@@ -20,5 +18,6 @@ public class EnemyController : BaseController
     }
     protected override void Move()
     {
+
     }
 }

@@ -8,7 +8,7 @@ public class BaseData
     [Header ("Base")]
     public string _myName;
     public int speed;
-    public Statistic _myStatistic;
+    public Statistic m_Statistic;
     public Sprite _battleSprite;
     public Sprite _adventureSprite;
    

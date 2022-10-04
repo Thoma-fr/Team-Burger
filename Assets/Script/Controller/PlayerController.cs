@@ -11,7 +11,10 @@ public class PlayerController : BaseController
 	[Header ("Debug")]
 	[SerializeField] private PLAYER_MODE playerMode = PLAYER_MODE.ADVENTURE_MODE;
 	[SerializeField] private float speed;
-    
+
+	private Vector3 direction;
+
+
 	private void Start()
 	{
 		col = GetComponent<Collider2D>();
@@ -23,7 +26,8 @@ public class PlayerController : BaseController
         switch (playerMode)
         {
             case PLAYER_MODE.ADVENTURE_MODE:
-                break;
+				direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+				break;
 
             case PLAYER_MODE.SHOOTING_MODE:
 				if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -42,8 +46,7 @@ public class PlayerController : BaseController
 
 	protected override void Move()
 	{
-		Vector3 dir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-		rb.MovePosition(transform.position + dir.normalized * Time.fixedDeltaTime * speed); 
+		rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed); 
 	}
 
 	private void Shoot()
