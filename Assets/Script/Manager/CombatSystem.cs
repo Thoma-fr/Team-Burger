@@ -1,28 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
-	public enum BATTLE_STATE
-	{
-		NONE,
-		INTRO,
-		START,
-		CHOICE,
-		FIGHT,
-		END,
-	}
+	[Header ("Enemy Status")]
+	[SerializeField] private Slider sliderEnemy;
+	[SerializeField] private TextMeshPro nameEnemy;
+	[SerializeField] private TextMeshPro hpEnemy;
+
+	[Header("Player Status")]
+	[SerializeField] private Slider sliderPlayer;
+	[SerializeField] private TextMeshPro namePlayer;
+	[SerializeField] private TextMeshPro hpPlayer;
+	
+	[Header ("Intro")]
+	[SerializeField] private float durationINTRO_START;
+
 
 	private static CombatSystem _instance;
+	public static CombatSystem GetInstance()
+	{
+		if(_instance == null)
+		{
+			_instance = new CombatSystem();
+		}
+		return _instance;
+	}
 
 	private BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
-	private EnemyData enemy = null;
-	private Player player;
-
-	public float durationINTRO_START;
 
 	void Start()
 	{
@@ -40,24 +50,10 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INTRO:
-
-				if (enemy)
-				{
-					state = BATTLE_STATE.START;
-					Debug.Log("Play animation fondu");
-					StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, durationINTRO_START));
-				}
-				else
-				{
-					state = BATTLE_STATE.NONE;
-				}
-
+				StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, durationINTRO_START));
 				break;
 
 			case BATTLE_STATE.START:
-
-
-
 				Debug.Log("Play animation start");
 				break;
 
@@ -85,21 +81,21 @@ public class CombatSystem : MonoBehaviour
 		state = _nextState;
 	}
 
-	public void StartBattle(EnemyData value, Player playerVal)
+	public void StartNewBattle(EnemyController enemy)
 	{
-		state = BATTLE_STATE.INTRO;
-		player = playerVal;
-		enemy = value;
+		// Full health -> max + actuel
+		// Name -> override
+		// Type -> override
+		// Power -> actuel
 	}
 
-	private CombatSystem() { }
-
-	public static CombatSystem GetInstance()
+	public enum BATTLE_STATE
 	{
-		if(_instance == null)
-		{
-			_instance = new CombatSystem();
-		}
-		return _instance;
+		NONE,
+		INTRO,
+		START,
+		CHOICE,
+		FIGHT,
+		END,
 	}
 }

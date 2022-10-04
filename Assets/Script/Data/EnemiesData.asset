@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80ca7d57c6709345a1837b164bb43c7, type: 3}
+  m_Name: EnemiesData
+  m_EditorClassIdentifier: 
+  allEnemiesData:
+  - _myName: Deer
+    speed: 10
+    _myStatistic:
+      attack: 123
+      defense: 50
+    _battleSprite: {fileID: 0}
+    _adventureSprite: {fileID: 0}
+    healthPoint: 100
+    entityState: 0
+    alwaysRun: 1
+    runAwaySpeed: 0
+    m_Attacks:
+    - attName: 
+      attType: 0
+      attPower: 0
+      powerChance: 0

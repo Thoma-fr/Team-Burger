@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEnemy", menuName = "ScriptableObjects/EnemyData", order = 1)]
+
 [System.Serializable]
-public class EnemyData : ScriptableObject
-{
-    public BaseData _myBaseData;
-    
+public class EnemyData : BaseData
+{    
     [Header ("Combat Settings")]
     public bool alwaysRun;
     public float runAwaySpeed;
-    public Attack[] _myAttacks;
+    public Attack[] m_Attacks;
 }
 
 [System.Serializable]
@@ -20,6 +18,7 @@ public struct Attack
     public string attName;
     public ATTACK_TYPE attType;
     public ATTACK_POWER attPower;
+    [Range (0,100)] public float powerChance;
 }
 
 [System.Serializable]
