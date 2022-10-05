@@ -14,6 +14,15 @@ public class EnemyData : BaseData
     public bool alwaysRun;
     public float runAwaySpeed;
     public Attack[] m_Attacks;
+
+    public EnemyData(EnemyData origin)
+    {
+        animal = origin.animal;
+        spawnChance = origin.spawnChance;
+        alwaysRun = origin.alwaysRun;
+        runAwaySpeed = origin.runAwaySpeed;
+        // Non complet
+    }
 }
 
 [System.Serializable]
@@ -21,8 +30,10 @@ public struct Attack
 {
     public string attName;
     public ATTACK_TYPE attType;
+    [Range(0, 100)] public int attForce;
+    [Range(0, 100)] public int attChance;
     public ATTACK_POWER attPower;
-    [Range (0,100)] public float powerChance;
+    [Range(0, 100)] public int powerChance;
 }
 
 [System.Serializable]
@@ -50,7 +61,7 @@ public enum ANIMAL
     RAKON,
     BEEVER,
     OURS,
-    FRANK_OOOOOOOOOOOOOOOOOOOOOOOOO,
+    FRANK_O,
     SHINY_NICO,
     SHINY_ALEX,
     SHINY_THOMAS,

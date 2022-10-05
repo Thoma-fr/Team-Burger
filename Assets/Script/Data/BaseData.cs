@@ -8,26 +8,15 @@ public class BaseData
     [Header ("Base")]
     public string _myName;
     public int speed;
-    public Statistic m_Statistic;
+    public int attack;
+    public int defense;
+    public int agility;
     public Sprite _battleSprite;
     public Sprite _adventureSprite;
    
     [Header ("Health Status")]
     public int healthPoint;
     public ENITY_STATE entityState = ENITY_STATE.ALIVE;
-}
-
-[System.Serializable]
-public struct Statistic
-{
-    public int attack;
-    public int defense;
-
-    public Statistic(int att, int def)
-    {
-        attack = att;
-        defense = def;
-    }
 }
 
 public enum ENITY_STATE

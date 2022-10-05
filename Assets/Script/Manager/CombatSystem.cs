@@ -33,11 +33,15 @@ public class CombatSystem : MonoBehaviour
 	private BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
+	private EnemyData enemy;
+	private PlayerData player;
+
 
 	void Start()
 	{
 		///Init battle System
 		state = BATTLE_STATE.INTRO;
+		player = GameManager.GetInstance().playerData;
 	}
 
 	void Update()
@@ -63,7 +67,7 @@ public class CombatSystem : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.FIGHT:
-
+				
 				Debug.Log("FIGHT");
 				break;
 

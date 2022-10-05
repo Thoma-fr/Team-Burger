@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header ("Datas")]
+    [Header("Datas")]
     [SerializeField] public PlayerData playerData;
     [SerializeField] public ListEnemyData listEnemyData;
 

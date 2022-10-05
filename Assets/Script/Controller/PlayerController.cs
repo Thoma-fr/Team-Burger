@@ -56,6 +56,7 @@ public class PlayerController : BaseController
         {
 			Debug.Log(info.transform.name);
 			Debug.DrawLine(Camera.main.ScreenToWorldPoint(Input.mousePosition), info.transform.position, Color.green, 2.0f);
+			// appèle l'interface : IShootable
         }
 		else
 			Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward * range, Color.red, 2.0f);
