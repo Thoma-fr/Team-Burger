@@ -9,23 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80ca7d57c6709345a1837b164bb43c7, type: 3}
-  m_Name: EnemiesData
+  m_Script: {fileID: 11500000, guid: bdfdff0c3d259f841a4275e495ccc40e, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  allEnemiesData:
-  - _myName: Deer
-    speed: 10
-    _myStatistic:
-      attack: 123
-      defense: 50
+  m_baseData:
+    _myName: 
+    speed: 0
+    attack: 0
+    defense: 0
+    agility: 0
     _battleSprite: {fileID: 0}
     _adventureSprite: {fileID: 0}
-    healthPoint: 100
+    healthPoint: 0
     entityState: 0
-    alwaysRun: 1
-    runAwaySpeed: 0
-    m_Attacks:
-    - attName: 
-      attType: 0
-      attPower: 0
-      powerChance: 0

@@ -6,15 +6,16 @@ using UnityEngine;
 public class BaseData
 {
     [Header ("Base")]
-    public string _myName;
+    public string m_name;
     public int speed;
     public int attack;
     public int defense;
     public int agility;
-    public Sprite _battleSprite;
-    public Sprite _adventureSprite;
+    public Sprite m_battleSprite;
+    public Sprite m_adventureSprite;
    
     [Header ("Health Status")]
+    public int maxHealth;
     public int healthPoint;
     public ENITY_STATE entityState = ENITY_STATE.ALIVE;
 }

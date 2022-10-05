@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : BaseController , IShootable<PlayerData>
 {
-    private EnemyData m_data;
+    public EnemyData m_data { get; private set; }
     private bool isOverrided;
 
     private void Awake()

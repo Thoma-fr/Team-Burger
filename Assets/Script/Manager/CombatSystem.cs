@@ -6,12 +6,14 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
-	[Header ("Enemy Status")]
+	[Header("Enemy Status")]
+	[SerializeField] private Image imageEnemy;
 	[SerializeField] private Slider sliderEnemy;
 	[SerializeField] private TextMeshPro nameEnemy;
 	[SerializeField] private TextMeshPro hpEnemy;
 
 	[Header("Player Status")]
+	[SerializeField] private Image imagePlayer;
 	[SerializeField] private Slider sliderPlayer;
 	[SerializeField] private TextMeshPro namePlayer;
 	[SerializeField] private TextMeshPro hpPlayer;
@@ -39,8 +41,6 @@ public class CombatSystem : MonoBehaviour
 
 	void Start()
 	{
-		///Init battle System
-		state = BATTLE_STATE.INTRO;
 		player = GameManager.GetInstance().playerData;
 	}
 
@@ -53,6 +53,26 @@ public class CombatSystem : MonoBehaviour
 
 		switch (state)
 		{
+			case BATTLE_STATE.INIT:
+				// <TODO>
+				// Type -> override
+				// Power -> actuel
+
+				// ---------------- Enemy ---------------- //
+				sliderEnemy.maxValue = enemy.maxHealth;
+				sliderEnemy.value = enemy.healthPoint;
+				hpEnemy.text = enemy.healthPoint + "/" + enemy.maxHealth;
+				nameEnemy.text = enemy.m_name;
+				imageEnemy.sprite = enemy.m_battleSprite;
+
+				// ---------------- Player ---------------- //
+				sliderPlayer.maxValue = player.m_baseData.maxHealth;
+				sliderPlayer.value = player.m_baseData.healthPoint;
+				hpPlayer.text = player.m_baseData.healthPoint + "/" + player.m_baseData.maxHealth;
+				namePlayer.text = player.m_baseData.m_name;
+				imagePlayer.sprite = player.m_baseData.m_battleSprite;
+				break;
+
 			case BATTLE_STATE.INTRO:
 				StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, durationINTRO_START));
 				break;
@@ -85,17 +105,16 @@ public class CombatSystem : MonoBehaviour
 		state = _nextState;
 	}
 
-	public void StartNewBattle(EnemyController enemy)
+	public void StartNewBattle(EnemyData other)
 	{
-		// Full health -> max + actuel
-		// Name -> override
-		// Type -> override
-		// Power -> actuel
+		enemy = other;
+		state = BATTLE_STATE.INIT;
 	}
 
 	public enum BATTLE_STATE
 	{
 		NONE,
+		INIT,
 		INTRO,
 		START,
 		CHOICE,

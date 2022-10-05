@@ -9,12 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] public ListEnemyData listEnemyData;
 
     [Header("Debug")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private EnemyController enemyPrefab;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
-            Instantiate<GameObject>(enemyPrefab);
+            CombatSystem.GetInstance().StartNewBattle(enemyPrefab.m_data);
     }
 
     private static GameManager _instance;
