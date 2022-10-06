@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
+using Cinemachine;
 public class PlayerController : BaseController
 {
 	[Header("Shooting Setting")]
@@ -13,16 +14,32 @@ public class PlayerController : BaseController
 	[SerializeField] private float speed;
 
 	private Vector3 direction;
+	private PlayerInput pi;
 
+	public Camera cam;
+    public CinemachineVirtualCamera FPSvcam;
 
-	private void Start()
+    public GameObject emptyprefab;
+
+	private GameObject empty;
+    private void Start()
 	{
 		col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
-	}
+        FPSvcam.gameObject.SetActive(false);
+        //pi = GetComponent<PlayerInput>();
 
-	private void Update()
+    }
+	//Vector2 inputmove;
+ //   public void ONinputMove(InputAction.CallbackContext context)
+ //   {
+ //       inputmove = context.ReadValue<Vector2>();
+ //   }
+
+    private void Update()
 	{
+		vise(direction);
+        
         switch (playerMode)
         {
             case PLAYER_MODE.ADVENTURE_MODE:
@@ -37,8 +54,26 @@ public class PlayerController : BaseController
             default:
                 break;
         }
+        
 	}
+	public void vise( Vector3 direction)
+	{
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            playerMode = PLAYER_MODE.SHOOTING_MODE;
+            FPSvcam.gameObject.SetActive(true);
+           // empty = Instantiate(emptyprefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            FPSvcam.gameObject.transform.rotation = Quaternion.Euler(direction);
 
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            playerMode = PLAYER_MODE.ADVENTURE_MODE;
+            FPSvcam.gameObject.SetActive(false);
+            //Destroy(empty);
+        }
+        
+    }
 	private void FixedUpdate()
 	{
 		Move();
