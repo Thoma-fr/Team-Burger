@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   m_baseData:
-    _myName: 
+    m_name: NAT
     speed: 0
-    attack: 0
-    defense: 0
-    agility: 0
-    _battleSprite: {fileID: 0}
-    _adventureSprite: {fileID: 0}
-    healthPoint: 0
+    attack: 100
+    defense: 50
+    agility: 20
+    m_battleSprite: {fileID: -903738828, guid: f18705a19561e1240bf1dee5aa7e09dd, type: 3}
+    m_adventureSprite: {fileID: 0}
+    maxHealth: 2000
+    healthPoint: 2000
     entityState: 0

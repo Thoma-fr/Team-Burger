@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyController : BaseController , IShootable<PlayerData>
 {
     public EnemyData m_data { get; private set; }
-    private bool isOverrided;
+    private bool isOverrided = true;
 
-    private void Awake()
+    private void Start()
     {
-        if(!isOverrided)
-            m_data = GameManager.GetInstance().listEnemyData.allEnemiesData[Random.Range(0, GameManager.GetInstance().listEnemyData.allEnemiesData.Count)];
+        if(isOverrided)
+            m_data = GameManager.instance.listEnemyData.allEnemiesData[0];
+            //m_data = GameManager.GetInstance().listEnemyData.allEnemiesData[Random.Range(0, GameManager.GetInstance().listEnemyData.allEnemiesData.Count)];
     }
 
     public void OverrideData(EnemyData overrideData)
@@ -19,7 +20,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         isOverrided = true;
     }
 
-    void Update()
+    /*void Update()
     {
         switch (m_data.animal)
         {
@@ -64,7 +65,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
             default:
                 break;
         }
-    }
+    }*/
 
     protected override void Move()
     {

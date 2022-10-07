@@ -13,19 +13,30 @@ MonoBehaviour:
   m_Name: ListEnemiesData
   m_EditorClassIdentifier: 
   allEnemiesData:
-  - _myName: Deer
+  - m_name: DEER
     speed: 10
-    _myStatistic:
-      attack: 123
-      defense: 50
-    _battleSprite: {fileID: 0}
-    _adventureSprite: {fileID: 0}
-    healthPoint: 100
+    attack: 50
+    defense: 100
+    agility: 50
+    m_battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
+    m_adventureSprite: {fileID: 0}
+    maxHealth: 1000
+    healthPoint: 1000
     entityState: 0
+    animal: 0
+    spawnChance: 0
     alwaysRun: 1
     runAwaySpeed: 0
     m_Attacks:
-    - attName: 
+    - attName: Att 1
       attType: 0
+      attForce: 100
+      attChance: 100
       attPower: 0
-      powerChance: 0
+      powerChance: 100
+    - attName: Att 2
+      attType: 0
+      attForce: 50
+      attChance: 100
+      attPower: 0
+      powerChance: 100

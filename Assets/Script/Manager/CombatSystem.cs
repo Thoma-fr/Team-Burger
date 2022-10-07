@@ -6,31 +6,29 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
+	public static CombatSystem instance { get; private set; }
+
+	[Header("Dialogue")]
+	[SerializeField] private GameObject dialogueBloc;
+	[SerializeField] private TextMeshProUGUI dialogueText;
+	[SerializeField] private GameObject commandeBloc;
+
 	[Header("Enemy Status")]
 	[SerializeField] private Image imageEnemy;
 	[SerializeField] private Slider sliderEnemy;
-	[SerializeField] private TextMeshPro nameEnemy;
-	[SerializeField] private TextMeshPro hpEnemy;
+	[SerializeField] private TextMeshProUGUI nameEnemy;
+	[SerializeField] private TextMeshProUGUI hpEnemy;
 
 	[Header("Player Status")]
 	[SerializeField] private Image imagePlayer;
 	[SerializeField] private Slider sliderPlayer;
-	[SerializeField] private TextMeshPro namePlayer;
-	[SerializeField] private TextMeshPro hpPlayer;
+	[SerializeField] private TextMeshProUGUI namePlayer;
+	[SerializeField] private TextMeshProUGUI hpPlayer;
 	
 	[Header ("Intro")]
 	[SerializeField] private float durationINTRO_START;
-
-
-	private static CombatSystem _instance;
-	public static CombatSystem GetInstance()
-	{
-		if(_instance == null)
-		{
-			_instance = new CombatSystem();
-		}
-		return _instance;
-	}
+	
+	private CanvasGroup transparence;
 
 	private BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
@@ -38,10 +36,24 @@ public class CombatSystem : MonoBehaviour
 	private EnemyData enemy;
 	private PlayerData player;
 
+	public enum BATTLE_STATE
+	{
+		NONE,
+		INIT,
+		INTRO,
+		START,
+		CHOICE,
+		FIGHT,
+		END,
+	}
+
 
 	void Start()
 	{
-		player = GameManager.GetInstance().playerData;
+		instance = this;
+
+		player = GameManager.instance.playerData;
+		transparence = transform.GetComponent<CanvasGroup>();
 	}
 
 	void Update()
@@ -54,10 +66,7 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
-				// <TODO>
-				// Type -> override
-				// Power -> actuel
-
+				// <TODO> Type -> override Power -> actuel
 				// ---------------- Enemy ---------------- //
 				sliderEnemy.maxValue = enemy.maxHealth;
 				sliderEnemy.value = enemy.healthPoint;
@@ -71,31 +80,53 @@ public class CombatSystem : MonoBehaviour
 				hpPlayer.text = player.m_baseData.healthPoint + "/" + player.m_baseData.maxHealth;
 				namePlayer.text = player.m_baseData.m_name;
 				imagePlayer.sprite = player.m_baseData.m_battleSprite;
+
+				state = BATTLE_STATE.INTRO;
 				break;
 
 			case BATTLE_STATE.INTRO:
-				StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, durationINTRO_START));
+				transparence.alpha = 1;
+				transparence.interactable = true;
+				state = BATTLE_STATE.START;
 				break;
 
 			case BATTLE_STATE.START:
-				Debug.Log("Play animation start");
+				Debug.Log("DIalogue");
+				dialogueBloc.SetActive(true);
+				state = BATTLE_STATE.CHOICE;
 				break;
 
 			case BATTLE_STATE.CHOICE:
-
-				Debug.Log("CHOICE");
+				commandeBloc.SetActive(true);
+				dialogueText.text = "WHAT NAT SHOULD DO ?";
+				Debug.Log("CHOICE + affichage choix");
 				break;
 
 			case BATTLE_STATE.FIGHT:
-				
-				Debug.Log("FIGHT");
+				dialogueText.text = "";
+				commandeBloc.SetActive(false);
+
+				player.m_baseData.healthPoint -= enemy.m_Attacks[Random.Range(0, enemy.m_Attacks.Length)].attForce * enemy.attack - player.m_baseData.defense;
+				enemy.healthPoint -= player.m_baseData.attack - enemy.defense;
+
+				if (enemy.healthPoint < 0)
+				{
+					state = BATTLE_STATE.END;
+				}
+				else if (player.m_baseData.healthPoint < 0)
+				{
+					state = BATTLE_STATE.END;
+				}
+				else
+					state = BATTLE_STATE.CHOICE;
 				break;
 
 			case BATTLE_STATE.END:
-
-				Debug.Log("END");
+				dialogueBloc.SetActive(false);
+				commandeBloc.SetActive(false);
+				transparence.alpha = 0;
+				transparence.interactable = false;
 				break;
-
 		}
 	}
 
@@ -111,14 +142,8 @@ public class CombatSystem : MonoBehaviour
 		state = BATTLE_STATE.INIT;
 	}
 
-	public enum BATTLE_STATE
-	{
-		NONE,
-		INIT,
-		INTRO,
-		START,
-		CHOICE,
-		FIGHT,
-		END,
-	}
+	public void PlayerAttack()
+    {
+		state = BATTLE_STATE.FIGHT;
+    }
 }

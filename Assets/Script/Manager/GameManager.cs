@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance { get; private set; }
+
     [Header("Datas")]
     [SerializeField] public PlayerData playerData;
     [SerializeField] public ListEnemyData listEnemyData;
@@ -11,19 +13,16 @@ public class GameManager : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private EnemyController enemyPrefab;
 
-    private void Update()
+    public void OnBattleActivation()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-            CombatSystem.GetInstance().StartNewBattle(enemyPrefab.m_data);
+            CombatSystem.instance.StartNewBattle(enemyPrefab.m_data);
     }
 
-    private static GameManager _instance;
-    public static GameManager GetInstance()
+    private void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = new GameManager();
-        }
-        return _instance;
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this.transform);
     }
 }
