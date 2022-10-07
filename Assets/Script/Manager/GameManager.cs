@@ -10,14 +10,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PlayerData playerData;
     [SerializeField] public ListEnemyData listEnemyData;
 
+
     [Header("Debug")]
     [SerializeField] private EnemyController enemyPrefab;
-
+    
+    [Header("FaceCamera")]
+    public List<GameObject> faceTheCam = new List<GameObject>();
+    public Camera mainCam;
     public void OnBattleActivation()
     {
             CombatSystem.instance.StartNewBattle(enemyPrefab.m_data);
     }
-
+    void Update()
+    {
+        foreach (GameObject item in faceTheCam)
+        {
+            item.transform.rotation = mainCam.transform.rotation;
+        }
+    }
     private void Awake()
     {
         if (instance == null)
