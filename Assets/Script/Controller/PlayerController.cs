@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using Unity.VisualScripting;
+
 public class PlayerController : BaseController
 {
 	[Header("Shooting Setting")]
@@ -16,12 +18,13 @@ public class PlayerController : BaseController
 	private Vector3 direction;
 	private PlayerInput pi;
 
-	public Camera cam;
+
     public CinemachineVirtualCamera FPSvcam;
+    public Camera mainCam;
+    public GameObject target;
+    private Vector3 mousepos;
+    public float distance;
 
-    public GameObject emptyprefab;
-
-	private GameObject empty;
     private void Start()
 	{
 		col = GetComponent<Collider2D>();
@@ -54,8 +57,28 @@ public class PlayerController : BaseController
             default:
                 break;
         }
+
+
+
+        if(playerMode== PLAYER_MODE.ADVENTURE_MODE)
+        {
+            Vector3 mouseScreen = Input.mousePosition;
+            mouseScreen.z = -mainCam.transform.position.z;
+
+            mousepos = mainCam.ScreenToWorldPoint(mouseScreen);
+
         
-	}
+            Vector3 camCirection = (mousepos - transform.position).normalized;
+            direction.z = 0;
+            target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
+            target.transform.position = (transform.position + (camCirection * distance));
+
+            //FPSvcam.transform.Rotate(new Vector3(0, 0, -target.transform.rotation.z));
+        }
+       
+
+
+    }
 	public void vise( Vector3 direction)
 	{
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -63,7 +86,7 @@ public class PlayerController : BaseController
             playerMode = PLAYER_MODE.SHOOTING_MODE;
             FPSvcam.gameObject.SetActive(true);
            // empty = Instantiate(emptyprefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            FPSvcam.gameObject.transform.rotation = Quaternion.Euler(direction);
+            //FPSvcam.gameObject.transform.rotation = Quaternion.Euler(direction);
 
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))
@@ -77,6 +100,7 @@ public class PlayerController : BaseController
 	private void FixedUpdate()
 	{
 		Move();
+        
 	}
 
 	protected override void Move()
