@@ -6,16 +6,27 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    [Header("Datas")]
-    [SerializeField] public PlayerData playerData;
-    [SerializeField] public ListEnemyData listEnemyData;
+    [SerializeField] private CombatSystem combatSystem;
+
+    [Header("Default Data")]
+    [SerializeField] private ScrPlayerData PlayerData;
+    [SerializeField] private ScrListEnemy EnemiesData;
+    [SerializeField] private ScrItemsData ItemsData;
+    [SerializeField] private ScrWeaponsData WeaponsData;
+
+
+    public CombatSystem GetCombatSystem { get { return combatSystem; } }
+    public ScrPlayerData GetPlayerData { get { return PlayerData; } }
+    public ScrListEnemy GetEnemiesData { get { return EnemiesData; } }
+    public ScrItemsData GetItemsData { get { return ItemsData; } }
+    public ScrWeaponsData GetWeaponsData { get { return WeaponsData; } }
 
     [Header("Debug")]
-    [SerializeField] private EnemyController enemyPrefab;
+    public GameObject test;
 
     public void OnBattleActivation()
     {
-            CombatSystem.instance.StartNewBattle(enemyPrefab.m_data);
+        
     }
 
     private void Awake()

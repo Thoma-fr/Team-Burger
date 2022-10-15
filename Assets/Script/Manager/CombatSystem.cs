@@ -6,8 +6,6 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
-	public static CombatSystem instance { get; private set; }
-
 	[Header("Dialogue")]
 	[SerializeField] private GameObject dialogueBloc;
 	[SerializeField] private TextMeshProUGUI dialogueText;
@@ -50,9 +48,7 @@ public class CombatSystem : MonoBehaviour
 
 	void Start()
 	{
-		instance = this;
-
-		player = GameManager.instance.playerData;
+		//player = GameManager.instance.playerData;
 		transparence = transform.GetComponent<CanvasGroup>();
 	}
 
@@ -66,7 +62,9 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
-				// <TODO> Type -> override Power -> actuel
+
+				// ANCIEN
+				/*// <TODO> Type -> override Power -> actuel
 				// ---------------- Enemy ---------------- //
 				sliderEnemy.maxValue = enemy.maxHealth;
 				sliderEnemy.value = enemy.healthPoint;
@@ -79,7 +77,7 @@ public class CombatSystem : MonoBehaviour
 				sliderPlayer.value = player.m_baseData.healthPoint;
 				hpPlayer.text = player.m_baseData.healthPoint + "/" + player.m_baseData.maxHealth;
 				namePlayer.text = player.m_baseData.m_name;
-				imagePlayer.sprite = player.m_baseData.m_battleSprite;
+				imagePlayer.sprite = player.m_baseData.m_battleSprite;*/
 
 				state = BATTLE_STATE.INTRO;
 				break;
@@ -106,7 +104,8 @@ public class CombatSystem : MonoBehaviour
 				dialogueText.text = "";
 				commandeBloc.SetActive(false);
 
-				player.m_baseData.healthPoint -= enemy.m_Attacks[Random.Range(0, enemy.m_Attacks.Length)].attForce * enemy.attack - player.m_baseData.defense;
+				// ANCIEN
+				/*player.m_baseData.healthPoint -= enemy.m_Attacks[Random.Range(0, enemy.m_Attacks.Length)].attForce * enemy.attack - player.m_baseData.defense;
 				enemy.healthPoint -= player.m_baseData.attack - enemy.defense;
 
 				if (enemy.healthPoint < 0)
@@ -118,7 +117,7 @@ public class CombatSystem : MonoBehaviour
 					state = BATTLE_STATE.END;
 				}
 				else
-					state = BATTLE_STATE.CHOICE;
+					state = BATTLE_STATE.CHOICE;*/
 				break;
 
 			case BATTLE_STATE.END:
