@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Bush : MonoBehaviour
 {
     private BoxCollider collider;
@@ -17,7 +17,12 @@ public class Bush : MonoBehaviour
     {
         if (other.tag == "Bestiole")
         {
-            animator.SetTrigger("Anim");
+            //animator.SetTrigger("Anim");
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(transform.DORotate(new Vector3(0, 0, 17), 0.2f));
+            mySequence.Append(transform.DORotate(new Vector3(0, 0, -35), 0.2f));
+            mySequence.Append(transform.DORotate(new Vector3(0, 0, 0), 0.2f).SetEase(Ease.OutBounce));
+
             Debug.Log("enter");
             Debug.Log(other.gameObject.name);
             otherSPR = other.gameObject.GetComponent<SpriteRenderer>();
