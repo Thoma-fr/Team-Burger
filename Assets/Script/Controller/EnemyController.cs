@@ -13,7 +13,8 @@ public class EnemyController : BaseController , IShootable<PlayerData>
             m_data = GameManager.instance.listEnemyData.allEnemiesData[0];
             //m_data = GameManager.GetInstance().listEnemyData.allEnemiesData[Random.Range(0, GameManager.GetInstance().listEnemyData.allEnemiesData.Count)];
     }
-
+    
+    
     public void OverrideData(EnemyData overrideData)
     {
         m_data = overrideData;

@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &50977156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 50977157}
+  m_Layer: 6
+  m_Name: Cast2
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &50977157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50977156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.83, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 159711187}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67231218
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,11 +411,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159711185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.23, y: 2.99, z: 0}
-  m_LocalScale: {x: 0.080051035, y: 0.080051035, z: 0.080051035}
+  m_LocalPosition: {x: -6.24, y: 2.33, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 67231219}
+  - {fileID: 860073123}
+  - {fileID: 50977157}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -400,6 +433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287e8d6c4768f5e4682c575ad5228b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  castPoints1: {fileID: 860073123}
+  castPoints2: {fileID: 50977157}
 --- !u!65 &159711190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -411,8 +446,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.000001, y: 13.900001, z: 2.066659}
-  m_Center: {x: 0, y: 0, z: -1.1333294}
+  m_Size: {x: 1.7885218, y: 1.8614445, z: 0.394727}
+  m_Center: {x: 0.09189701, y: 0.015315771, z: -0.124040425}
 --- !u!54 &159711191
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -439,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_Name
       value: bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
       objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
@@ -520,6 +559,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 0}
   faceTheCam: []
   mainCam: {fileID: 1743920807}
+  isShooting: 0
 --- !u!4 &357857491
 Transform:
   m_ObjectHideFlags: 0
@@ -545,6 +585,10 @@ PrefabInstance:
     - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_Name
       value: bush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
       objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
@@ -830,6 +874,10 @@ PrefabInstance:
     - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_Name
       value: bush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
       objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
@@ -1743,6 +1791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
+      objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1799,6 +1851,10 @@ PrefabInstance:
     - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_Name
       value: bush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
       objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
@@ -4428,6 +4484,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &860073122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860073123}
+  m_Layer: 6
+  m_Name: Cast1
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860073123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860073122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.77, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 159711187}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120217510
 GameObject:
   m_ObjectHideFlags: 0
@@ -90310,6 +90397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
+      objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -90565,6 +90656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
+      objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -90792,6 +90887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4504249386282539760, guid: c14a9583db9548845a8f20a589488800, type: 3}
+      propertyPath: m_TagString
+      value: Bush
+      objectReference: {fileID: 0}
     - target: {fileID: 4504249386282539762, guid: c14a9583db9548845a8f20a589488800, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -90884,6 +90983,10 @@ PrefabInstance:
     - target: {fileID: 760549099, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
       propertyPath: m_LookAt
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1751848381, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1477909743285440356, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
       propertyPath: mainCam

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [Header("FaceCamera")]
     public List<GameObject> faceTheCam = new List<GameObject>();
     public Camera mainCam;
+
+    public bool isShooting;
     public void OnBattleActivation()
     {
             CombatSystem.instance.StartNewBattle(enemyPrefab.m_data);
@@ -34,5 +36,10 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(this.transform);
+    }
+    enum PLAYER_MODE
+    {
+        ADVENTURE_MODE,
+        SHOOTING_MODE,
     }
 }

@@ -84,6 +84,7 @@ public class PlayerController : BaseController
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             playerMode = PLAYER_MODE.SHOOTING_MODE;
+            GameManager.instance.isShooting = true;
             FPSvcam.gameObject.SetActive(true);
            // empty = Instantiate(emptyprefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             //FPSvcam.gameObject.transform.rotation = Quaternion.Euler(direction);
@@ -92,6 +93,7 @@ public class PlayerController : BaseController
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             playerMode = PLAYER_MODE.ADVENTURE_MODE;
+            GameManager.instance.isShooting = false;
             FPSvcam.gameObject.SetActive(false);
             //Destroy(empty);
         }
