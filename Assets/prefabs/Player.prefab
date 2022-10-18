@@ -517,8 +517,12 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
+  water: {fileID: 0}
   playerMode: 0
   speed: 5
+  interact:
+    serializedVersion: 2
+    m_Bits: 1024
   FPSvcam: {fileID: 760549099}
   mainCam: {fileID: 0}
   target: {fileID: 727051307}

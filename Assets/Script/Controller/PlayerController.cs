@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 using Cinemachine;
 using Unity.VisualScripting;
+
 
 public class PlayerController : BaseController
 {
@@ -11,11 +13,16 @@ public class PlayerController : BaseController
 	[SerializeField] private float range;
 	[SerializeField] private LayerMask mask;
 
-	[Header ("Debug")]
+    [Header("Swim")]
+    [SerializeField] private GameObject water;
+
+    [Header ("Debug")]
 	[SerializeField] private PLAYER_MODE playerMode = PLAYER_MODE.ADVENTURE_MODE;
 	[SerializeField] private float speed;
 
-	private Vector3 direction;
+    public LayerMask interact;
+
+    private Vector3 direction;
 	private PlayerInput pi;
 
 
@@ -74,9 +81,19 @@ public class PlayerController : BaseController
             target.transform.position = (transform.position + (camCirection * distance));
 
             //FPSvcam.transform.Rotate(new Vector3(0, 0, -target.transform.rotation.z));
-        }
-       
 
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Interact(camCirection);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            CanSwin();
+        }
+
+        
 
     }
 	public void vise( Vector3 direction)
@@ -121,6 +138,25 @@ public class PlayerController : BaseController
         }
 		else
 			Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward * range, Color.red, 2.0f);
+    }
+
+    public void CanSwin()
+    {
+        water.GetComponent<TilemapCollider2D>().enabled = false;
+    }
+
+    public void Interact(Vector3 camCirection)
+    {
+        Vector3 interactPos = transform.position + (camCirection );
+
+        Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
+
+        Collider2D col = Physics2D.OverlapCircle(interactPos, 0.3f, interact);
+        if(col != null)
+        {
+            col.GetComponent<Interactable>()?.Interact();
+        }
+
     }
 
 	enum PLAYER_MODE
