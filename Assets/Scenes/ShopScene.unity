@@ -5490,6 +5490,7 @@ GameObject:
   - component: {fileID: 1173440127}
   - component: {fileID: 1173440129}
   - component: {fileID: 1173440128}
+  - component: {fileID: 1173440130}
   m_Layer: 5
   m_Name: ShopDisplay
   m_TagString: Untagged
@@ -5556,6 +5557,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173440126}
   m_CullTransparentMesh: 1
+--- !u!114 &1173440130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173440126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289d71000cada314a9aa670bb2bebfdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToBuy: []
+  weaponsToBuy: []
+  prefab: {fileID: 0}
+  itemsParent: {fileID: 0}
 --- !u!1 &1215820153
 GameObject:
   m_ObjectHideFlags: 0
@@ -91317,6 +91334,8 @@ MonoBehaviour:
     name: 
     maxStackable: 0
   weaponsToBuy: []
+  prefab: {fileID: 0}
+  itemsParent: {fileID: 0}
 --- !u!4 &1578796517
 Transform:
   m_ObjectHideFlags: 0
@@ -91836,8 +91855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e473306b59618498560cc44659f446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  nameText: 
   price: 0
+  priceText: 
   sprite: {fileID: 0}
 --- !u!1 &1811652575
 GameObject:
