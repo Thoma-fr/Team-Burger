@@ -6,6 +6,16 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyData : BaseData
 {
+    public EnemyData(string e_name, Sprite e_sprite, int e_maxPV, int e_pv, List<Attack> b_attcks) : base(e_name, e_sprite, e_maxPV, e_pv)
+    {
+        attacks = new List<Attack>(b_attcks);
+    }
+
+    public EnemyData(EnemyData baseEnemyData) : base(baseEnemyData.name, baseEnemyData.battleSprite, baseEnemyData.maxHealth, baseEnemyData.healthPoint)
+    {
+        attacks = new List<Attack>(baseEnemyData.attacks);
+    }
+
     // ANCIEN
     /*[Header("General Settings")]
     public ANIMAL animal;

@@ -12,3 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f840d7b4b4d534997ce720f5d270b2, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  playerData:
+    name: Jack
+    battleSprite: {fileID: -903738828, guid: f18705a19561e1240bf1dee5aa7e09dd, type: 3}
+    maxHealth: 2000
+    healthPoint: 2000
+    inventory: []
+    weapons:
+    - name: Basouka
+      damage: 100
+      shell: 30
+      maxShell: 30
+    - name: Basouka
+      damage: 100
+      shell: 30
+      maxShell: 30

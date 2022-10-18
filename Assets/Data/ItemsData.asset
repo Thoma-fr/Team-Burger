@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62195396b022573409618a9be09438be, type: 3}
   m_Name: ItemsData
   m_EditorClassIdentifier: 
+  itemsData:
+  - name: 
+    maxStackable: 0

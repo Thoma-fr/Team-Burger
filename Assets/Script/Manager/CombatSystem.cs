@@ -48,7 +48,7 @@ public class CombatSystem : MonoBehaviour
 
 	void Start()
 	{
-		//player = GameManager.instance.playerData;
+		player = GameManager.instance.GetPlayerData;
 		transparence = transform.GetComponent<CanvasGroup>();
 	}
 
@@ -62,29 +62,27 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
-
-				// ANCIEN
-				/*// <TODO> Type -> override Power -> actuel
 				// ---------------- Enemy ---------------- //
 				sliderEnemy.maxValue = enemy.maxHealth;
 				sliderEnemy.value = enemy.healthPoint;
 				hpEnemy.text = enemy.healthPoint + "/" + enemy.maxHealth;
-				nameEnemy.text = enemy.m_name;
-				imageEnemy.sprite = enemy.m_battleSprite;
+				nameEnemy.text = enemy.name;
+				imageEnemy.sprite = enemy.battleSprite;
 
 				// ---------------- Player ---------------- //
-				sliderPlayer.maxValue = player.m_baseData.maxHealth;
-				sliderPlayer.value = player.m_baseData.healthPoint;
-				hpPlayer.text = player.m_baseData.healthPoint + "/" + player.m_baseData.maxHealth;
-				namePlayer.text = player.m_baseData.m_name;
-				imagePlayer.sprite = player.m_baseData.m_battleSprite;*/
+				sliderPlayer.maxValue = player.maxHealth;
+				sliderPlayer.value = player.healthPoint;
+				hpPlayer.text = player.healthPoint + "/" + player.maxHealth;
+				namePlayer.text = player.name;
+				imagePlayer.sprite = player.battleSprite;
 
-				state = BATTLE_STATE.INTRO;
+				 state = BATTLE_STATE.INTRO;
 				break;
 
 			case BATTLE_STATE.INTRO:
 				transparence.alpha = 1;
 				transparence.interactable = true;
+				transparence.blocksRaycasts = true;
 				state = BATTLE_STATE.START;
 				break;
 
@@ -104,20 +102,25 @@ public class CombatSystem : MonoBehaviour
 				dialogueText.text = "";
 				commandeBloc.SetActive(false);
 
-				// ANCIEN
-				/*player.m_baseData.healthPoint -= enemy.m_Attacks[Random.Range(0, enemy.m_Attacks.Length)].attForce * enemy.attack - player.m_baseData.defense;
-				enemy.healthPoint -= player.m_baseData.attack - enemy.defense;
+				enemy.healthPoint -= player.weapons[0].damage;
+				SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
+				if (enemy.healthPoint <= 0)
+                {
+					Debug.Log("VICTOIRE");
+					state = BATTLE_STATE.END;
+					break;
+                }
 
-				if (enemy.healthPoint < 0)
-				{
+				player.healthPoint -= enemy.attacks[Random.Range(0, enemy.attacks.Count - 1)].damage;
+				SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
+				if (enemy.healthPoint <= 0)
+                {
+					Debug.Log("DEFAITE");
 					state = BATTLE_STATE.END;
-				}
-				else if (player.m_baseData.healthPoint < 0)
-				{
-					state = BATTLE_STATE.END;
-				}
-				else
-					state = BATTLE_STATE.CHOICE;*/
+					break;
+                }
+
+				state = BATTLE_STATE.CHOICE;
 				break;
 
 			case BATTLE_STATE.END:
@@ -125,6 +128,7 @@ public class CombatSystem : MonoBehaviour
 				commandeBloc.SetActive(false);
 				transparence.alpha = 0;
 				transparence.interactable = false;
+				transparence.blocksRaycasts = false;
 				break;
 		}
 	}
@@ -135,14 +139,21 @@ public class CombatSystem : MonoBehaviour
 		state = _nextState;
 	}
 
-	public void StartNewBattle(EnemyData other)
+	private void SetSlider(Slider _slider, TextMeshProUGUI _text, int _current, int _max)
+    {
+		_slider.value = _current;
+		_text.text = _current + "/" + _max;
+    }
+
+	public void StartBattlePhase(EnemyController other)
 	{
-		enemy = other;
+		enemy = other.m_data;
 		state = BATTLE_STATE.INIT;
 	}
 
 	public void PlayerAttack()
     {
 		state = BATTLE_STATE.FIGHT;
+		Debug.Log("Attack");
     }
 }

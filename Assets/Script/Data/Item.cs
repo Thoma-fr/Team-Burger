@@ -5,6 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class Item
 {
+    public Item(string b_name, int b_maxStackable)
+    {
+        name = b_name;
+        maxStackable = b_maxStackable;
+    }
+
     public string name;
     public int maxStackable;
 

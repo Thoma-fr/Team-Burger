@@ -5,9 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class BaseData
 {
+    public BaseData(string b_name, Sprite b_sprite, int b_maxPV, int b_PV)
+    {
+        name = b_name;
+        battleSprite = b_sprite;
+        maxHealth = b_maxPV;
+        healthPoint = b_PV;
+    }
+
     [Header ("Base")]
     public string name;
-    public Sprite m_battleSprite;
+    public Sprite battleSprite;
 
     // ANCIEN
     /*public int speed;
@@ -19,7 +27,7 @@ public class BaseData
     [Header ("Health Status")]
     public int maxHealth;
 
-    [HideInInspector] public int healthPoint;
+    public int healthPoint;
 
     // ANCIEN
     /*public ENITY_STATE entityState = ENITY_STATE.ALIVE;*/
