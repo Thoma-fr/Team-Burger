@@ -15,7 +15,7 @@ public class Bush : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bestiole")
+        if (other.tag == "Bestiole" || other.tag == "Player")
         {
             //animator.SetTrigger("Anim");
             Sequence mySequence = DOTween.Sequence();
