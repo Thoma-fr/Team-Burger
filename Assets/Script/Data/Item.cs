@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Item
+public class Item : Object
 {
     public Item(string b_name, int b_maxStackable)
     {

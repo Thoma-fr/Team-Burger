@@ -11,11 +11,3 @@ public interface IInteractible
 {
 
 }
-
-public interface IBrowsable
-{
-    public Sprite GetSprite();
-    public string GetName();
-    public string GetContent();
-    public string GetDescription();
-}
