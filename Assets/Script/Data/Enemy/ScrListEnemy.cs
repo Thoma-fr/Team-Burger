@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemiesData", menuName = "ScriptableObjects/EnemiesData", order = 1)]
 [System.Serializable]
-public class ListEnemyData : ScriptableObject
+public class ScrListEnemy : ScriptableObject
 {
     public List<EnemyData> allEnemiesData;
 }

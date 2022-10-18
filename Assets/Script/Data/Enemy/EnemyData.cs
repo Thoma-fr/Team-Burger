@@ -6,34 +6,51 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyData : BaseData
 {
-    [Header("General Settings")]
+    public EnemyData(string e_name, Sprite e_sprite, int e_maxPV, int e_pv, List<Attack> b_attcks) : base(e_name, e_sprite, e_maxPV, e_pv)
+    {
+        attacks = new List<Attack>(b_attcks);
+    }
+
+    public EnemyData(EnemyData baseEnemyData) : base(baseEnemyData.name, baseEnemyData.battleSprite, baseEnemyData.maxHealth, baseEnemyData.healthPoint)
+    {
+        attacks = new List<Attack>(baseEnemyData.attacks);
+    }
+
+    // ANCIEN
+    /*[Header("General Settings")]
     public ANIMAL animal;
-    [Range(0,100)] public float spawnChance;
+    [Range(0,100)] public float spawnChance;*/
 
     [Header ("Combat Settings")]
-    public bool alwaysRun;
-    public float runAwaySpeed;
-    public Attack[] m_Attacks;
+    public List<Attack> attacks;
 
-    public EnemyData(EnemyData origin)
+    // ANCIEN
+    //public bool alwaysRun;
+    //public float runAwaySpeed;
+
+    /*public EnemyData(EnemyData origin)
     {
         animal = origin.animal;
         spawnChance = origin.spawnChance;
         alwaysRun = origin.alwaysRun;
         runAwaySpeed = origin.runAwaySpeed;
-        // Non complet
-    }
+    }*/
 }
 
 [System.Serializable]
 public struct Attack
 {
     public string attName;
-    public ATTACK_TYPE attType;
+
+    // NOUVEAU
+    public int damage;
+
+    // ANCIEN
+    /*public ATTACK_TYPE attType;
     [Range(0, 100)] public int attForce;
     [Range(0, 100)] public int attChance;
     public ATTACK_POWER attPower;
-    [Range(0, 100)] public int powerChance;
+    [Range(0, 100)] public int powerChance;*/
 }
 
 [System.Serializable]
