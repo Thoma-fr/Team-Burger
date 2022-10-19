@@ -781,7 +781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4367414869373624817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1225,7 +1225,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4367414869373624782}
+      - m_Target: {fileID: 4367414869739341933}
+        m_TargetAssemblyTypeName: BrowserManager, Assembly-CSharp
+        m_MethodName: CloseBrowser
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4367414869739341929}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1305,7 +1317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4367414869739341928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1381,7 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIBrowserPrefab: {fileID: 1051778401744903673, guid: 35a4ceed2298464468ea4dd8a0078861, type: 3}
-  GUIText: {fileID: 0}
+  GUIText: {fileID: 4367414868944862880}
   numberShow: 4
   stepPosition: 10
 --- !u!1 &4367414869755802451
@@ -1584,6 +1596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45076d7c2ff84a24185505df7d1c269f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  browser: {fileID: 4367414869739341933}
   dialogueBloc: {fileID: 4367414869218798829}
   dialogueText: {fileID: 4367414870593000726}
   commandeBloc: {fileID: 4367414870712211383}
@@ -4106,7 +4119,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4367414869373624782}
+      - m_Target: {fileID: 4367414869739341929}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4117,6 +4130,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4367414869761758188}
+        m_TargetAssemblyTypeName: CombatSystem, Assembly-CSharp
+        m_MethodName: Browser
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4367414870712211383}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -4453,7 +4478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4367414869373624782}
+      - m_Target: {fileID: 4367414869739341929}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4464,6 +4489,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4367414869761758188}
+        m_TargetAssemblyTypeName: CombatSystem, Assembly-CSharp
+        m_MethodName: Browser
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4367414870712211383}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine

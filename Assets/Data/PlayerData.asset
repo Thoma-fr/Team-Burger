@@ -17,7 +17,11 @@ MonoBehaviour:
     battleSprite: {fileID: -903738828, guid: f18705a19561e1240bf1dee5aa7e09dd, type: 3}
     maxHealth: 2000
     healthPoint: 2000
-    inventory: []
+    inventory:
+    - name: 
+      maxStackable: 0
+    - name: 
+      maxStackable: 0
     weapons:
     - name: Basouka
       damage: 100

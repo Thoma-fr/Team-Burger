@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    [SerializeField] private CombatSystem combatSystem;
+    [SerializeField] public CombatSystem combatSystem;
+    public CombatSystem GetCombatSystem { get { return combatSystem; } }
 
     [Header("Default Data")]
     [SerializeField] private ScrPlayerData DeafaultPlayerData;
@@ -15,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ScrWeaponsData DefaultWeaponsData;
 
 
-    public CombatSystem GetDefaultCombatSystem { get { return combatSystem; } }
     public ScrPlayerData GetDefaultPlayerData { get { return DeafaultPlayerData; } }
     public ScrListEnemy GetDefaultEnemiesData { get { return DefaultEnemiesData; } }
     public ScrItemsData GetDefaultItemsData { get { return DefaultItemsData; } }
