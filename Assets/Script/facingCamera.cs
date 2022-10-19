@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class facingCamera : MonoBehaviour
 {
-    public Transform castPoints1, castPoints2;
+    //public Transform castPoints1, castPoints2;
     private int baseORder;
     // Start is called before the first frame update
     void Start()
