@@ -41,11 +41,13 @@ Si l'ennemie a remarqué le joueur :
 	// Freeze frame lorsque l'animal est toucher
 	Slomo lorsque la balle est tirer - plus de slomo en même teps que l'ouverture du combat
 
-	particule (vfx graphe) -> courrir, nager, taper un arbre, dégât, saignement (non réaliste : préféré une anipation),
+	particule (vfx graphe) -> courrir, nager particule d'eau, taper un arbre, dégât, saignement (non réaliste : préféré une anipation).
+	quand je joueur tire camera shake
+	
 	environement (neige)
-	sound (F-mode) -> dispertion du son/échos lors du tire, bruit de pas (différent sol), environnement
+	sound (F-mode) -> dispertion du son/échos lors du tire, bruit de pas (différent sol), environnement, potentielement musique
 
-	Animations sur tout les perso et entité/décor (trop de travail) (en combat et aventure), (saignement) lorsque le combat commence -> Tweening
+	Animations sur tout les perso et entité/décor (trop de travail) (en combat et aventure), (saignement) lorsque le combat commence -> les sprite des perso arrive de gauche a droite(dotween) Tweening
 
 	Tweening -> caméra, début combat
 	Haptic ffedback -> Tir avec son arme, dégat, prendre un arbre lorsque l'on cours (uniquement/ lor d'une action longue)
