@@ -2,22 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.ComponentModel.Design;
 
 public class Shop : MonoBehaviour
 {
-    
-    public List<Item> itemsToBuy = new List<Item>();
-    public List<Weapon> weaponsToBuy = new List<Weapon>();
-
     public GameObject prefab;
-
     public Transform itemsParent;
-    private void Start()
+
+    public GameObject shopPanel;
+    private List<GameObject> buttons = new List<GameObject>();
+    public List<Item> items = new List<Item>();
+    public bool real;
+    public void AddItems()
     {
-        foreach (var i in itemsToBuy)
+        foreach (Item item in items)
         {
-            var go = Instantiate(prefab, itemsParent);
-            go.GetComponent<ItemShopInfo>().nameText=i.name;
+            if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.name == item.name)!=null)
+            {
+                Debug.Log("Item already exists");
+                real = true;
+            }
+            else
+            {
+                real = false;
+            }
+
+
+
         }
+    }
+    public void OnOpen()
+    {
+        shopPanel.SetActive(true);
+        foreach (var i in GameManager.instance.GetDefaultItemsData.itemsData)
+        {
+            GameObject go = Instantiate(prefab, itemsParent);
+            buttons.Add(go);
+            go.GetComponent<ItemShopInfo>().nameText.GetComponent<TextMeshProUGUI>().text = i.name;
+            go.GetComponent<ItemShopInfo>().priceText.GetComponent<TextMeshProUGUI>().text = i.price.ToString();
+
+        }
+    }
+    public void OnClose()
+    {
+        shopPanel.SetActive(false);
+        foreach (var i in buttons)
+        {
+            Destroy(i);
+        }
+        buttons.Clear();
     }
 }

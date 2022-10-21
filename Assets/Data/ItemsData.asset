@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: ItemsData
   m_EditorClassIdentifier: 
   itemsData:
-  - name: 
+  - price: 0
+    name: alex
+    maxStackable: 1
+  - price: 1000
+    name: Thomas
     maxStackable: 0
