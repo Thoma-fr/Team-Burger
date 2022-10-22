@@ -7,36 +7,40 @@ using System.ComponentModel.Design;
 
 public class Shop : MonoBehaviour
 {
+    [Header("reference")]
     public GameObject prefab;
     public Transform itemsParent;
-
     public GameObject shopPanel;
-    private List<GameObject> buttons = new List<GameObject>();
+    
+
+
+    [Header("Item a ajouter dans le magasin")]
     public List<Item> requestedItems = new List<Item>();
+    [Header("Item a vendre dans le magasin")]
     public List<Item> itemTosell= new List<Item>();
 
+    private List<GameObject> buttons = new List<GameObject>();
     public ScrItemsData GetDefaultItemsData;
-    public void AddItems()
+    public void AddItems()//si y'a une erreur de null référence il faut metre en play et arrèter 
     {
-        //Debug.Log(GetDefaultItemsData.itemsData.Find(x => x.ItemName == requestedItems[0].ItemName).ItemName);
+        
         foreach (Item item in requestedItems)
         {
             if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName) != null)
             {
                 string st = GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName).itemName;
 
-                if (st == item.itemName)
+                if (st == item.itemName)//hhoooo c'est bo un debug qui fait de la couleur 
                 {
                     Debug.Log("<color=green>the item :" + item.itemName + "</color> has been added to the Shop");
-                    itemTosell.Add(item);
+                    itemTosell.Add(item);// hop hop hop ont ajoute ça a la liste des items a vendre
 
                 }
-
             }
-            else
+            else //si le nom de l'item existe pas, ça fait une erreur
             {
-                Debug.LogError("the item : " + item.itemName + " has not been added to the Shop");
-            }
+                Debug.LogError("<color=red>the item : " + item.itemName + "</color> has not been added to the Shop");
+            }// un Log.Error car ça fait menacant bhouuuuu en plus y'a du rouge bbooooooo
 
         }
     }
