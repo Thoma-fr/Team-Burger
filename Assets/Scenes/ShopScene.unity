@@ -1005,12 +1005,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4911229903812173175, guid: 09a73323f2f785342967dcd1617d333c, type: 3}
   itemsParent: {fileID: 1215820154}
-  shopPanel: {fileID: 0}
-  items:
+  shopPanel: {fileID: 1173440126}
+  requestedItems:
   - price: 0
-    name: alex
+    itemName: alex
     maxStackable: 0
-  real: 0
+  - price: 0
+    itemName: chichi
+    maxStackable: 0
+  itemTosell: []
+  GetDefaultItemsData: {fileID: 11400000, guid: 479672a379071c946bddb30c182fc2b7, type: 2}
 --- !u!4 &493618654
 Transform:
   m_ObjectHideFlags: 0
@@ -5520,8 +5524,9 @@ MonoBehaviour:
   prefab: {fileID: 4911229903812173175, guid: 09a73323f2f785342967dcd1617d333c, type: 3}
   itemsParent: {fileID: 1215820154}
   shopPanel: {fileID: 0}
-  items: []
-  real: 0
+  requestedItems: []
+  itemTosell: []
+  GetDefaultItemsData: {fileID: 0}
 --- !u!1 &1215820153
 GameObject:
   m_ObjectHideFlags: 0

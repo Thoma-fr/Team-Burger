@@ -12,23 +12,31 @@ public class Shop : MonoBehaviour
 
     public GameObject shopPanel;
     private List<GameObject> buttons = new List<GameObject>();
-    public List<Item> items = new List<Item>();
-    public bool real;
+    public List<Item> requestedItems = new List<Item>();
+    public List<Item> itemTosell= new List<Item>();
+
+    public ScrItemsData GetDefaultItemsData;
     public void AddItems()
     {
-        foreach (Item item in items)
+        //Debug.Log(GetDefaultItemsData.itemsData.Find(x => x.ItemName == requestedItems[0].ItemName).ItemName);
+        foreach (Item item in requestedItems)
         {
-            if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.name == item.name)!=null)
+            if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName) != null)
             {
-                Debug.Log("Item already exists");
-                real = true;
+                string st = GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName).itemName;
+
+                if (st == item.itemName)
+                {
+                    Debug.Log("<color=green>the item :" + item.itemName + "</color> has been added to the Shop");
+                    itemTosell.Add(item);
+
+                }
+
             }
             else
             {
-                real = false;
+                Debug.LogError("the item : " + item.itemName + " has not been added to the Shop");
             }
-
-
 
         }
     }
@@ -39,7 +47,7 @@ public class Shop : MonoBehaviour
         {
             GameObject go = Instantiate(prefab, itemsParent);
             buttons.Add(go);
-            go.GetComponent<ItemShopInfo>().nameText.GetComponent<TextMeshProUGUI>().text = i.name;
+            go.GetComponent<ItemShopInfo>().nameText.GetComponent<TextMeshProUGUI>().text = i.itemName;
             go.GetComponent<ItemShopInfo>().priceText.GetComponent<TextMeshProUGUI>().text = i.price.ToString();
 
         }

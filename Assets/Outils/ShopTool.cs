@@ -6,8 +6,6 @@ using UnityEditor;
 [CustomEditor(typeof(Shop))]
 public class ShopTool : Editor
 {
-    
-
     public override void OnInspectorGUI()
     {
         Shop myShop = (Shop)target;
@@ -16,10 +14,11 @@ public class ShopTool : Editor
         {
             myShop.AddItems();
         }
-       // name = EditorGUILayout.EnumPopup(Object.a).ToString();
+       
     }
     private enum Object
     {
         a,b,c
     }
+    
 }
