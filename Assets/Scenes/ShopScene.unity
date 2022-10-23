@@ -1008,12 +1008,12 @@ MonoBehaviour:
   shopPanel: {fileID: 1173440126}
   requestedItems:
   - price: 0
+    itemName: chihcui
+    maxStackable: 0
+  itemTosell:
+  - price: 0
     itemName: alex
     maxStackable: 0
-  - price: 0
-    itemName: chichi
-    maxStackable: 0
-  itemTosell: []
   GetDefaultItemsData: {fileID: 11400000, guid: 479672a379071c946bddb30c182fc2b7, type: 2}
 --- !u!4 &493618654
 Transform:
