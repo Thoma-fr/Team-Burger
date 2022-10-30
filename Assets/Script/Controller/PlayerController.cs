@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 using Unity.VisualScripting;
+using DG.Tweening;
 
 public class PlayerController : BaseController
 {
@@ -116,6 +117,7 @@ public class PlayerController : BaseController
 	{
 		RaycastHit info;
         GameObject go = Instantiate(bullet,new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
+        camshake();
         if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, out info, range, mask) && info.transform.GetComponent<Renderer>().isVisible)
         {
 			Debug.Log(info.transform.name);
@@ -125,7 +127,10 @@ public class PlayerController : BaseController
 		else
 			Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward * range, Color.red, 2.0f);
     }
-
+    private void camshake()
+    {
+        FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
+    }
 	enum PLAYER_MODE
     {
 		ADVENTURE_MODE,

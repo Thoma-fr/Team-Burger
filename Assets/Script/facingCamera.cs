@@ -10,6 +10,7 @@ public class facingCamera : MonoBehaviour
     public Transform castPoints1, castPoints2;
     private int baseORder;
     public bool hasRotate;
+    private Transform rot;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,24 +26,24 @@ public class facingCamera : MonoBehaviour
     public void rotateTowardPlayer(Transform a)
     {
         //float rotz = transform.rotation.z - z;
-        
+        rot = a;
         //transform.DORotate(new Vector3(180, 180,z ), 1f).SetEase(Ease.OutElastic);
         if (!hasRotate)
             
         {
             //transform.DORotate(new Vector3(0, 90, a.transform.rotation.z), 0f);
-            Debug.Log(a.transform.rotation.y);
-            
+            //Debug.Log(a.transform.rotation.y);
+
             //transform.localRotation = a.transform.rotation;
             //transform.DOLocalRotate(new Vector3(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z-20), 1f);
-            transform.DOLocalRotateQuaternion(a.transform.rotation, 1f).SetEase(Ease.OutBounce);
+            transform.DOLocalRotateQuaternion(a.transform.rotation, 1f).SetEase(Ease.OutBounce).OnComplete(() => hasRotate = true);
             transform.position = new Vector3(transform.position.x, transform.position.y, 0.4f);
             hasRotate = true;
         }
         else
         {
             Debug.Log("func2");
-            transform.DORotate(new Vector3(0, 0, 0), 0f);
+            transform.DORotate(new Vector3(0, 0, 0), 0f).OnComplete(() => hasRotate = false);
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.02f);
             //transform.rotation = Quaternion.Euler(78, 0, -180);
             hasRotate = false;
@@ -54,6 +55,18 @@ public class facingCamera : MonoBehaviour
         //transform.DORotate(new Vector3(78, 0, -180), 0.1f).SetEase(Ease.OutBounce);
         
         //return false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.CompareTag("Bullet"))
+        {
+            
+            Debug.Log("hit");
+            
+            
+            
+            Destroy(collision.gameObject.transform.parent.gameObject);
+        }
     }
 }
     
