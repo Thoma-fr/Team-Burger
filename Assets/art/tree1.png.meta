@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b7e5f450b00ce4441916a0e2ab1c1d05
+guid: 12e4ef0681e6393489e89d41c87e680e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,13 +42,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
-  spriteBorder: {x: 112, y: 10, z: 208, w: 200}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -103,60 +103,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: summer_pine_tree_tiles_16
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 10
-        width: 32
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5457f277c688564da741bdc0bc54e17
-      internalID: -1460903702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      summer_pine_tree_tiles_14: 1815214142
-      summer_pine_tree_tiles_4: 132339486
-      summer_pine_tree_tiles_3: 102596538
-      summer_pine_tree_tiles_0: -1891718141
-      summer_pine_tree_tiles_13: 1895478842
-      summer_pine_tree_tiles_9: -1518400178
-      summer_pine_tree_tiles_15: -1407864629
-      summer_pine_tree_tiles_10: -293395142
-      summer_pine_tree_tiles_11: 140630425
-      summer_pine_tree_tiles_20: 7111054
-      summer_pine_tree_tiles_5: -35288422
-      summer_pine_tree_tiles_19: 1086429911
-      summer_pine_tree_tiles_16: -1460903702
-      summer_pine_tree_tiles_7: -515007522
-      summer_pine_tree_tiles_1: 390353603
-      summer_pine_tree_tiles_8: -1317702055
-      summer_pine_tree_tiles_12: 222292682
-      summer_pine_tree_tiles_6: -1774112203
-      summer_pine_tree_tiles_2: 1137621497
-      summer_pine_tree_tiles_18: 694470460
-      summer_pine_tree_tiles_17: 1229785615
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

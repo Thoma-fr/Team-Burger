@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,10 +34,11 @@ public class GameManager : MonoBehaviour
     
     [Header("FaceCamera")]
     public List<GameObject> faceTheCam = new List<GameObject>();
-    public Camera mainCam;
+    public Transform mainCam;
     public GameObject test;
 
     public bool isShooting;
+    public bool hasRotate;
     public void OnBattleActivation()
     {
         if (test.TryGetComponent<EnemyController>(out EnemyController ec))
@@ -46,7 +48,18 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject item in faceTheCam)
         {
-            item.transform.rotation = mainCam.transform.rotation;
+
+            if (isShooting && !item.transform.GetComponent<facingCamera>().hasRotate)
+            {
+                Debug.Log("1");
+                item.transform.GetComponent<facingCamera>().rotateTowardPlayer(mainCam);
+            }
+            else if(!isShooting && item.transform.GetComponent<facingCamera>().hasRotate)
+            {
+                Debug.Log("2");
+                item.transform.GetComponent<facingCamera>().rotateTowardPlayer(mainCam);
+            }
+            
         }
     }
     private void Awake()

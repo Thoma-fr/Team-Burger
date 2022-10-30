@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b7e5f450b00ce4441916a0e2ab1c1d05
+guid: ba9fe041dec13054a9ca819adfc1daaf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,8 +47,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
-  spriteBorder: {x: 112, y: 10, z: 208, w: 200}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: summer_pine_tree_tiles_16
+      name: Trees_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 10
-        width: 32
-        height: 46
+        x: 21
+        y: 33
+        width: 111
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5457f277c688564da741bdc0bc54e17
-      internalID: -1460903702
+      spriteID: e5ff79fbdeeeaef49bb04a207beb5319
+      internalID: -1384334423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 32
+        width: 73
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5c2b2466a5f91478e18eab43ce8048
+      internalID: 313585099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees_2
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 32
+        width: 71
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8c10c48d0d6b8498bd8ea86586c0e1
+      internalID: 740065572
       vertices: []
       indices: 
       edges: []
@@ -129,34 +171,16 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      summer_pine_tree_tiles_14: 1815214142
-      summer_pine_tree_tiles_4: 132339486
-      summer_pine_tree_tiles_3: 102596538
-      summer_pine_tree_tiles_0: -1891718141
-      summer_pine_tree_tiles_13: 1895478842
-      summer_pine_tree_tiles_9: -1518400178
-      summer_pine_tree_tiles_15: -1407864629
-      summer_pine_tree_tiles_10: -293395142
-      summer_pine_tree_tiles_11: 140630425
-      summer_pine_tree_tiles_20: 7111054
-      summer_pine_tree_tiles_5: -35288422
-      summer_pine_tree_tiles_19: 1086429911
-      summer_pine_tree_tiles_16: -1460903702
-      summer_pine_tree_tiles_7: -515007522
-      summer_pine_tree_tiles_1: 390353603
-      summer_pine_tree_tiles_8: -1317702055
-      summer_pine_tree_tiles_12: 222292682
-      summer_pine_tree_tiles_6: -1774112203
-      summer_pine_tree_tiles_2: 1137621497
-      summer_pine_tree_tiles_18: 694470460
-      summer_pine_tree_tiles_17: 1229785615
+      Trees_2: 740065572
+      Trees_1: 313585099
+      Trees_0: -1384334423
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
