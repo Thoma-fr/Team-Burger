@@ -36,6 +36,7 @@ public class facingCamera : MonoBehaviour
             //transform.localRotation = a.transform.rotation;
             //transform.DOLocalRotate(new Vector3(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z-20), 1f);
             transform.DOLocalRotateQuaternion(a.transform.rotation, 1f).SetEase(Ease.OutBounce);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.4f);
             hasRotate = true;
         }
         else

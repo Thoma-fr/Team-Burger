@@ -25,6 +25,7 @@ public class PlayerController : BaseController
     private Vector3 mousepos;
     public float distance;
 
+    public GameObject bullet;
     private void Start()
 	{
 		col = GetComponent<Collider2D>();
@@ -70,6 +71,7 @@ public class PlayerController : BaseController
         
             Vector3 camCirection = (mousepos - transform.position).normalized;
             direction.z = 0;
+
             target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
             target.transform.position = (transform.position + (camCirection * distance));
 
@@ -113,6 +115,7 @@ public class PlayerController : BaseController
 	private void Shoot()
 	{
 		RaycastHit info;
+        GameObject go = Instantiate(bullet,new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
         if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, out info, range, mask) && info.transform.GetComponent<Renderer>().isVisible)
         {
 			Debug.Log(info.transform.name);
