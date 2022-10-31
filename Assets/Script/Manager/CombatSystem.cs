@@ -6,8 +6,6 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
-	[SerializeField] private BrowserManager browser;
-
 	[Header("Dialogue")]
 	[SerializeField] private GameObject dialogueBloc;
 	[SerializeField] private TextMeshProUGUI dialogueText;
@@ -162,8 +160,8 @@ public class CombatSystem : MonoBehaviour
 	public void Browser(int what)
 	{
 		if (what == 1)
-			browser.ShowBrowser<Weapon>(GameManager.instance.GetPlayerData.weapons);
+			BrowserManager.instance.ShowBrowser<Weapon>(GameManager.instance.GetPlayerData.weapons);
 		else if (what == 2)
-			browser.ShowBrowser<Item>(GameManager.instance.GetPlayerData.inventory);
+			BrowserManager.instance.ShowBrowser<Item>(GameManager.instance.GetPlayerData.inventory);
 	}
 }

@@ -7,8 +7,10 @@ using System.Linq;
 
 public class BrowserManager : MonoBehaviour
 {
+    public static BrowserManager instance { get; private set; }
+    
+    [Header("Browser")]
     [SerializeField] private GameObject UIBrowserPrefab;
-    [SerializeField] private GameObject DescriptionRoot;
     [SerializeField] private TextMeshProUGUI GUIText;
     [SerializeField] private int numberShow = 4;
     [SerializeField] private int stepPosition = 10;
@@ -17,11 +19,19 @@ public class BrowserManager : MonoBehaviour
     int maxPage;
     float maxHeight;
 
+    [Header("Description Browser")]
+    [SerializeField] private GameObject DescriptionRoot;
+    [SerializeField] private Image descriptionImage;
+    [SerializeField] private TextMeshProUGUI descriptionText;
+
+    private Object selectedObject;
     List<Object> browserList;
     List<GameObject> UIBox = new List<GameObject>();
 
-    /*private Object objectSelected;
-    public static Object SetObjectSelected { set { objectSelected = value; DisplayDescription(); } }*/
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void ShowBrowser<Tsource>(List<Tsource> source) where Tsource : Object
     {
@@ -58,12 +68,15 @@ public class BrowserManager : MonoBehaviour
     {
         pageID = Mathf.Clamp(pageID, 0, maxPage);
 
-        GUIText.text = "Page " + pageID + "/" + maxPage;
+        GUIText.text = "Page " + (pageID + 1) + "/" + (maxPage + 1);
 
         if (pageID == lastPageID)
             return;
         else
+        {
+            CloseBrowser();
             lastPageID = pageID;
+        }
 
         for (int id = 0; id < numberShow; id++)
         {
@@ -71,6 +84,7 @@ public class BrowserManager : MonoBehaviour
             {
                 GameObject instance = Instantiate<GameObject>(UIBrowserPrefab, this.transform);
                 instance.transform.localPosition = new Vector2(0 , maxHeight - (id * stepPosition));
+                instance.GetComponent<BrowserIObject>().obj = browserList[pageID * numberShow + id];
                 //instance.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = browserList[pageID * numberShow + id].GetName();
                 //instance.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = browserList[pageID * numberShow + id].GetContent();
 
@@ -79,11 +93,24 @@ public class BrowserManager : MonoBehaviour
         }
     }
 
-    /*private static void DisplayDescription()
+    public void DisplayDescription(Object what)
     {
-        if (objectSelected != null)
-        {
+        if (what == null)
+            return;
+
+        if (!DescriptionRoot.activeSelf)
             DescriptionRoot.SetActive(true);
-        }
-    }*/
+
+        selectedObject = what;
+        //descriptionImage.sprite = what.sprit;
+        descriptionText.text = what.description;
+    }
+
+    public void UseObject()
+    {
+        if (selectedObject == null)
+            return;
+
+        Debug.Log("Using object !");
+    }
 }

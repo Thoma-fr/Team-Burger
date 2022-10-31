@@ -6,8 +6,8 @@ public class BrowserIObject : MonoBehaviour
 {
     public Object obj;
 
-    public void OnClick()
+    public void OnActive()
     {
-        BrowserManager.SetObjectSelected = this.obj;
+        BrowserManager.instance.DisplayDescription(obj);
     }
 }

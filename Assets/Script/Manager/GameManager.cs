@@ -50,15 +50,9 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        playerData = new PlayerData(DeafaultPlayerData.playerData);
 
         if (instance == null)
             instance = this;
     }
-
-    private void Start()
-    {
-        playerData = new PlayerData(DeafaultPlayerData.playerData);
-        
-    }
-
 }

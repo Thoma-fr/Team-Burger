@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: ItemsData
   m_EditorClassIdentifier: 
   itemsData:
-  - name: 
+  - name: PP max
+    maxStackable: 0
+  - name: PP +
+    maxStackable: 0
+  - name: Max PV
+    maxStackable: 0
+  - name: PV +
     maxStackable: 0
