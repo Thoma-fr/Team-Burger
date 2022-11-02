@@ -43,7 +43,13 @@ MonoBehaviour:
       shell: 30
       maxShell: 30
     - description: JE SUIS WEAPON 2
-      name: Basouka
-      damage: 100
+      name: Basouka2
+      damage: 200
       shell: 30
       maxShell: 30
+    weaponInHand:
+      description: 
+      name: Bag
+      damage: 5
+      shell: 0
+      maxShell: 0

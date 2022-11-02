@@ -20,19 +20,11 @@ public class CombatSystem : MonoBehaviour
 	[SerializeField] private float durationINTRO_START;*/
 
 	private RectMask2D rectMask2D;
-	private Image background;
 	
-	private GameObject enemyStat;
-	private Image imageEnemy;
-	private Slider sliderEnemy;
-	private TextMeshProUGUI nameEnemy;
-	private TextMeshProUGUI hpEnemy;
-
-	private GameObject playerStat;
-	private Image imagePlayer;
-	private Slider sliderPlayer;
-	private TextMeshProUGUI namePlayer;
-	private TextMeshProUGUI hpPlayer;
+	private GameObject enemyStat, playerStat;
+	private Image imageEnemy, imagePlayer, background;
+	private Slider sliderEnemy, sliderPlayer;
+	private TextMeshProUGUI nameEnemy, hpEnemy, namePlayer, hpPlayer;
 
 	private CanvasGroup transparence;
 
@@ -41,6 +33,8 @@ public class CombatSystem : MonoBehaviour
 
 	private EnemyData enemy;
 	private PlayerData player;
+
+	bool SetSliderValueEnemy = false, SetSliderValuePlayer = false;
 
 	public enum BATTLE_STATE
 	{
@@ -57,6 +51,11 @@ public class CombatSystem : MonoBehaviour
 	void Start()
 	{
 		player = GameManager.instance.GetPlayerData;
+
+		// --------------------------------------------------------------------------- DEBUG --------------------------------------------------------------------------- //
+		player.weaponInHand = player.weapons[0];
+		// ------------------------------------------------------------------------- FIN DEBUG ------------------------------------------------------------------------- //
+
 		transparence = transform.GetComponent<CanvasGroup>();
 		transparence.alpha = 0;
 
@@ -81,6 +80,12 @@ public class CombatSystem : MonoBehaviour
 
 	void Update()
 	{
+        if (SetSliderValueEnemy)
+			hpEnemy.text = (int)sliderEnemy.value + "/" + enemy.maxHealth;
+        else if(SetSliderValuePlayer)
+			hpPlayer.text = (int)sliderPlayer.value + "/" + player.maxHealth;
+
+
 		if (state == lastState)
 			return;
 
@@ -153,7 +158,6 @@ public class CombatSystem : MonoBehaviour
 			case BATTLE_STATE.FIGHT:
 				dialogueText.text = "";
 				commandeBloc.SetActive(false);
-
 				StartCoroutine(FightPhase());
 				break;
 
@@ -183,34 +187,47 @@ public class CombatSystem : MonoBehaviour
 
 	private IEnumerator FightPhase()
     {
-		yield return null;
+		dialogueText.text = "Le chasseur utilise " + player.weaponInHand.name;
+		yield return new WaitForSeconds(0.5f);
 
-		// Attack du joueur
+		// ATTACK JOUEUR
 		enemy.healthPoint -= player.weaponInHand.damage;
-		SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
-
+		// SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
+		SetSliderValueEnemy = true;
 		sliderEnemy.DOValue(enemy.healthPoint, 1.5f);
-		yield return new WaitForSeconds(1.8f);
+		yield return new WaitForSeconds(2.0f);
+		SetSliderValueEnemy = false;
 
+		// L'enemie n'a plus de vie
 		if (enemy.healthPoint <= 0)
 			state = BATTLE_STATE.END;
+        else
+        {
+			Attack enemyAtt = enemy.attacks[Random.Range(0, enemy.attacks.Count - 1)];
+			dialogueText.text = "L'ennemie utilise " + enemyAtt.attName;
+			yield return new WaitForSeconds(0.5f);
 
-		// Attack de l'ennemie
-		player.healthPoint -= enemy.attacks[Random.Range(0, enemy.attacks.Count - 1)].damage;
-		SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
-		if (enemy.healthPoint <= 0)
-		{
-			state = BATTLE_STATE.END;
-		}
+			// ATTACK ENNEMIE
+			player.healthPoint -= enemyAtt.damage;
+			// SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
+			SetSliderValuePlayer = true;
+			sliderPlayer.DOValue(player.healthPoint, 1.5f);
+			yield return new WaitForSeconds(2.0f);
+			SetSliderValuePlayer = false;
 
-		state = BATTLE_STATE.CHOICE;
+			// Le joueur n'a plus de vie
+			if (enemy.healthPoint <= 0)
+				state = BATTLE_STATE.END;
+			else
+				state = BATTLE_STATE.CHOICE;
+        }
 	}
 
-	private void SetSlider(Slider _slider, TextMeshProUGUI _text, int _current, int _max)
+	/*private void SetSlider(Slider _slider, TextMeshProUGUI _text, int _current, int _max)
     {
 		_slider.value = _current;
 		_text.text = _current + "/" + _max;
-    }
+    }*/
 
 	public void StartBattlePhase(EnemyController other)
 	{
@@ -235,10 +252,13 @@ public class CombatSystem : MonoBehaviour
 	public void UseWeapon(Weapon other)
     {
 		Debug.Log("Utiliser arm");
-    }
+		player.weaponInHand = other;
+		state = BATTLE_STATE.FIGHT;
+	}
 
 	public void UseConsomable(Item other)
     {
 		Debug.Log("Utiliser item");
+		state = BATTLE_STATE.FIGHT;
 	}
 }
