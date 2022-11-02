@@ -90,3 +90,11 @@ CONTROLE :
 	Tweening sur la cam lorsque le joueur vise + déplacement
 	   => Camera -> cinemachine
 
+
+Toggle pour visée
+utiliser le meme viseur que celui au sol
+Slomo est mieux en fonction d'une référence
+Cinemachine impulse
+savoir où l'on tire
+
+plus d'effet sur la balle (trail, FOV, Vignettage, rotation)

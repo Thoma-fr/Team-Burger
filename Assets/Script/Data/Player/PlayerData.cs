@@ -19,6 +19,7 @@ public class PlayerData : BaseData
 
     public List<Item> inventory = new List<Item>();
     public List<Weapon> weapons = new List<Weapon>();
+    public Weapon weaponInHand;
 
     /*public void RemoveItemFromInventory(string itemName, int number = 1)
     {

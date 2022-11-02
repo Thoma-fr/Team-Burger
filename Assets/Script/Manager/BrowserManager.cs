@@ -35,7 +35,6 @@ public class BrowserManager : MonoBehaviour
 
     public void ShowBrowser<Tsource>(List<Tsource> source) where Tsource : Object
     {
-        Debug.Log("Bite");
         browserList = source.Cast<Object>().ToList();
         maxPage = (int)(source.Count / numberShow);
         maxHeight = (stepPosition * (numberShow / 2.0f)) - stepPosition / 2;
@@ -93,17 +92,17 @@ public class BrowserManager : MonoBehaviour
         }
     }
 
-    public void DisplayDescription(Object what)
+    public void DisplayDescription(Object other)
     {
-        if (what == null)
+        if (other == null)
             return;
 
         if (!DescriptionRoot.activeSelf)
             DescriptionRoot.SetActive(true);
 
-        selectedObject = what;
+        selectedObject = other;
         //descriptionImage.sprite = what.sprit;
-        descriptionText.text = what.description;
+        descriptionText.text = other.description;
     }
 
     public void UseObject()
@@ -111,6 +110,13 @@ public class BrowserManager : MonoBehaviour
         if (selectedObject == null)
             return;
 
-        Debug.Log("Using object !");
+        if (selectedObject is Item item)
+        {
+            GameManager.instance.GetCombatSystem.UseConsomable(item);
+        }
+        else if (selectedObject is Weapon weapon)
+        {
+            GameManager.instance.GetCombatSystem.UseWeapon(weapon);
+        }
     }
 }
