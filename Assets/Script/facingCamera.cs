@@ -37,7 +37,7 @@ public class facingCamera : MonoBehaviour
             //transform.localRotation = a.transform.rotation;
             //transform.DOLocalRotate(new Vector3(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z-20), 1f);
             transform.DOLocalRotateQuaternion(a.transform.rotation, 1f).SetEase(Ease.OutBounce).OnComplete(() => hasRotate = true);
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0.4f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -0.07f);
             hasRotate = true;
         }
         else
@@ -61,7 +61,7 @@ public class facingCamera : MonoBehaviour
         if(collision.transform.CompareTag("Bullet"))
         {
             
-            Debug.Log("hit");
+            //Debug.Log("hit");
             
             
             

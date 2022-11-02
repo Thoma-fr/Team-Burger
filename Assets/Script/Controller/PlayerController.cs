@@ -47,12 +47,6 @@ public class PlayerController : BaseController
 		//pi = GetComponent<PlayerInput>();
 
 	}
-	//Vector2 inputmove;
- //   public void ONinputMove(InputAction.CallbackContext context)
- //   {
- //       inputmove = context.ReadValue<Vector2>();
- //   }
-
 	private void Update()
 	{
 		vise(direction);
@@ -73,7 +67,6 @@ public class PlayerController : BaseController
 
 				target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
 				target.transform.position = (transform.position + (camCirection * distance));
-				//FPSvcam.transform.Rotate(new Vector3(0, 0, -target.transform.rotation.z));
 
 				break;
 
@@ -93,8 +86,6 @@ public class PlayerController : BaseController
 			playerMode = PLAYER_MODE.SHOOTING_MODE;
 			GameManager.instance.isShooting = true;
 			FPSvcam.gameObject.SetActive(true);
-		   // empty = Instantiate(emptyprefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-			//FPSvcam.gameObject.transform.rotation = Quaternion.Euler(direction);
 
 		}
 		else if (Input.GetKeyUp(KeyCode.Mouse1))
@@ -102,7 +93,6 @@ public class PlayerController : BaseController
 			playerMode = PLAYER_MODE.ADVENTURE_MODE;
 			GameManager.instance.isShooting = false;
 			FPSvcam.gameObject.SetActive(false);
-			//Destroy(empty);
 		}
 		
 	}
@@ -127,14 +117,18 @@ public class PlayerController : BaseController
 	private void Shoot()
 	{
 		RaycastHit info;
-		GameObject go = Instantiate(bullet,new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
-	   // camshake();
-		if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, out info, range, mask) && info.transform.GetComponent<Renderer>().isVisible)
+		
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Debug.DrawLine(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward*1000, Color.red, 5f);
+		
+        if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, out info, range, mask))
 		{
-			Debug.Log(info.transform.name);
+            GetComponent<CinemachineImpulseSource>().GenerateImpulse(0.1f);
+            Debug.Log(info.transform.name);
 			Debug.DrawLine(Camera.main.ScreenToWorldPoint(Input.mousePosition), info.transform.position, Color.green, 2.0f);
-			// appèle l'interface : IShootable
-		}
+            GameObject go = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
+            // appele l'interface : IShootable
+        }
 		else
 			Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward * range, Color.red, 2.0f);
 	}
