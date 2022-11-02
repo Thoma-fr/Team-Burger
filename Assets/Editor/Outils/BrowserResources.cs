@@ -47,26 +47,26 @@ public class BrowserResources : EditorWindow
         GUILayout.EndScrollView();
 
         GUILayout.Space(40);
+
         GUILayout.BeginHorizontal();
         newNameSet = GUILayout.TextField(newNameSet, GUILayout.Width(130));
-        if(GUILayout.Button("New Set of Database"))
+        if(GUILayout.Button("New Set of Database") && newNameSet != "")
         {
-            string path = AssetDatabase.CreateFolder("Assets/Resources/Data", newNameSet);
-            if (path != "")
+            if (!Directory.Exists(Application.dataPath + "/Resources/Data/" + newNameSet))
             {
-                ScrPlayerData asset = ScriptableObject.CreateInstance<ScrPlayerData>();
-
-                AssetDatabase.CreateAsset(asset, "Assets/Resources/Data/B");
-                /*AssetDatabase.CreateAsset(ScrItemsData.CreateInstance("ItemsData"), path);
-                AssetDatabase.CreateAsset(ScrListEnemy.CreateInstance("ListEnemy"), path);
-                AssetDatabase.CreateAsset(ScrWeaponsData.CreateInstance("WeaponsData"), path);*/
+                AssetDatabase.CreateFolder("Assets/Resources/Data", newNameSet);
+                string path = "Assets/Resources/Data/" + newNameSet;
+                AssetDatabase.SaveAssets();
+                AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<ScrPlayerData>(), path + "/playerData.asset");
+                AssetDatabase.CreateAsset(ScrItemsData.CreateInstance<ScrItemsData>(), path + "/itemData.asset");
+                AssetDatabase.CreateAsset(ScrListEnemy.CreateInstance<ScrListEnemy>(), path + "/enemyData.asset");
+                AssetDatabase.CreateAsset(ScrWeaponsData.CreateInstance<ScrWeaponsData>(), path + "/weaponData.asset");
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-                //DataManager.OpenDatabase("Data/" + newNameSet);
-                //this.Close();
+                this.Close();
             }
             else
-                EditorUtility.DisplayDialog("Bite","Bite","ok");
+                EditorUtility.DisplayDialog("File already exists", "Please enter a different configuration name.", "Ok");
         }
         GUILayout.EndHorizontal();
     }
