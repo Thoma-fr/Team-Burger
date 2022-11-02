@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    public float speed = 1;
+    public float speed;
     public GameObject vCam;
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward*1 * Time.deltaTime);
+        transform.Translate(Vector3.forward*speed * Time.deltaTime);
     }
     private IEnumerator waiTospawn()
     {
