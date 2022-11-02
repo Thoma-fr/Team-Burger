@@ -42,8 +42,8 @@ public class PlayerController : BaseController
 	{
 		
 		FPSvcam.gameObject.SetActive(false);
-		GetComponent<CinemachineImpulseSource>().GenerateImpulse(2);
-		Debug.Log("Tremble connard");
+		/*GetComponent<CinemachineImpulseSource>().GenerateImpulse(2);
+		Debug.Log("Tremble connard");*/
 		//pi = GetComponent<PlayerInput>();
 
 	}
@@ -116,13 +116,13 @@ public class PlayerController : BaseController
 	{
 		rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
 		if (direction != Vector3.zero)
-		{
-			Debug.Log(direction);
-			visualEffect.Play();
-		}
+			visualEffect.SetBool("IsWalking", true);
 		else
-			visualEffect.Stop();
-    }
+			visualEffect.SetBool("IsWalking", false);
+
+		visualEffect.SetFloat("DirVel", direction.normalized.x*-1);
+		visualEffect.SetFloat("Start", direction.normalized.x);
+	}
 
 	private void Shoot()
 	{
