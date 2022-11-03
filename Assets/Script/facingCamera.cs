@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 using static UnityEditor.Progress;
 
 public class facingCamera : MonoBehaviour
@@ -13,6 +14,8 @@ public class facingCamera : MonoBehaviour
     private Transform rot;
     public GameObject matPlane;
     public GameObject spriteImage;
+    public GameObject cam;
+    private PlayerController pc;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,12 +78,13 @@ public class facingCamera : MonoBehaviour
     {
         if(collision.transform.CompareTag("Bullet"))
         {
-            
+
             //Debug.Log("hit");
+            if(cam!=null)
+                cam.SetActive(true);
             
-            
-            
-            Destroy(collision.gameObject.transform.parent.gameObject);
+            pc.mainCam.transform.GetComponent<Volume>().enabled = false;
+            Destroy(collision.gameObject);
         }
     }
 }
