@@ -6,6 +6,7 @@ using Cinemachine;
 using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEngine.VFX;
+using UnityEngine.Rendering;
 
 public class PlayerController : BaseController
 {
@@ -55,8 +56,8 @@ public class PlayerController : BaseController
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
 				direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-				Vector3 mouseScreen = Input.mousePosition;
+                mainCam.transform.GetComponent<Volume>().enabled = false;
+                Vector3 mouseScreen = Input.mousePosition;
 				mouseScreen.z = -mainCam.transform.position.z;
 
 				mousepos = mainCam.ScreenToWorldPoint(mouseScreen);
@@ -71,8 +72,13 @@ public class PlayerController : BaseController
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
+                
 				if (Input.GetKeyDown(KeyCode.Mouse0))
-					Shoot();
+				{
+                    
+                    Shoot();
+                }
+					
 				break;
 
 			default:
@@ -81,7 +87,8 @@ public class PlayerController : BaseController
 	}
 	public void vise( Vector3 direction)
 	{
-		if (Input.GetKeyDown(KeyCode.Mouse1))
+        mainCam.transform.GetComponent<Volume>().enabled = true;
+        if (Input.GetKeyDown(KeyCode.Mouse1))
 		{
 			playerMode = PLAYER_MODE.SHOOTING_MODE;
 			GameManager.instance.isShooting = true;
@@ -116,7 +123,8 @@ public class PlayerController : BaseController
 
 	private void Shoot()
 	{
-		Debug.Log("oui");
+        mainCam.transform.GetComponent<Volume>().enabled = false;
+        Debug.Log("oui");
         Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
 		Ray ray = mainCam.ScreenPointToRay(Mousepos);
 		Debug.DrawRay(mainCam.transform.position, ray.direction*1000,Color.red,5f);
@@ -128,8 +136,6 @@ public class PlayerController : BaseController
 			}
 			
     }
-    //gerer les mask (entity)
-    //GameObject go = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
     private void camshake()
 	{
 		FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
