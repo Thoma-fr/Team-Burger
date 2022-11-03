@@ -32,6 +32,8 @@ public class PlayerController : BaseController
 
 	private VisualEffect visualEffect;
 
+	public GameObject canvasReticle;
+
     private void Awake()
     {
 		col = GetComponent<Collider2D>();
@@ -41,7 +43,8 @@ public class PlayerController : BaseController
 
     private void Start()
 	{
-		
+		Cursor.visible=false;
+		canvasReticle.SetActive(false);
 		FPSvcam.gameObject.SetActive(false);
 		/*GetComponent<CinemachineImpulseSource>().GenerateImpulse(2);
 		Debug.Log("Tremble connard");*/
@@ -67,12 +70,14 @@ public class PlayerController : BaseController
 				direction.z = 0;
 
 				target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
+
 				target.transform.position = (transform.position + (camCirection * distance));
 
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
-                
+                canvasReticle.SetActive(true);
+                canvasReticle.transform.position = Input.mousePosition;
 				if (Input.GetKeyDown(KeyCode.Mouse0))
 				{
                     
@@ -93,7 +98,6 @@ public class PlayerController : BaseController
 			playerMode = PLAYER_MODE.SHOOTING_MODE;
 			GameManager.instance.isShooting = true;
 			FPSvcam.gameObject.SetActive(true);
-
 		}
 		else if (Input.GetKeyUp(KeyCode.Mouse1))
 		{
@@ -101,12 +105,10 @@ public class PlayerController : BaseController
 			GameManager.instance.isShooting = false;
 			FPSvcam.gameObject.SetActive(false);
 		}
-		
 	}
 	private void FixedUpdate()
 	{
 		Move();
-		
 	}
 
 	protected override void Move()
@@ -123,6 +125,7 @@ public class PlayerController : BaseController
 
 	private void Shoot()
 	{
+        canvasReticle.SetActive(false);
         mainCam.transform.GetComponent<Volume>().enabled = false;
         Debug.Log("oui");
         Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
@@ -130,10 +133,10 @@ public class PlayerController : BaseController
 		Debug.DrawRay(mainCam.transform.position, ray.direction*1000,Color.red,5f);
 		RaycastHit gunhit;
 		if (Physics.Raycast(mainCam.transform.position, ray.direction,out gunhit, range, mask))
-			{
-            GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
+		{
+			GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
 			go.transform.LookAt(gunhit.point);
-			}
+		}
 			
     }
     private void camshake()
