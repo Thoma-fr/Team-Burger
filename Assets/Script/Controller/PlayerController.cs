@@ -116,23 +116,21 @@ public class PlayerController : BaseController
 
 	private void Shoot()
 	{
-		RaycastHit info;
-		
-        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        Debug.DrawLine(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward*1000, Color.red, 5f);
-		
-        if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, out info, range, mask))
-		{
-            GetComponent<CinemachineImpulseSource>().GenerateImpulse(0.1f);
-            Debug.Log(info.transform.name);
-			Debug.DrawLine(Camera.main.ScreenToWorldPoint(Input.mousePosition), info.transform.position, Color.green, 2.0f);
-            GameObject go = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
-            // appele l'interface : IShootable
-        }
-		else
-			Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward * range, Color.red, 2.0f);
-	}
-	private void camshake()
+		Debug.Log("oui");
+        Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
+		Ray ray = mainCam.ScreenPointToRay(Mousepos);
+		Debug.DrawRay(mainCam.transform.position, ray.direction*1000,Color.red,5f);
+		RaycastHit gunhit;
+		if (Physics.Raycast(mainCam.transform.position, ray.direction,out gunhit, range, mask))
+			{
+            GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
+			go.transform.LookAt(gunhit.point);
+			}
+			
+    }
+    //gerer les mask (entity)
+    //GameObject go = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, -0.3f), FPSvcam.transform.rotation);
+    private void camshake()
 	{
 		FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
 	}
