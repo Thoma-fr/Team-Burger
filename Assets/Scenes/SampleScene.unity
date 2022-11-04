@@ -344,9 +344,10 @@ GameObject:
   - component: {fileID: 159711189}
   - component: {fileID: 159711190}
   - component: {fileID: 159711191}
+  - component: {fileID: 159711192}
   m_Layer: 6
   m_Name: Deer
-  m_TagString: Bestiole
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159711185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.24, y: 2.33, z: 0}
+  m_LocalPosition: {x: -4.83, y: 3.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -464,6 +465,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &159711192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159711185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aab6754417f0541805082dec917633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &356039485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -554,11 +567,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e385dcee7220294438eb9dbe7ec8a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
-  listEnemyData: {fileID: 0}
+  combatSystem: {fileID: 0}
+  DeafaultPlayerData: {fileID: 11400000, guid: 625b531ec67344140a076cba17bb5135, type: 2}
+  DefaultEnemiesData: {fileID: 11400000, guid: f486b8045c646114d91c40b5ea84fbcf, type: 2}
+  DefaultItemsData: {fileID: 11400000, guid: 479672a379071c946bddb30c182fc2b7, type: 2}
+  DefaultWeaponsData: {fileID: 11400000, guid: ce4cfe347bcdad34ba9cf80533c10d35, type: 2}
   enemyPrefab: {fileID: 0}
   faceTheCam: []
   mainCam: {fileID: 1743920807}
+  test: {fileID: 159711185}
   isShooting: 0
 --- !u!4 &357857491
 Transform:
@@ -1955,7 +1972,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 746b22097e0fc3946a2df1ccda0a775b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
