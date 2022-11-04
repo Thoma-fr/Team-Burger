@@ -22,29 +22,38 @@ public class PlayerData : BaseData
 
     public int money;
 
-    /*public void RemoveItemFromInventory(string itemName, int number = 1)
+    public void RemoveItemFromInventory(Item item, int number = 1)
     {
-        if (inventory.TryGetValue(itemName, out int currentItemNumber))
+        Item itemTemp = inventory.Find(x => x.itemName == item.itemName);
+        if (itemTemp != null)
         {
-            if (currentItemNumber - number <= 0)
-                inventory.Remove(itemName);
+            int itemId = inventory.IndexOf(itemTemp);
+
+            if (inventory[itemId].currentStack - number <= 0)
+                inventory.Remove(itemTemp);
             else
-                inventory[itemName] = currentItemNumber - number;
+                inventory[itemId].currentStack = inventory[itemId].currentStack - number;
         }
     }
 
-    public void AddItemInInventory(string itemName, int number = 1)
+    public void AddItemInInventory(Item item, int number = 1)
     {
-        if (inventory.TryGetValue(itemName, out int currentItemNumber))
+        Item itemTemp = inventory.Find(x => x.itemName == item.itemName);
+        if (itemTemp != null)
         {
-            inventory["itemName"] = currentItemNumber + number;
+            int itemId = inventory.IndexOf(itemTemp);
+
+            inventory[itemId].currentStack = Mathf.Clamp(inventory[itemId].currentStack + number, 1, inventory[itemId].maxStackable);
         }
         else
         {
-            if (GameManager.instance.GetDefaultItemsData.ContainItem(itemName, out Item info))
+            if (GameManager.instance.GetDefaultItemsData.ContainItem(item.itemName, out Item info))
             {
-                inventory.Add(itemName, number);
+                Debug.Log(inventory.Count);
+                inventory.Add(info);
+                Debug.Log(inventory.Count);
+                inventory[inventory.IndexOf(info)].currentStack = number;
             }
         }
-    }*/
+    }
 }

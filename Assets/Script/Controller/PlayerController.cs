@@ -8,6 +8,7 @@ using DG.Tweening;
 using UnityEngine.VFX;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
+using System;
 
 public class PlayerController : BaseController
 {
@@ -84,6 +85,9 @@ public class PlayerController : BaseController
 				if (Input.GetKeyDown("e"))
 					Interact(camDirection);
 
+				if (Input.GetKeyDown("i"))
+					ToggleInventory();
+
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
@@ -105,7 +109,13 @@ public class PlayerController : BaseController
 				break;
 		}   
 	}
-	public void vise( Vector3 direction)
+
+    private void ToggleInventory()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void vise( Vector3 direction)
 	{
         mainCam.transform.GetComponent<Volume>().enabled = true;
         if (Input.GetKeyDown(KeyCode.Mouse1))
