@@ -24,6 +24,9 @@ public class EnemyData : BaseData
     [Header ("Combat Settings")]
     public List<Attack> attacks;
 
+    [Range(0, 100)]
+    public int menace = 50;
+
     // ANCIEN
     //public bool alwaysRun;
     //public float runAwaySpeed;

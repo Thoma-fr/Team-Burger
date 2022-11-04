@@ -34,7 +34,7 @@ public class CombatSystem : MonoBehaviour
 	private EnemyData enemy;
 	private PlayerData player;
 
-	bool SetSliderValueEnemy = false, SetSliderValuePlayer = false;
+	bool SetSliderValueEnemy = false, SetSliderValuePlayer = false, useConsomable = false;
 
 	public enum BATTLE_STATE
 	{
@@ -95,8 +95,12 @@ public class CombatSystem : MonoBehaviour
 		{
 			case BATTLE_STATE.INIT:
 				background.color = new Color32(40, 40, 40, 255);
+				// dialogueBloc.transform.localPosition = new Vector2(dialogueBloc.transform.localPosition.x, -40);
 				dialogueBloc.SetActive(false);
+				// commandeBloc.transform.localPosition = new Vector2(commandeBloc.transform.localPosition.x, -40);
 				commandeBloc.SetActive(false);
+
+				rectMask2D.padding = new Vector4(0, 347, 0, 347);
 
 				// ---------------- Enemy ---------------- //
 				sliderEnemy.maxValue = enemy.maxHealth;
@@ -124,35 +128,37 @@ public class CombatSystem : MonoBehaviour
 			case BATTLE_STATE.INTRO:
 				transparence.alpha = 1;
 
-				Sequence mySequence = DOTween.Sequence();
+				Sequence myStartSequence = DOTween.Sequence();
 				// Background
-				mySequence.Append(DOTween.To(() => rectMask2D.padding, window => rectMask2D.padding = window, new Vector4(0, 0, 0, 0), 1));
-				mySequence.Insert(0.5f, background.DOColor(new Color(1, 1, 1), 0.5f));
-				mySequence.PrependInterval(0.7f);
+				myStartSequence.Append(DOTween.To(() => rectMask2D.padding, window => rectMask2D.padding = window, new Vector4(0, 0, 0, 0), 1));
+				myStartSequence.Insert(0.5f, background.DOColor(new Color(1, 1, 1), 0.5f));
+				myStartSequence.PrependInterval(0.7f);
 				// Sprite Position
-				mySequence.Append(imageEnemy.gameObject.transform.DOLocalMoveX(0, 2f).SetEase(Ease.Linear));
-				mySequence.Join(imagePlayer.gameObject.transform.DOLocalMoveX(0, 2f).SetEase(Ease.Linear));
-				mySequence.Join(imageEnemy.DOFade(1, 0.5f));
-				mySequence.Join(imagePlayer.DOFade(1, 0.5f));
+				myStartSequence.Append(imageEnemy.gameObject.transform.DOLocalMoveX(0, 2f).SetEase(Ease.Linear));
+				myStartSequence.Join(imagePlayer.gameObject.transform.DOLocalMoveX(0, 2f).SetEase(Ease.Linear));
+				myStartSequence.Join(imageEnemy.DOFade(1, 0.5f));
+				myStartSequence.Join(imagePlayer.DOFade(1, 0.5f));
 				// Sprite Color
-				mySequence.Insert(2.5f, imageEnemy.DOColor(new Color(1, 1, 1), 0.7f));
-				mySequence.Join(imagePlayer.DOColor(new Color(1, 1, 1), 0.7f));
+				myStartSequence.Insert(2.5f, imageEnemy.DOColor(new Color(1, 1, 1), 0.7f));
+				myStartSequence.Join(imagePlayer.DOColor(new Color(1, 1, 1), 0.7f));
 				// Statistics
-				mySequence.Append(enemyStat.transform.DOLocalMoveX(-180, 0.5f).SetEase(Ease.OutBack));
-				mySequence.Insert(4f, playerStat.transform.DOLocalMoveX(180, 0.5f).SetEase(Ease.OutBack));
+				myStartSequence.Append(enemyStat.transform.DOLocalMoveX(-180, 0.5f).SetEase(Ease.OutBack));
+				myStartSequence.Insert(4f, playerStat.transform.DOLocalMoveX(180, 0.5f).SetEase(Ease.OutBack));
 				// Callback
-				mySequence.AppendCallback(EndIntroduction);
+				myStartSequence.AppendCallback(EndIntroduction);
 				break;
 
 			case BATTLE_STATE.START:
 				dialogueBloc.SetActive(true);
+				// dialogueBloc.transform.DOLocalMoveY(25, 0.5f);
 				dialogueText.text = "Un jeune beer est apparue. Vous sortez un gros fusil";
-				StartCoroutine(NextStateWithDelay(BATTLE_STATE.CHOICE, 2));
+				StartCoroutine(NextStateWithDelay(BATTLE_STATE.CHOICE, 3));
 				break;
 
 			case BATTLE_STATE.CHOICE:
 				commandeBloc.SetActive(true);
-				dialogueText.text = "WHAT NAT SHOULD DO ?";
+				// commandeBloc.transform.DOLocalMoveY(25, 0.5f);
+				dialogueText.text = "WHAT SHOULD YOU DO ?";
 				break;
 
 			case BATTLE_STATE.FIGHT:
@@ -161,13 +167,13 @@ public class CombatSystem : MonoBehaviour
 				StartCoroutine(FightPhase());
 				break;
 
-			case BATTLE_STATE.END:
-				dialogueBloc.SetActive(false);
-				commandeBloc.SetActive(false);
-				rectMask2D.padding = new Vector4(0, 347, 0, 347);
-				transparence.alpha = 0;
+			case BATTLE_STATE.END:				
 				transparence.interactable = false;
 				transparence.blocksRaycasts = false;
+
+				Sequence myEndSequence = DOTween.Sequence();
+				myEndSequence.AppendInterval(1f);
+				myEndSequence.Append(transparence.DOFade(0, 1));
 				break;
 		}
 	}
@@ -187,20 +193,38 @@ public class CombatSystem : MonoBehaviour
 
 	private IEnumerator FightPhase()
     {
+		yield return new WaitForSeconds(0.5f);
 		dialogueText.text = "Le chasseur utilise " + player.weaponInHand.name;
 		yield return new WaitForSeconds(0.5f);
 
 		// ATTACK JOUEUR
-		enemy.healthPoint -= player.weaponInHand.damage;
-		// SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
-		SetSliderValueEnemy = true;
-		sliderEnemy.DOValue(enemy.healthPoint, 1.5f);
-		yield return new WaitForSeconds(2.0f);
-		SetSliderValueEnemy = false;
+		if (!useConsomable)
+		{
+			enemy.healthPoint -= player.weaponInHand.damage;
+			// SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
+			imageEnemy.transform.DOShakePosition(0.7f, enemy.maxHealth / player.weaponInHand.damage * 3, 10, 40);
+			SetSliderValueEnemy = true;
+			sliderEnemy.DOValue(enemy.healthPoint, 1.5f);
+			yield return new WaitForSeconds(3f);
+			SetSliderValueEnemy = false;
+		}
+		else
+			useConsomable = false;
 
 		// L'enemie n'a plus de vie
 		if (enemy.healthPoint <= 0)
+        {
+			dialogueText.text = "L'ennemie est KO !";
+			yield return new WaitForSeconds(0.5f);
+			Sequence mySequence = DOTween.Sequence();
+			mySequence.Append(imageEnemy.transform.DOLocalMoveY(-80, 0.5f));
+			mySequence.Join(enemyStat.transform.DOLocalMoveX(-400, 0.5f));
+			mySequence.Insert(0.2f, imageEnemy.DOFade(0, 0.3f));
+
+			yield return new WaitForSeconds(1f);
+			dialogueText.text = "Félicitaion, tu as gagné 2512 de tune !";
 			state = BATTLE_STATE.END;
+		}
         else
         {
 			Attack enemyAtt = enemy.attacks[Random.Range(0, enemy.attacks.Count - 1)];
@@ -210,24 +234,29 @@ public class CombatSystem : MonoBehaviour
 			// ATTACK ENNEMIE
 			player.healthPoint -= enemyAtt.damage;
 			// SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
+			this.transform.DOShakePosition(0.7f, player.maxHealth / enemyAtt.damage * 3, 10, 40);
 			SetSliderValuePlayer = true;
 			sliderPlayer.DOValue(player.healthPoint, 1.5f);
-			yield return new WaitForSeconds(2.0f);
+			yield return new WaitForSeconds(3f);
 			SetSliderValuePlayer = false;
 
 			// Le joueur n'a plus de vie
 			if (enemy.healthPoint <= 0)
+            {
+				dialogueText.text = "Le chasseur est KO !";
+				yield return new WaitForSeconds(0.5f);
+				Sequence mySequence = DOTween.Sequence();
+				mySequence.Append(imagePlayer.transform.DOLocalMoveY(-80, 0.5f));
+				mySequence.Join(playerStat.transform.DOLocalMoveX(400, 0.5f));
+				mySequence.Insert(0.2f, imagePlayer.DOFade(0, 0.3f));
+
+				yield return new WaitForSeconds(1f);
 				state = BATTLE_STATE.END;
+            }
 			else
 				state = BATTLE_STATE.CHOICE;
         }
 	}
-
-	/*private void SetSlider(Slider _slider, TextMeshProUGUI _text, int _current, int _max)
-    {
-		_slider.value = _current;
-		_text.text = _current + "/" + _max;
-    }*/
 
 	public void StartBattlePhase(EnemyController other)
 	{
@@ -235,11 +264,10 @@ public class CombatSystem : MonoBehaviour
 		state = BATTLE_STATE.INIT;
 	}
 
-	public void PlayerAttack()
+	public void Attack()
     {
 		state = BATTLE_STATE.FIGHT;
-		Debug.Log("Attack");
-    }
+	}
 
 	public void Browser(int what)
 	{
@@ -251,14 +279,29 @@ public class CombatSystem : MonoBehaviour
 
 	public void UseWeapon(Weapon other)
     {
-		Debug.Log("Utiliser arm");
 		player.weaponInHand = other;
 		state = BATTLE_STATE.FIGHT;
 	}
 
 	public void UseConsomable(Item other)
     {
-		Debug.Log("Utiliser item");
+		useConsomable = true;
 		state = BATTLE_STATE.FIGHT;
+	}
+
+	public void Run()
+    {
+		if(Random.Range(0,100) >= enemy.menace)
+        {
+			dialogueText.text = "Vous réusiser à partir";
+			state = BATTLE_STATE.END;
+        }
+        else
+        {
+			dialogueText.text = "Vous réusiser échouer à fuire";
+			commandeBloc.SetActive(false);
+			useConsomable = true;
+			state = BATTLE_STATE.FIGHT;
+        }
 	}
 }

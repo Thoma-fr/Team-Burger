@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Weapon : Object
 {
-    public string name;
     public int damage;
     public int shell;
     public int maxShell;

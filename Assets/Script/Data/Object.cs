@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Object
 {
+    public string name;
     public string description;
 }

@@ -11,7 +11,6 @@ public class Item : Object
         maxStackable = b_maxStackable;
     }
 
-    public string name;
     public int maxStackable;
 
     public void UseItem()

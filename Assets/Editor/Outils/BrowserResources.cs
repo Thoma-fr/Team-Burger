@@ -36,10 +36,10 @@ public class BrowserResources : EditorWindow
 
         scrollview = GUILayout.BeginScrollView(scrollview);
 
-        foreach(string str in allFolderName)
+        foreach(string folderName in allFolderName)
         {
-            if (GUILayout.Button(str)){
-                DataManager.OpenDatabase("Data/" + str);
+            if (GUILayout.Button(folderName)){
+                DataManager.OpenDatabase("Data/" + folderName, folderName);
                 this.Close();
             }
         }
@@ -63,6 +63,7 @@ public class BrowserResources : EditorWindow
                 AssetDatabase.CreateAsset(ScrWeaponsData.CreateInstance<ScrWeaponsData>(), path + "/weaponData.asset");
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
+                DataManager.OpenDatabase("Data/" + path, newNameSet);
                 this.Close();
             }
             else
