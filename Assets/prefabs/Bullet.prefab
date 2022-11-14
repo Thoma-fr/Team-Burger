@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 7880122751138648388}
   - component: {fileID: 3873137056580807467}
   m_Layer: 0
-  m_Name: CM vcam2
+  m_Name: BulletCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 2780065360915465075}
   - component: {fileID: 3738042778288076395}
   - component: {fileID: 1419456044900603230}
+  - component: {fileID: 173901206879270099}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -358,6 +359,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &173901206879270099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215856132559109672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0.4
+  m_FrequencyGain: 0.4
+  mNoiseOffsets: {x: -27.40683, y: 85.14014, z: -860.9794}
 --- !u!1 &6555192496384822122
 GameObject:
   m_ObjectHideFlags: 0
