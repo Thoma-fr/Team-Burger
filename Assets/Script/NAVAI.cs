@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-enum AIState { idle, flee,move, attack }
+enum AIState { idle, flee,move, attack,Traped }
 public class NAVAI : MonoBehaviour
 {
-    
 
-    [SerializeField] private AIState mysate= AIState.idle;
+
+    [SerializeField] private AIState mysate = AIState.idle;
     NavMeshAgent agent;
     public Transform target;
     public GameObject player;
@@ -18,9 +18,15 @@ public class NAVAI : MonoBehaviour
     public Animator anim;
     public bool hasMove;
     public float range;
+
+
+    //audio
+    private AudioSource audioSource;
+    public AudioClip pain;
+    public AudioClip pain2;
     private void Start()
     {
-       
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -28,7 +34,7 @@ public class NAVAI : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(agent.velocity.x);
+        //Debug.Log(agent.velocity.x);
 
 
 
@@ -42,7 +48,7 @@ public class NAVAI : MonoBehaviour
         switch (mysate)
         {
             case AIState.idle:
-                if(hasMove && Mathf.Abs(agent.velocity.x)<0.1f)
+                if (hasMove && Mathf.Abs(agent.velocity.x) < 0.1f)
                     StartCoroutine(waitowalk());
                 break;
             case AIState.move:
@@ -55,7 +61,7 @@ public class NAVAI : MonoBehaviour
                         hasMove = true;
                     }
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                    mysate= AIState.idle;
+                    mysate = AIState.idle;
                 }
 
                 break;
@@ -64,15 +70,17 @@ public class NAVAI : MonoBehaviour
             case AIState.attack:
                 agent.SetDestination(new Vector3(target.position.x, target.position.y, 0f));
                 break;
+            case AIState.Traped:
+                break;
             default:
                 break;
         }
-        
-        
+
+
     }
     IEnumerator waitowalk()
     {
-        hasMove=false;
+        hasMove = false;
         yield return new WaitForSeconds(Random.Range(1f, 10f));
         mysate = AIState.move;
     }
@@ -90,5 +98,19 @@ public class NAVAI : MonoBehaviour
         }
         result = Vector3.zero;
         return false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Trap") || collision.transform.CompareTag("Bullet"))
+        {
+            StopAllCoroutines();
+            agent.Stop();
+            anim.SetBool("Pain", true);
+            mysate = AIState.Traped;
+            audioSource.PlayOneShot(pain);
+            audioSource.PlayOneShot(pain2);
+        }
+
     }
 }
