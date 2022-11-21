@@ -5,17 +5,19 @@ using UnityEngine;
 [System.Serializable]
 public class Item : Object
 {
-    public Item(string b_name, int b_maxStackable)
-    {
-        itemName = b_name;
-        maxStackable = b_maxStackable;
-    }
+	public int currentStack;
+	public string itemName;
+	public int maxStackable;
+	public string description;
 
-    public string itemName;
-    public int maxStackable;
+	public Item(string b_name, int b_maxStackable)
+	{
+		itemName = b_name;
+		maxStackable = b_maxStackable;
+	}
 
-    public void UseItem()
-    {
-        Debug.Log("Item Used");
-    }
+	public void UseItem()
+	{
+		Debug.Log("Item Used");
+	}
 }

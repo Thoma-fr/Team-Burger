@@ -7,15 +7,19 @@ using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEngine.VFX;
 using UnityEngine.Rendering;
+using UnityEngine.Tilemaps;
+using System;
 
 public class PlayerController : BaseController
 {
+	public static PlayerController Instance { get; private set; }
+
 	[Header("Shooting Setting")]
 	[SerializeField] private float range;
 	[SerializeField] private LayerMask mask;
 
 	[Header ("Debug")]
-	[SerializeField] private PLAYER_MODE playerMode = PLAYER_MODE.ADVENTURE_MODE;
+	public PLAYER_MODE playerMode = PLAYER_MODE.ADVENTURE_MODE;
 	[SerializeField] private float speed;
 
 	private Vector3 direction;
@@ -28,6 +32,10 @@ public class PlayerController : BaseController
 	private Vector3 mousepos;
 	public float distance;
 
+	public TilemapCollider2D water;
+	[SerializeField] private LayerMask interact;
+	public NPCController npc;
+
 	public GameObject bullet;
 
 	private VisualEffect visualEffect;
@@ -39,6 +47,7 @@ public class PlayerController : BaseController
 	public AudioClip shootSFX;
     private void Awake()
     {
+		Instance = this;
 		col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
 		audioSource = GetComponent<AudioSource>();
@@ -72,12 +81,18 @@ public class PlayerController : BaseController
 				mousepos = mainCam.ScreenToWorldPoint(mouseScreen);
 
 
-				Vector3 camCirection = (mousepos - transform.position).normalized;
+				Vector3 camDirection = (mousepos - transform.position).normalized;
 				direction.z = 0;
 
-				target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
+				target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camDirection);
 
-				target.transform.position = (transform.position + (camCirection * distance));
+				target.transform.position = (transform.position + (camDirection * distance));
+
+				if (Input.GetKeyDown("e"))
+					Interact(camDirection);
+
+				if (Input.GetKeyDown("i"))
+					ToggleInventory();
 
 				break;
 
@@ -93,11 +108,21 @@ public class PlayerController : BaseController
 					
 				break;
 
+			case PLAYER_MODE.DIALOGUE_MODE:
+				if (Input.GetKeyDown("e"))
+					npc.nextSentence();
+				break;
 			default:
 				break;
 		}   
 	}
-	public void vise( Vector3 direction)
+
+    private void ToggleInventory()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void vise( Vector3 direction)
 	{
         mainCam.transform.GetComponent<Volume>().enabled = true;
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -147,13 +172,34 @@ public class PlayerController : BaseController
 		}
 			
     }
-    private void camshake()
+
+	public void CanSwin()
+	{
+		water.GetComponent<TilemapCollider2D>().enabled = false;
+	}
+
+	public void Interact(Vector3 camCirection)
+	{
+		Vector3 interactPos = transform.position + (camCirection);
+
+		Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
+
+		Collider2D col = Physics2D.OverlapCircle(interactPos, 0.3f, interact);
+		if (col != null)
+		{
+			col.GetComponent<Interactable>()?.Interact();
+		}
+
+	}
+
+	private void camshake()
 	{
 		FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
 	}
-	enum PLAYER_MODE
+	public enum PLAYER_MODE
 	{
 		ADVENTURE_MODE,
 		SHOOTING_MODE,
+		DIALOGUE_MODE
 	}
 }

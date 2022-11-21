@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public ScrWeaponsData GetDefaultWeaponsData { get { return DefaultWeaponsData; } }
 
 
-    private PlayerData playerData;
+    [SerializeField]private PlayerData playerData;
     public PlayerData GetPlayerData { get { return playerData; } }
 
 
