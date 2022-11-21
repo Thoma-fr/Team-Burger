@@ -39,9 +39,9 @@ public class GameManager : MonoBehaviour
 
     public bool isShooting;
     public bool hasRotate;
-    public void OnBattleActivation()
+    public void OnBattleActivation(EnemyController ec)
     {
-        if (test.TryGetComponent<EnemyController>(out EnemyController ec))
+       
             combatSystem.StartBattlePhase(ec);
     }
     void Update()
