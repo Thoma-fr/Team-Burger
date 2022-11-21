@@ -139,7 +139,7 @@ public class NAVAI : MonoBehaviour
             //pc.mainCam.transform.GetComponent<Volume>().enabled = false;
             Destroy(collision.gameObject);
             GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
-            Destroy(gameObject, 3f);
+            
         }
 
     }

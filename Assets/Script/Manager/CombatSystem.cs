@@ -31,6 +31,7 @@ public class CombatSystem : MonoBehaviour
 	private BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
+	private GameObject enemiGameObj;
 	private EnemyData enemy;
 	private PlayerData player;
 
@@ -174,6 +175,8 @@ public class CombatSystem : MonoBehaviour
 				Sequence myEndSequence = DOTween.Sequence();
 				myEndSequence.AppendInterval(1f);
 				myEndSequence.Append(transparence.DOFade(0, 1));
+				myEndSequence.AppendCallback(() => Destroy(enemiGameObj));
+
 				break;
 		}
 	}
@@ -261,7 +264,8 @@ public class CombatSystem : MonoBehaviour
 	public void StartBattlePhase(EnemyController other)
 	{
 		enemy = other.m_data;
-		state = BATTLE_STATE.INIT;
+		enemiGameObj = other.gameObject;
+        state = BATTLE_STATE.INIT;
 	}
 
 	public void Attack()
