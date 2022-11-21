@@ -42,11 +42,15 @@ public class PlayerController : BaseController
 
 	public GameObject canvasReticle;
 
+    [Header("SFX")]
+	private AudioSource audioSource;
+	public AudioClip shootSFX;
     private void Awake()
     {
 		Instance = this;
 		col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
+		audioSource = GetComponent<AudioSource>();
 		visualEffect = GetComponent<VisualEffect>();
 	}
 
@@ -67,7 +71,9 @@ public class PlayerController : BaseController
 		switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
-				direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                canvasReticle.SetActive(false);
+                target.GetComponent<SpriteRenderer>().enabled = true;
+                direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 mainCam.transform.GetComponent<Volume>().enabled = false;
                 Vector3 mouseScreen = Input.mousePosition;
 				mouseScreen.z = -mainCam.transform.position.z;
@@ -92,6 +98,7 @@ public class PlayerController : BaseController
 
 			case PLAYER_MODE.SHOOTING_MODE:
                 canvasReticle.SetActive(true);
+				target.GetComponent<SpriteRenderer>().enabled = false;
                 canvasReticle.transform.position = Input.mousePosition;
 				if (Input.GetKeyDown(KeyCode.Mouse0))
 				{
@@ -161,6 +168,7 @@ public class PlayerController : BaseController
 		{
 			GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
 			go.transform.LookAt(gunhit.point);
+			audioSource.PlayOneShot(shootSFX);
 		}
 			
     }
