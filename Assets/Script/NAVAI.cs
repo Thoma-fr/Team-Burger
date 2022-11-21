@@ -2,25 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEditor;
 
 enum AIState { idle, flee,move, attack,Traped }
+enum AItype { passiv,agressive,friendly}
 public class NAVAI : MonoBehaviour
 {
 
-
+    [SerializeField] private AItype myType;
     [SerializeField] private AIState mysate = AIState.idle;
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
     public Transform target;
-    public GameObject player;
+    //public GameObject player;
     private Rigidbody rb;
     public SpriteRenderer sp;
     public Animator anim;
-    public bool hasMove;
+    private bool hasMove;
+
+
+    [Range(0, 20)]
     public float range;
 
+    [Range(0, 20)]
+    public float sight;
 
     //audio
+    [Header("sfx")]
     private AudioSource audioSource;
     public AudioClip pain;
     public AudioClip pain2;
@@ -31,6 +38,17 @@ public class NAVAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, range);
+
+        if(myType==AItype.agressive)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, sight);
+        }
     }
     private void Update()
     {
