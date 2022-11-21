@@ -202,7 +202,7 @@ public class CombatSystem : MonoBehaviour
 		{
 			enemy.healthPoint -= player.weaponInHand.damage;
 			// SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
-			imageEnemy.transform.DOShakePosition(0.7f, enemy.maxHealth / player.weaponInHand.damage * 3, 10, 40);
+			imageEnemy.transform.DOShakePosition(0.7f, enemy.maxHealth / player.weaponInHand.damage * 2, 10, 90);
 			SetSliderValueEnemy = true;
 			sliderEnemy.DOValue(enemy.healthPoint, 1.5f);
 			yield return new WaitForSeconds(3f);
@@ -234,7 +234,7 @@ public class CombatSystem : MonoBehaviour
 			// ATTACK ENNEMIE
 			player.healthPoint -= enemyAtt.damage;
 			// SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
-			this.transform.DOShakePosition(0.7f, player.maxHealth / enemyAtt.damage * 3, 10, 40);
+			this.transform.DOShakePosition(0.7f, player.maxHealth / enemyAtt.damage * 2, 10, 90);
 			SetSliderValuePlayer = true;
 			sliderPlayer.DOValue(player.healthPoint, 1.5f);
 			yield return new WaitForSeconds(3f);
