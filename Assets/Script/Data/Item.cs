@@ -7,10 +7,11 @@ public class Item : Object
 {
     public Item(string b_name, int b_maxStackable)
     {
-        name = b_name;
+        itemName = b_name;
         maxStackable = b_maxStackable;
     }
 
+    public string itemName;
     public int maxStackable;
 
     public void UseItem()

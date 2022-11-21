@@ -21,6 +21,8 @@ public class PlayerData : BaseData
     public List<Weapon> weapons = new List<Weapon>();
     public Weapon weaponInHand;
 
+    public int money;
+
     /*public void RemoveItemFromInventory(string itemName, int number = 1)
     {
         if (inventory.TryGetValue(itemName, out int currentItemNumber))

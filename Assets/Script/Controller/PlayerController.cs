@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 using Unity.VisualScripting;
+using DG.Tweening;
+using UnityEngine.VFX;
+using UnityEngine.Rendering;
 
 public class PlayerController : BaseController
 {
@@ -19,113 +22,138 @@ public class PlayerController : BaseController
 	private PlayerInput pi;
 
 
-    public CinemachineVirtualCamera FPSvcam;
-    public Camera mainCam;
-    public GameObject target;
-    private Vector3 mousepos;
-    public float distance;
+	public CinemachineVirtualCamera FPSvcam;
+	public Camera mainCam;
+	public GameObject target;
+	private Vector3 mousepos;
+	public float distance;
+
+	public GameObject bullet;
+
+	private VisualEffect visualEffect;
+
+	public GameObject canvasReticle;
+
+    [Header("SFX")]
+	private AudioSource audioSource;
+	public AudioClip shootSFX;
+    private void Awake()
+    {
+		col = GetComponent<Collider2D>();
+		rb = GetComponent<Rigidbody2D>();
+		audioSource = GetComponent<AudioSource>();
+		visualEffect = GetComponent<VisualEffect>();
+	}
 
     private void Start()
 	{
-		col = GetComponent<Collider2D>();
-		rb = GetComponent<Rigidbody2D>();
-        FPSvcam.gameObject.SetActive(false);
-        //pi = GetComponent<PlayerInput>();
+		Cursor.visible=false;
+		canvasReticle.SetActive(false);
+		FPSvcam.gameObject.SetActive(false);
+		/*GetComponent<CinemachineImpulseSource>().GenerateImpulse(2);
+		Debug.Log("Tremble connard");*/
+		//pi = GetComponent<PlayerInput>();
 
-    }
-	//Vector2 inputmove;
- //   public void ONinputMove(InputAction.CallbackContext context)
- //   {
- //       inputmove = context.ReadValue<Vector2>();
- //   }
-
-    private void Update()
+	}
+	private void Update()
 	{
 		vise(direction);
-        
-        switch (playerMode)
-        {
-            case PLAYER_MODE.ADVENTURE_MODE:
-				direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+		
+		switch (playerMode)
+		{
+			case PLAYER_MODE.ADVENTURE_MODE:
+                canvasReticle.SetActive(false);
+                target.GetComponent<SpriteRenderer>().enabled = true;
+                direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                mainCam.transform.GetComponent<Volume>().enabled = false;
+                Vector3 mouseScreen = Input.mousePosition;
+				mouseScreen.z = -mainCam.transform.position.z;
+
+				mousepos = mainCam.ScreenToWorldPoint(mouseScreen);
+
+
+				Vector3 camCirection = (mousepos - transform.position).normalized;
+				direction.z = 0;
+
+				target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
+
+				target.transform.position = (transform.position + (camCirection * distance));
+
 				break;
 
-            case PLAYER_MODE.SHOOTING_MODE:
+			case PLAYER_MODE.SHOOTING_MODE:
+                canvasReticle.SetActive(true);
+				target.GetComponent<SpriteRenderer>().enabled = false;
+                canvasReticle.transform.position = Input.mousePosition;
 				if (Input.GetKeyDown(KeyCode.Mouse0))
-					Shoot();
-                break;
+				{
+                    
+                    Shoot();
+                }
+					
+				break;
 
-            default:
-                break;
-        }
-
-
-
-        if(playerMode== PLAYER_MODE.ADVENTURE_MODE)
-        {
-            Vector3 mouseScreen = Input.mousePosition;
-            mouseScreen.z = -mainCam.transform.position.z;
-
-            mousepos = mainCam.ScreenToWorldPoint(mouseScreen);
-
-        
-            Vector3 camCirection = (mousepos - transform.position).normalized;
-            direction.z = 0;
-            target.transform.rotation = Quaternion.LookRotation(Vector3.forward, -camCirection);
-            target.transform.position = (transform.position + (camCirection * distance));
-
-            //FPSvcam.transform.Rotate(new Vector3(0, 0, -target.transform.rotation.z));
-        }
-       
-
-
-    }
+			default:
+				break;
+		}   
+	}
 	public void vise( Vector3 direction)
 	{
+        mainCam.transform.GetComponent<Volume>().enabled = true;
         if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            playerMode = PLAYER_MODE.SHOOTING_MODE;
-            GameManager.instance.isShooting = true;
-            FPSvcam.gameObject.SetActive(true);
-           // empty = Instantiate(emptyprefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            //FPSvcam.gameObject.transform.rotation = Quaternion.Euler(direction);
-
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            playerMode = PLAYER_MODE.ADVENTURE_MODE;
-            GameManager.instance.isShooting = false;
-            FPSvcam.gameObject.SetActive(false);
-            //Destroy(empty);
-        }
-        
-    }
+		{
+			playerMode = PLAYER_MODE.SHOOTING_MODE;
+			GameManager.instance.isShooting = true;
+			FPSvcam.gameObject.SetActive(true);
+		}
+		else if (Input.GetKeyUp(KeyCode.Mouse1))
+		{
+			playerMode = PLAYER_MODE.ADVENTURE_MODE;
+			GameManager.instance.isShooting = false;
+			FPSvcam.gameObject.SetActive(false);
+		}
+	}
 	private void FixedUpdate()
 	{
 		Move();
-        
 	}
 
 	protected override void Move()
 	{
-		rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed); 
+		rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
+		if (direction != Vector3.zero)
+			visualEffect.SetBool("IsWalking", true);
+		else
+			visualEffect.SetBool("IsWalking", false);
+
+		visualEffect.SetFloat("DirVel", direction.normalized.x*-1);
+		visualEffect.SetFloat("Start", direction.normalized.x);
 	}
 
 	private void Shoot()
 	{
-		RaycastHit info;
-        if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, out info, range, mask) && info.transform.GetComponent<Renderer>().isVisible)
-        {
-			Debug.Log(info.transform.name);
-			Debug.DrawLine(Camera.main.ScreenToWorldPoint(Input.mousePosition), info.transform.position, Color.green, 2.0f);
-			// appèle l'interface : IShootable
-        }
-		else
-			Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward * range, Color.red, 2.0f);
+        canvasReticle.SetActive(false);
+        mainCam.transform.GetComponent<Volume>().enabled = false;
+        Debug.Log("oui");
+        Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
+		Ray ray = mainCam.ScreenPointToRay(Mousepos);
+		Debug.DrawRay(mainCam.transform.position, ray.direction*1000,Color.red,5f);
+		RaycastHit gunhit;
+		if (Physics.Raycast(mainCam.transform.position, ray.direction,out gunhit, range, mask))
+		{
+			GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
+			go.transform.LookAt(gunhit.point);
+			audioSource.PlayOneShot(shootSFX);
+		}
+			
     }
-
+    private void camshake()
+	{
+		FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
+	}
 	enum PLAYER_MODE
-    {
+	{
 		ADVENTURE_MODE,
 		SHOOTING_MODE,
-    }
+	}
 }
