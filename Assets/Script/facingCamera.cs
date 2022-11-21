@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class facingCamera : MonoBehaviour
 {
-    public Transform castPoints1, castPoints2;
-    private int baseORder;
     public bool hasRotate;
     private Transform rot;
     public GameObject matPlane;
     public GameObject spriteImage;
-    public GameObject cam;
+    
     private PlayerController pc;
     // Start is called before the first frame update
     void Start()
@@ -22,10 +20,6 @@ public class facingCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-       
-    }
     public void rotateTowardPlayer(Transform a)
     {
         rot = a;
@@ -55,21 +49,7 @@ public class facingCamera : MonoBehaviour
             hasRotate = false;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.CompareTag("Bullet"))
-        {
-
-            //Debug.Log("hit");
-            if(cam!=null)
-                cam.SetActive(true);
-            
-            //pc.mainCam.transform.GetComponent<Volume>().enabled = false;
-            Destroy(collision.gameObject);
-            GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
-            Destroy(gameObject, 3f);
-        }
-    }
+   
 }
     
 

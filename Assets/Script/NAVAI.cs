@@ -9,6 +9,7 @@ enum AItype { passiv,agressive,friendly}
 public class NAVAI : MonoBehaviour
 {
 
+    public GameObject camFight;
     [SerializeField] private AItype myType;
     [SerializeField] private AIState mysate = AIState.idle;
     private NavMeshAgent agent;
@@ -18,7 +19,6 @@ public class NAVAI : MonoBehaviour
     public SpriteRenderer sp;
     public Animator anim;
     private bool hasMove;
-
 
     [Range(0, 20)]
     public float range;
@@ -128,6 +128,18 @@ public class NAVAI : MonoBehaviour
             mysate = AIState.Traped;
             audioSource.PlayOneShot(pain);
             audioSource.PlayOneShot(pain2);
+        }
+        if (collision.transform.CompareTag("Bullet"))
+        {
+
+            //Debug.Log("hit");
+            if (camFight != null)
+                camFight.SetActive(true);
+
+            //pc.mainCam.transform.GetComponent<Volume>().enabled = false;
+            Destroy(collision.gameObject);
+            GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
+            Destroy(gameObject, 3f);
         }
 
     }
