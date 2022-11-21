@@ -34,10 +34,14 @@ public class PlayerController : BaseController
 
 	public GameObject canvasReticle;
 
+    [Header("SFX")]
+	private AudioSource audioSource;
+	public AudioClip shootSFX;
     private void Awake()
     {
 		col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
+		audioSource = GetComponent<AudioSource>();
 		visualEffect = GetComponent<VisualEffect>();
 	}
 
@@ -139,6 +143,7 @@ public class PlayerController : BaseController
 		{
 			GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
 			go.transform.LookAt(gunhit.point);
+			audioSource.PlayOneShot(shootSFX);
 		}
 			
     }
