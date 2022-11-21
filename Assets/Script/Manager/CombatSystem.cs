@@ -51,10 +51,11 @@ public class CombatSystem : MonoBehaviour
 
 	void Start()
 	{
-		player = GameManager.instance.GetPlayerData;
-
-		// --------------------------------------------------------------------------- DEBUG --------------------------------------------------------------------------- //
-		player.weaponInHand = player.weapons[0];
+        
+        player = GameManager.instance.GetPlayerData;
+		
+        // --------------------------------------------------------------------------- DEBUG --------------------------------------------------------------------------- //
+        player.weaponInHand = player.weapons[0];
 		// ------------------------------------------------------------------------- FIN DEBUG ------------------------------------------------------------------------- //
 
 		transparence = transform.GetComponent<CanvasGroup>();
@@ -95,7 +96,9 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
-				background.color = new Color32(40, 40, 40, 255);
+                Cursor.visible = true;
+                PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
+                background.color = new Color32(40, 40, 40, 255);
 				// dialogueBloc.transform.localPosition = new Vector2(dialogueBloc.transform.localPosition.x, -40);
 				dialogueBloc.SetActive(false);
 				// commandeBloc.transform.localPosition = new Vector2(commandeBloc.transform.localPosition.x, -40);
@@ -171,13 +174,14 @@ public class CombatSystem : MonoBehaviour
 			case BATTLE_STATE.END:				
 				transparence.interactable = false;
 				transparence.blocksRaycasts = false;
-
-				Sequence myEndSequence = DOTween.Sequence();
+                Sequence myEndSequence = DOTween.Sequence();
 				myEndSequence.AppendInterval(1f);
 				myEndSequence.Append(transparence.DOFade(0, 1));
 				myEndSequence.AppendCallback(() => Destroy(enemiGameObj));
-
-				break;
+                Cursor.visible = false;
+                PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+				PlayerController.playerInstance.isVise = false;
+                break;
 		}
 	}
 

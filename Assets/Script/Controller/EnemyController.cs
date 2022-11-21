@@ -14,9 +14,6 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         m_data = new EnemyData(GameManager.instance.GetDefaultEnemiesData.allEnemiesData[iDEnemy]);
     }
 
-    protected override void Move()
-    {
-    }
 
     public void OnInteraction(PlayerData actuator)
     { 

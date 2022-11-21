@@ -9,9 +9,12 @@ using UnityEngine.VFX;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 using System;
+using System.Threading;
 
 public class PlayerController : BaseController
 {
+	public bool isVise = false;
+
 	public static PlayerController Instance { get; private set; }
 
 	[Header("Shooting Setting")]
@@ -45,8 +48,20 @@ public class PlayerController : BaseController
     [Header("SFX")]
 	private AudioSource audioSource;
 	public AudioClip shootSFX;
+
+	public static PlayerController playerInstance;
     private void Awake()
     {
+		if(playerInstance==null)
+		{
+			playerInstance = this;
+		}
+        else
+		{
+			Destroy(this);
+		}
+
+
 		Instance = this;
 		col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
@@ -66,14 +81,14 @@ public class PlayerController : BaseController
 	}
 	private void Update()
 	{
-		vise(direction);
+		//vise();
 		
 		switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
                 canvasReticle.SetActive(false);
                 target.GetComponent<SpriteRenderer>().enabled = true;
-                direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+               
                 mainCam.transform.GetComponent<Volume>().enabled = false;
                 Vector3 mouseScreen = Input.mousePosition;
 				mouseScreen.z = -mainCam.transform.position.z;
@@ -103,7 +118,7 @@ public class PlayerController : BaseController
 				if (Input.GetKeyDown(KeyCode.Mouse0))
 				{
                     
-                    Shoot();
+                    //Shoot();
                 }
 					
 				break;
@@ -111,6 +126,9 @@ public class PlayerController : BaseController
 			case PLAYER_MODE.DIALOGUE_MODE:
 				if (Input.GetKeyDown("e"))
 					npc.nextSentence();
+				break;
+			case PLAYER_MODE.COMBAT_MODE:
+				canvasReticle.SetActive(false);
 				break;
 			default:
 				break;
@@ -122,31 +140,40 @@ public class PlayerController : BaseController
         throw new NotImplementedException();
     }
 
-    public void vise( Vector3 direction)
-	{
-        mainCam.transform.GetComponent<Volume>().enabled = true;
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+    public void vise(InputAction.CallbackContext context)
+    {
+		if(context.started)
 		{
-			playerMode = PLAYER_MODE.SHOOTING_MODE;
-			GameManager.instance.isShooting = true;
-			FPSvcam.gameObject.SetActive(true);
+			mainCam.transform.GetComponent<Volume>().enabled = true;
+			if (!isVise)
+			{
+				isVise=true;
+				playerMode = PLAYER_MODE.SHOOTING_MODE;
+				GameManager.instance.isShooting = true;
+				FPSvcam.gameObject.SetActive(true);
+			}
+			else
+			{
+				isVise = false;
+				playerMode = PLAYER_MODE.ADVENTURE_MODE;
+				GameManager.instance.isShooting = false;
+				FPSvcam.gameObject.SetActive(false);
+			}
 		}
-		else if (Input.GetKeyUp(KeyCode.Mouse1))
-		{
-			playerMode = PLAYER_MODE.ADVENTURE_MODE;
-			GameManager.instance.isShooting = false;
-			FPSvcam.gameObject.SetActive(false);
-		}
+        
 	}
 	private void FixedUpdate()
 	{
-		Move();
-	}
+        rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
+    }
 
-	protected override void Move()
+	public void Moveplayer(InputAction.CallbackContext context )
 	{
-		rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
-		if (direction != Vector3.zero)
+		
+        //direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        direction = context.ReadValue<Vector2>();
+       
+        if (direction != Vector3.zero)
 			visualEffect.SetBool("IsWalking", true);
 		else
 			visualEffect.SetBool("IsWalking", false);
@@ -155,21 +182,25 @@ public class PlayerController : BaseController
 		visualEffect.SetFloat("Start", direction.normalized.x);
 	}
 
-	private void Shoot()
-	{
-        canvasReticle.SetActive(false);
-        mainCam.transform.GetComponent<Volume>().enabled = false;
-        Debug.Log("oui");
-        Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
-		Ray ray = mainCam.ScreenPointToRay(Mousepos);
-		Debug.DrawRay(mainCam.transform.position, ray.direction*1000,Color.red,5f);
-		RaycastHit gunhit;
-		if (Physics.Raycast(mainCam.transform.position, ray.direction,out gunhit, range, mask))
+	public void Shoot(InputAction.CallbackContext context)
+    {
+		if (context.started)
 		{
-			GameObject go = Instantiate(bullet, mainCam.transform.position,Quaternion.identity);
-			go.transform.LookAt(gunhit.point);
-			audioSource.PlayOneShot(shootSFX);
-		}
+            canvasReticle.SetActive(false);
+            mainCam.transform.GetComponent<Volume>().enabled = false;
+            Debug.Log("oui");
+            Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
+            Ray ray = mainCam.ScreenPointToRay(Mousepos);
+            Debug.DrawRay(mainCam.transform.position, ray.direction * 1000, Color.red, 5f);
+            RaycastHit gunhit;
+            if (Physics.Raycast(mainCam.transform.position, ray.direction, out gunhit, range, mask))
+            {
+                GameObject go = Instantiate(bullet, mainCam.transform.position, Quaternion.identity);
+                go.transform.LookAt(gunhit.point);
+                audioSource.PlayOneShot(shootSFX);
+            }
+        }
+       
 			
     }
 
@@ -200,6 +231,7 @@ public class PlayerController : BaseController
 	{
 		ADVENTURE_MODE,
 		SHOOTING_MODE,
-		DIALOGUE_MODE
+		DIALOGUE_MODE,
+		COMBAT_MODE
 	}
 }

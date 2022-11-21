@@ -14,37 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemiesData:
   - name: Deer
+    battleSprite: {fileID: -1461948485, guid: 6ff6e8dceb84f7842b94503420433979, type: 3}
+    maxHealth: 1000
+    healthPoint: 1000
+    attacks:
+    - attName: Coup de Boule
+      damage: 30
+    menace: 0
+  - name: Bear
+    battleSprite: {fileID: 1489290243, guid: e703d6ba1d318bc4f92a75e986341eca, type: 3}
+    maxHealth: 1000
+    healthPoint: 1000
+    attacks:
+    - attName: Coup de Boule
+      damage: 30
+    menace: 0
+  - name: Wolf
     battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
     maxHealth: 1000
     healthPoint: 1000
     attacks:
     - attName: Coup de Boule
       damage: 30
-  - name: Deer
+    menace: 0
+  - name: Jesus
     battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
     maxHealth: 1000
     healthPoint: 1000
     attacks:
     - attName: Coup de Boule
       damage: 30
-  - name: Deer
-    battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
-    maxHealth: 1000
-    healthPoint: 1000
-    attacks:
-    - attName: Coup de Boule
-      damage: 30
-  - name: Deer
-    battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
-    maxHealth: 1000
-    healthPoint: 1000
-    attacks:
-    - attName: Coup de Boule
-      damage: 30
-  - name: Deer
-    battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
-    maxHealth: 1000
-    healthPoint: 1000
-    attacks:
-    - attName: Coup de Boule
-      damage: 30
+    menace: 0
