@@ -5,17 +5,15 @@ using UnityEngine.AI;
 using UnityEditor;
 
 enum AIState { idle, flee,move, attack,Traped }
-enum AItype { passiv,agressive,friendly}
+
 public class NAVAI : MonoBehaviour
 {
-
+    public enum AItype { passiv, agressive, friendly }
     public GameObject camFight;
-    [SerializeField] private AItype myType;
+    public AItype myType;
     [SerializeField] private AIState mysate = AIState.idle;
     private NavMeshAgent agent;
     public Transform target;
-    //public GameObject player;
-    private Rigidbody rb;
     public SpriteRenderer sp;
     public Animator anim;
     private bool hasMove;
@@ -26,7 +24,16 @@ public class NAVAI : MonoBehaviour
     [Range(0, 20)]
     public float sight;
 
+    public float maxIdleTime;
+
+    
+    [Header("nav parameter")]
+    public float speed;
+    public float acceleration;
+
+    private GameObject player;
     //audio
+    
     [Header("sfx")]
     private AudioSource audioSource;
     public AudioClip pain;
@@ -34,10 +41,11 @@ public class NAVAI : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = speed;
+        agent.acceleration = acceleration;
     }
     private void OnDrawGizmosSelected()
     {
@@ -48,15 +56,14 @@ public class NAVAI : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, sight);
+            
         }
     }
     private void Update()
     {
-        //Debug.Log(agent.velocity.x);
-
-
-
         anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
+
+
 
         if (agent.velocity.x < 0)
             sp.flipX = true;
@@ -81,12 +88,14 @@ public class NAVAI : MonoBehaviour
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                     mysate = AIState.idle;
                 }
-
+                if (myType == AItype.agressive)
+                    SearchForTarget();
                 break;
             case AIState.flee:
                 break;
             case AIState.attack:
                 agent.SetDestination(new Vector3(target.position.x, target.position.y, 0f));
+                Debug.DrawRay(transform.position,target.position, Color.blue, 1.0f);
                 break;
             case AIState.Traped:
                 break;
@@ -99,7 +108,7 @@ public class NAVAI : MonoBehaviour
     IEnumerator waitowalk()
     {
         hasMove = false;
-        yield return new WaitForSeconds(Random.Range(1f, 10f));
+        yield return new WaitForSeconds(Random.Range(1f, maxIdleTime));
         mysate = AIState.move;
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -131,16 +140,27 @@ public class NAVAI : MonoBehaviour
         }
         if (collision.transform.CompareTag("Bullet"))
         {
-
             //Debug.Log("hit");
             if (camFight != null)
                 camFight.SetActive(true);
-
-            //pc.mainCam.transform.GetComponent<Volume>().enabled = false;
+           
             Destroy(collision.gameObject);
             GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
-            
         }
 
+    }
+    private void SearchForTarget()
+    {
+        //RaycastHit hit;
+        //Ray ray;    
+        //if(Physics.SphereCast(transform.position,target.position,10,6))
+        //{
+        //    Debug.Log(hitCollider.transform.name);
+        //    if (hitCollider.GetComponent<NAVAI>().myType == NAVAI.AItype.passiv)
+        //    {
+        //        target=hitCollider.transform;
+        //        mysate= AIState.attack;
+        //    }    
+        //}
     }
 }
