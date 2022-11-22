@@ -17,7 +17,7 @@ public class NAVAI : MonoBehaviour
     public SpriteRenderer sp;
     public Animator anim;
     private bool hasMove;
-
+    private float targetDistance;
     [Range(0, 20)]
     public float range;
 
@@ -95,7 +95,14 @@ public class NAVAI : MonoBehaviour
                 break;
             case AIState.attack:
                 agent.SetDestination(new Vector3(target.position.x, target.position.y, 0f));
-                Debug.DrawRay(transform.position,target.position, Color.blue, 1.0f);
+                targetDistance = Vector3.Distance(transform.position, target.position);
+                if (targetDistance < 2f)
+                {
+                    anim.SetTrigger("Attacking");
+                    Destroy(target.gameObject, 0.5f);
+                    mysate= AIState.move;
+                    target = null;
+                }
                 break;
             case AIState.Traped:
                 break;
@@ -151,10 +158,25 @@ public class NAVAI : MonoBehaviour
     }
     private void SearchForTarget()
     {
-        //RaycastHit hit;
-        //Ray ray;    
-        //if(Physics.SphereCast(transform.position,target.position,10,6))
-        //{
+        RaycastHit hit;
+        Ray ray;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, sight);
+        foreach (var hited in hitColliders)
+        {
+            Debug.Log(hited.transform.name);
+            
+            NAVAI hitednav;
+            if (hited.TryGetComponent<NAVAI>(out hitednav))
+            {
+                if (hitednav.myType == NAVAI.AItype.passiv)
+                {
+                    target = hited.transform;
+                    mysate = AIState.attack;
+                }
+            }  
+        }
+        //if ()
+        //{ 
         //    Debug.Log(hitCollider.transform.name);
         //    if (hitCollider.GetComponent<NAVAI>().myType == NAVAI.AItype.passiv)
         //    {
