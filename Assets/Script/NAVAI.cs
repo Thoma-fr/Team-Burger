@@ -65,6 +65,7 @@ public class NAVAI : MonoBehaviour
 
 
 
+
         if (agent.velocity.x < 0)
             sp.flipX = true;
         else
@@ -94,14 +95,19 @@ public class NAVAI : MonoBehaviour
             case AIState.flee:
                 break;
             case AIState.attack:
+                if (target == null)
+                {
+                    mysate = AIState.move;
+                    break;
+                }
                 agent.SetDestination(new Vector3(target.position.x, target.position.y, 0f));
                 targetDistance = Vector3.Distance(transform.position, target.position);
                 if (targetDistance < 2f)
                 {
                     anim.SetTrigger("Attacking");
-                    Destroy(target.gameObject, 0.5f);
-                    mysate= AIState.move;
-                    target = null;
+                    kill(target.gameObject);
+
+
                 }
                 break;
             case AIState.Traped:
@@ -172,17 +178,18 @@ public class NAVAI : MonoBehaviour
                 {
                     target = hited.transform;
                     mysate = AIState.attack;
+                    return;
                 }
             }  
         }
-        //if ()
-        //{ 
-        //    Debug.Log(hitCollider.transform.name);
-        //    if (hitCollider.GetComponent<NAVAI>().myType == NAVAI.AItype.passiv)
-        //    {
-        //        target=hitCollider.transform;
-        //        mysate= AIState.attack;
-        //    }    
-        //}
+    }
+    public void kill(GameObject tokill)
+    {
+        target = null;
+        audioSource.PlayOneShot(pain);
+        GameManager.instance.faceTheCam.Remove(tokill);
+        Destroy(tokill,0.5f);
+        
+        mysate = AIState.move;
     }
 }
