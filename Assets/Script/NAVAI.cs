@@ -9,6 +9,7 @@ enum AIState { idle, flee,move, attack,Traped }
 public class NAVAI : MonoBehaviour
 {
     public bool isdead;
+    public GameObject hitcam;
     public enum AItype { passiv, agressive, friendly }
     public GameObject camFight;
     public AItype myType;
@@ -137,6 +138,7 @@ public class NAVAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         if (collision.transform.CompareTag("Trap") || collision.transform.CompareTag("Bullet"))
         {
             StopAllCoroutines();
@@ -149,11 +151,16 @@ public class NAVAI : MonoBehaviour
         if (collision.transform.CompareTag("Bullet"))
         {
             //Debug.Log("hit");
+            Time.timeScale = 1f;
+            Instantiate(hitcam, collision.contacts[0].point, transform.rotation);
             if (camFight != null)
+            {
                 camFight.SetActive(true);
-           
+                camFight.transform.parent = null;
+            }
             Destroy(collision.gameObject);
             GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
+            GameManager.instance.RotateWorld(GameManager.instance.mainCam);
         }
 
     }

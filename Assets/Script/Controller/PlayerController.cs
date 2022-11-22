@@ -76,9 +76,6 @@ public class PlayerController : BaseController
 		Cursor.visible=false;
 		canvasReticle.SetActive(false);
 		FPSvcam.gameObject.SetActive(false);
-		/*GetComponent<CinemachineImpulseSource>().GenerateImpulse(2);
-		Debug.Log("Tremble connard");*/
-		//pi = GetComponent<PlayerInput>();
 
 	}
 	private void Update()
@@ -153,14 +150,16 @@ public class PlayerController : BaseController
 					isVise=true;
 					playerMode = PLAYER_MODE.SHOOTING_MODE;
 					GameManager.instance.isShooting = true;
-					FPSvcam.gameObject.SetActive(true);
+					GameManager.instance.RotateWorld(GameManager.instance.mainCam);
+                    FPSvcam.gameObject.SetActive(true);
 				}
 				else
 				{
 					isVise = false;
 					playerMode = PLAYER_MODE.ADVENTURE_MODE;
 					GameManager.instance.isShooting = false;
-					FPSvcam.gameObject.SetActive(false);
+                    GameManager.instance.RotateWorld(GameManager.instance.mainCam);
+                    FPSvcam.gameObject.SetActive(false);
 				}
 			}
         
@@ -215,7 +214,8 @@ public class PlayerController : BaseController
 					GameObject go = Instantiate(bullet, mainCam.transform.position, Quaternion.identity);
 					go.transform.LookAt(gunhit.point);
 					audioSource.PlayOneShot(shootSFX);
-				}
+                    Time.timeScale = 0.1f;
+                }
 			}
        
 			

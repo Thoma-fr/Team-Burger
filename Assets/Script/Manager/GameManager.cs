@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private PlayerData playerData;
     public PlayerData GetPlayerData { get { return playerData; } }
 
-    public PlayerInput playerInput;
+   
 
     [Header("Debug")]
     [SerializeField] private EnemyController enemyPrefab;
@@ -39,29 +39,33 @@ public class GameManager : MonoBehaviour
 
     public bool isShooting;
     public bool hasRotate;
+
+    public bool neeInstaRotate;
     public void OnBattleActivation(EnemyController ec)
     {
        
             combatSystem.StartBattlePhase(ec);
     }
-    void Update()
-    {
-        foreach (GameObject item in faceTheCam)
-        {
 
-            if (isShooting && !item.transform.GetComponent<facingCamera>().hasRotate)
-            {
-                Debug.Log("1");
-                item.transform.GetComponent<facingCamera>().rotateTowardPlayer(mainCam);
-            }
-            else if(!isShooting && item.transform.GetComponent<facingCamera>().hasRotate)
-            {
-                Debug.Log("2");
-                item.transform.GetComponent<facingCamera>().rotateTowardPlayer(mainCam);
-            }
-            
-        }
+    public void RotateWorld(Transform rot)
+    {
+        //foreach (GameObject item in faceTheCam)
+        //{
+
+        //    if (isShooting && !item.transform.GetComponent<facingCamera>().hasRotate)
+        //    {
+        //        Debug.Log("1");
+        //        item.transform.GetComponent<facingCamera>().rotateTowardPlayer(rot);
+        //    }
+        //    else if (!isShooting && item.transform.GetComponent<facingCamera>().hasRotate)
+        //    {
+        //        Debug.Log("2");
+        //        item.transform.GetComponent<facingCamera>().RotateUp();
+        //    }
+
+        //}
     }
+
     private void Awake()
     {
         playerData = new PlayerData(DeafaultPlayerData.playerData);

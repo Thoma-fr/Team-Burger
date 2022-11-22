@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99825a3e276efee4c926cd7bfa96a24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 50
   rotationSpeed: 150
   vCam: {fileID: 3392435164358884478}
   bullet: {fileID: 5906288217716075842}
