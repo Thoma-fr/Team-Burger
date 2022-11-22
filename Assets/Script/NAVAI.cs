@@ -8,14 +8,15 @@ enum AIState { idle, flee,move, attack,Traped }
 
 public class NAVAI : MonoBehaviour
 {
+    public bool isdead;
     public enum AItype { passiv, agressive, friendly }
     public GameObject camFight;
     public AItype myType;
     [SerializeField] private AIState mysate = AIState.idle;
     private NavMeshAgent agent;
     public Transform target;
-    public SpriteRenderer sp;
-    public Animator anim;
+    [SerializeField] private SpriteRenderer sp;
+    [SerializeField] private Animator anim;
     private bool hasMove;
     private float targetDistance;
     [Range(0, 20)]
@@ -24,7 +25,7 @@ public class NAVAI : MonoBehaviour
     [Range(0, 20)]
     public float sight;
 
-    public float maxIdleTime;
+    [SerializeField] private float maxIdleTime;
 
     
     [Header("nav parameter")]
@@ -38,6 +39,8 @@ public class NAVAI : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip pain;
     public AudioClip pain2;
+
+    public AudioClip killSFX;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -62,15 +65,7 @@ public class NAVAI : MonoBehaviour
     private void Update()
     {
         anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
-
-
-
-
-        if (agent.velocity.x < 0)
-            sp.flipX = true;
-        else
-            sp.flipX = false;
-
+        FlipSpriteX();
         switch (mysate)
         {
             case AIState.idle:
@@ -185,11 +180,31 @@ public class NAVAI : MonoBehaviour
     }
     public void kill(GameObject tokill)
     {
-        target = null;
-        audioSource.PlayOneShot(pain);
-        GameManager.instance.faceTheCam.Remove(tokill);
-        Destroy(tokill,0.5f);
-        
-        mysate = AIState.move;
+        if (!tokill.GetComponent<NAVAI>().isdead)
+        {
+            target = null;
+            tokill.GetComponent<NAVAI>().isdead = true;
+            GameManager.instance.faceTheCam.Remove(tokill);
+            Destroy(tokill, 0.5f);
+            audioSource.PlayOneShot(killSFX);
+            mysate = AIState.move;
+        }
+
+    }
+
+    public void FlipSpriteX()
+    {
+        if(myType==AItype.agressive)
+            if (agent.velocity.x < 0)
+                sp.flipX = false;
+            else
+                sp.flipX = true;
+        else
+            if (agent.velocity.x < 0)
+                sp.flipX = true;
+            else
+                sp.flipX = false;
+
+
     }
 }

@@ -23,8 +23,8 @@ MonoBehaviour:
     menace: 0
   - name: Bear
     battleSprite: {fileID: 1489290243, guid: e703d6ba1d318bc4f92a75e986341eca, type: 3}
-    maxHealth: 1000
-    healthPoint: 1000
+    maxHealth: 500
+    healthPoint: 500
     attacks:
     - attName: Coup de Boule
       damage: 30
