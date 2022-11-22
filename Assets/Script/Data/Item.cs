@@ -8,7 +8,6 @@ public class Item : Object
 	public int currentStack;
 	public string itemName;
 	public int maxStackable;
-	public string description;
 
 	public Item(string b_name, int b_maxStackable)
 	{
