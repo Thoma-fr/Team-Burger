@@ -113472,6 +113472,10 @@ PrefabInstance:
       value: 8.29
       objectReference: {fileID: 0}
     - target: {fileID: 1477909743285440356, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
+      propertyPath: speed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477909743285440356, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 1743920807}
@@ -113527,6 +113531,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7403587159480396116, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2029681714, guid: 21f6aeded5bcc014c910760f662d386d, type: 3}
     - target: {fileID: 8010073021274621992, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
       propertyPath: m_Name
       value: Player
@@ -113538,6 +113546,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1810754277317885682, guid: 5776db5276f94e04dbf1e3c1672d4e49, type: 3}
   m_PrefabInstance: {fileID: 3045420005962117770}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &3045420005962117781
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193186307}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5e052130bc53314e94475a34d3d0525, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5415767310368437805
 PrefabInstance:
   m_ObjectHideFlags: 0

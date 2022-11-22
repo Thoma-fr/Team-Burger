@@ -14,7 +14,8 @@ using System.Threading;
 public class PlayerController : BaseController
 {
 	public bool isVise = false;
-
+	private Animator animator;
+	private SpriteRenderer sp;
 	public static PlayerController Instance { get; private set; }
 
 	[Header("Shooting Setting")]
@@ -61,9 +62,9 @@ public class PlayerController : BaseController
 			Destroy(this);
 		}
 
-
 		Instance = this;
-		col = GetComponent<Collider2D>();
+		sp = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
 		audioSource = GetComponent<AudioSource>();
 		visualEffect = GetComponent<VisualEffect>();
@@ -71,6 +72,7 @@ public class PlayerController : BaseController
 
     private void Start()
 	{
+		animator = GetComponent<Animator>();
 		Cursor.visible=false;
 		canvasReticle.SetActive(false);
 		FPSvcam.gameObject.SetActive(false);
@@ -82,8 +84,8 @@ public class PlayerController : BaseController
 	private void Update()
 	{
 		//vise();
-		
-		switch (playerMode)
+
+        switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
                 canvasReticle.SetActive(false);
@@ -165,7 +167,16 @@ public class PlayerController : BaseController
 	}
 	private void FixedUpdate()
 	{
-        rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
+        //rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
+		rb.velocity =direction.normalized * Time.fixedDeltaTime * speed;
+
+        Debug.Log(rb.velocity.x);
+        animator.SetFloat("Velocity", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("VelocityY", rb.velocity.y);
+        if (rb.velocity.x < 0)
+            sp.flipX = true;
+        else
+            sp.flipX = false;
     }
 
 	public void Moveplayer(InputAction.CallbackContext context )
