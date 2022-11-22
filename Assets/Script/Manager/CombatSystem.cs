@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-
+using UnityEngine.InputSystem;
 public class CombatSystem : MonoBehaviour
 {
 	[Header("Dialogue")]
@@ -96,6 +96,7 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
+				
                 Cursor.visible = true;
                 PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
                 background.color = new Color32(40, 40, 40, 255);
@@ -177,7 +178,8 @@ public class CombatSystem : MonoBehaviour
                 Sequence myEndSequence = DOTween.Sequence();
 				myEndSequence.AppendInterval(1f);
 				myEndSequence.Append(transparence.DOFade(0, 1));
-				myEndSequence.AppendCallback(() => Destroy(enemiGameObj));
+                myEndSequence.AppendCallback(() => GameManager.instance.faceTheCam.Remove(enemiGameObj));
+                myEndSequence.AppendCallback(() => Destroy(enemiGameObj));
                 Cursor.visible = false;
                 PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
 				PlayerController.playerInstance.isVise = false;

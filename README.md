@@ -91,10 +91,10 @@ CONTROLE :
 	   => Camera -> cinemachine
 
 
-Toggle pour visée
-utiliser le meme viseur que celui au sol
+Toggle pour visée V
+utiliser le meme viseur que celui au sol V
 Slomo est mieux en fonction d'une référence
 Cinemachine impulse
-savoir où l'on tire
+savoir où l'on tire V
 
-plus d'effet sur la balle (trail, FOV, Vignettage, rotation)
+plus d'effet sur la balle (trail, FOV, Vignettage, rotation) V
