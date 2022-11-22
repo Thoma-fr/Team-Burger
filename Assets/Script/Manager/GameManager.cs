@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using static UnityEditor.Progress;
-
+using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-
+   
     [SerializeField] public CombatSystem combatSystem;
     public CombatSystem GetCombatSystem { get { return combatSystem; } }
 
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private PlayerData playerData;
     public PlayerData GetPlayerData { get { return playerData; } }
 
-
+    public PlayerInput playerInput;
 
     [Header("Debug")]
     [SerializeField] private EnemyController enemyPrefab;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         playerData = new PlayerData(DeafaultPlayerData.playerData);
-
+        
         if (instance == null)
             instance = this;
     }

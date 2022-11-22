@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-
+using UnityEngine.InputSystem;
 public class CombatSystem : MonoBehaviour
 {
 	[Header("Dialogue")]
@@ -96,6 +96,7 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
+				
                 Cursor.visible = true;
                 PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
                 background.color = new Color32(40, 40, 40, 255);

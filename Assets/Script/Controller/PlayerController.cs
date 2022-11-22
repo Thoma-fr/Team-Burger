@@ -142,24 +142,25 @@ public class PlayerController : BaseController
 
     public void vise(InputAction.CallbackContext context)
     {
-		if(context.started)
-		{
-			mainCam.transform.GetComponent<Volume>().enabled = true;
-			if (!isVise)
+		if(playerMode != PLAYER_MODE.COMBAT_MODE)
+			if(context.started)
 			{
-				isVise=true;
-				playerMode = PLAYER_MODE.SHOOTING_MODE;
-				GameManager.instance.isShooting = true;
-				FPSvcam.gameObject.SetActive(true);
+				mainCam.transform.GetComponent<Volume>().enabled = true;
+				if (!isVise)
+				{
+					isVise=true;
+					playerMode = PLAYER_MODE.SHOOTING_MODE;
+					GameManager.instance.isShooting = true;
+					FPSvcam.gameObject.SetActive(true);
+				}
+				else
+				{
+					isVise = false;
+					playerMode = PLAYER_MODE.ADVENTURE_MODE;
+					GameManager.instance.isShooting = false;
+					FPSvcam.gameObject.SetActive(false);
+				}
 			}
-			else
-			{
-				isVise = false;
-				playerMode = PLAYER_MODE.ADVENTURE_MODE;
-				GameManager.instance.isShooting = false;
-				FPSvcam.gameObject.SetActive(false);
-			}
-		}
         
 	}
 	private void FixedUpdate()
@@ -171,35 +172,40 @@ public class PlayerController : BaseController
 	{
 		
         //direction = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        direction = context.ReadValue<Vector2>();
+		if(playerMode==PLAYER_MODE.ADVENTURE_MODE)
+		{
+			direction = context.ReadValue<Vector2>();
        
-        if (direction != Vector3.zero)
-			visualEffect.SetBool("IsWalking", true);
-		else
-			visualEffect.SetBool("IsWalking", false);
+					if (direction != Vector3.zero)
+						visualEffect.SetBool("IsWalking", true);
+					else
+						visualEffect.SetBool("IsWalking", false);
 
-		visualEffect.SetFloat("DirVel", direction.normalized.x*-1);
-		visualEffect.SetFloat("Start", direction.normalized.x);
+					visualEffect.SetFloat("DirVel", direction.normalized.x*-1);
+					visualEffect.SetFloat("Start", direction.normalized.x);
+		}
+        
 	}
 
 	public void Shoot(InputAction.CallbackContext context)
     {
-		if (context.started)
-		{
-            canvasReticle.SetActive(false);
-            mainCam.transform.GetComponent<Volume>().enabled = false;
-            Debug.Log("oui");
-            Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
-            Ray ray = mainCam.ScreenPointToRay(Mousepos);
-            Debug.DrawRay(mainCam.transform.position, ray.direction * 1000, Color.red, 5f);
-            RaycastHit gunhit;
-            if (Physics.Raycast(mainCam.transform.position, ray.direction, out gunhit, range, mask))
-            {
-                GameObject go = Instantiate(bullet, mainCam.transform.position, Quaternion.identity);
-                go.transform.LookAt(gunhit.point);
-                audioSource.PlayOneShot(shootSFX);
-            }
-        }
+        if (playerMode != PLAYER_MODE.COMBAT_MODE)
+            if (context.started)
+			{
+				canvasReticle.SetActive(false);
+				mainCam.transform.GetComponent<Volume>().enabled = false;
+				Debug.Log("oui");
+				Vector3 Mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCam.transform.position.z);
+				Ray ray = mainCam.ScreenPointToRay(Mousepos);
+				Debug.DrawRay(mainCam.transform.position, ray.direction * 1000, Color.red, 5f);
+				RaycastHit gunhit;
+				if (Physics.Raycast(mainCam.transform.position, ray.direction, out gunhit, range, mask))
+				{
+					GameObject go = Instantiate(bullet, mainCam.transform.position, Quaternion.identity);
+					go.transform.LookAt(gunhit.point);
+					audioSource.PlayOneShot(shootSFX);
+				}
+			}
        
 			
     }
