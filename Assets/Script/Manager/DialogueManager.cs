@@ -20,20 +20,21 @@ public class DialogueManager : MonoBehaviour
 		sentences = new Queue<string>();
 	}
 
-	public void StartDialogue(NPCController dialogue)
+	public void StartDialogue(string dial)
 	{
 		dialogueHolder.SetActive(true);
 		PlayerController.Instance.playerMode = PlayerController.PLAYER_MODE.DIALOGUE_MODE;
 		
 
 		// affiche le nom
-		nameText.text = dialogue.name;
+		nameText.text = PlayerController.Instance.npc.NPCname;
 
 		// efface les anciennes phrases
 		sentences.Clear();
 
 		// récupère les phrase présent dans l'array pour les mettre dans la queux
-		foreach (string sentence in dialogue.sentences)
+
+		foreach (string sentence in dial.Split("$*$"))
 		{
 			sentences.Enqueue(sentence);
 		}
