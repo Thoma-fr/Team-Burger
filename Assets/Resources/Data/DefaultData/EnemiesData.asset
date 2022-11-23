@@ -21,6 +21,7 @@ MonoBehaviour:
     - attName: Coup de Boule
       damage: 30
     menace: 0
+    _animatorCtrl: {fileID: 9100000, guid: da2d7c3bc19e4cf4ba235a38da116281, type: 2}
   - name: Bear
     battleSprite: {fileID: 1489290243, guid: e703d6ba1d318bc4f92a75e986341eca, type: 3}
     maxHealth: 500
@@ -29,6 +30,7 @@ MonoBehaviour:
     - attName: Coup de Boule
       damage: 30
     menace: 0
+    _animatorCtrl: {fileID: 0}
   - name: Wolf
     battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
     maxHealth: 1000
@@ -37,6 +39,7 @@ MonoBehaviour:
     - attName: Coup de Boule
       damage: 30
     menace: 0
+    _animatorCtrl: {fileID: 0}
   - name: Jesus
     battleSprite: {fileID: 21300000, guid: cebf69b00d95c684f8409fe8bafb5dfa, type: 3}
     maxHealth: 1000
@@ -45,3 +48,4 @@ MonoBehaviour:
     - attName: Coup de Boule
       damage: 30
     menace: 0
+    _animatorCtrl: {fileID: 0}

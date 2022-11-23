@@ -34,6 +34,7 @@ public class CombatSystem : MonoBehaviour
 	private GameObject enemiGameObj;
 	private EnemyData enemy;
 	private PlayerData player;
+	private Animator enemyAnimator;
 
 	bool SetSliderValueEnemy = false, SetSliderValuePlayer = false, useConsomable = false;
 
@@ -78,6 +79,7 @@ public class CombatSystem : MonoBehaviour
 		sliderEnemy = enemyStat.transform.GetChild(0).GetComponent<Slider>();
 		nameEnemy = enemyStat.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 		hpEnemy = enemyStat.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+		enemyAnimator = imageEnemy.GetComponent<Animator>();
 	}
 
 	void Update()
@@ -115,7 +117,7 @@ public class CombatSystem : MonoBehaviour
 				imageEnemy.sprite = enemy.battleSprite;
 				imageEnemy.color = new Color32(40, 40, 40, 0);
 				enemyStat.transform.localPosition = new Vector2(-400, enemyStat.transform.localPosition.y);
-				imageEnemy.gameObject.transform.localPosition = new Vector2(-200, imageEnemy.gameObject.transform.localPosition.y);
+				imageEnemy.gameObject.transform.localPosition = new Vector2(-200, 0);
 
 				// ---------------- Player ---------------- //
 				sliderPlayer.maxValue = player.maxHealth;
@@ -151,6 +153,10 @@ public class CombatSystem : MonoBehaviour
 				myStartSequence.Insert(4f, playerStat.transform.DOLocalMoveX(180, 0.5f).SetEase(Ease.OutBack));
 				// Callback
 				myStartSequence.AppendCallback(EndIntroduction);
+
+				if (enemy._animatorCtrl != null)
+					myStartSequence.AppendCallback(() => enemyAnimator.runtimeAnimatorController = enemy._animatorCtrl);
+
 				break;
 
 			case BATTLE_STATE.START:
@@ -210,7 +216,9 @@ public class CombatSystem : MonoBehaviour
 		if (!useConsomable)
 		{
 			enemy.healthPoint -= player.weaponInHand.damage;
-			// SetSlider(sliderEnemy, hpEnemy, enemy.healthPoint, enemy.maxHealth);
+			if (enemy._animatorCtrl != null)
+				enemyAnimator.SetTrigger("Hit");
+
 			imageEnemy.transform.DOShakePosition(0.7f, enemy.maxHealth / player.weaponInHand.damage * 2, 10, 90);
 			SetSliderValueEnemy = true;
 			sliderEnemy.DOValue(enemy.healthPoint, 1.5f);
@@ -243,6 +251,12 @@ public class CombatSystem : MonoBehaviour
 			// ATTACK ENNEMIE
 			player.healthPoint -= enemyAtt.damage;
 			// SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
+
+			if (enemy._animatorCtrl != null)
+				enemyAnimator.SetTrigger("Attack");
+
+			yield return new WaitForSeconds(0.2f);
+
 			this.transform.DOShakePosition(0.7f, player.maxHealth / enemyAtt.damage * 2, 10, 90);
 			SetSliderValuePlayer = true;
 			sliderPlayer.DOValue(player.healthPoint, 1.5f);
