@@ -589,6 +589,7 @@ MonoBehaviour:
   acceleration: 0
   pain: {fileID: 8300000, guid: 661332d6a342de4458d78bce30c59487, type: 3}
   pain2: {fileID: 8300000, guid: 93ab0c31ab274f44bb7fb4c5df74930b, type: 3}
+  zaworld: {fileID: 8300000, guid: 6f5ccd5e1ece4734ba5c3e5704aeee8c, type: 3}
   killSFX: {fileID: 0}
 --- !u!195 &972869132
 NavMeshAgent:

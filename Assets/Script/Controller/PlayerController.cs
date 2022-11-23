@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 using System;
 using System.Threading;
+using Unity.Mathematics;
 
 public class PlayerController : BaseController
 {
@@ -214,7 +215,12 @@ public class PlayerController : BaseController
 					GameObject go = Instantiate(bullet, mainCam.transform.position, Quaternion.identity);
 					go.transform.LookAt(gunhit.point);
 					audioSource.PlayOneShot(shootSFX);
-                    Time.timeScale = 0.1f;
+					Debug.Log(gunhit.distance);
+					float distanceMax = 40;
+					float min = 1f;
+					//Time.timeScale = Mathf.Lerp(1, 0.1f, 40 - gunhit.distance*Time.deltaTime);
+					
+                    DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0.1f, gunhit.distance/40);
                 }
 			}
        
