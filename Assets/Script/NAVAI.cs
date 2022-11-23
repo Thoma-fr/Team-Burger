@@ -42,6 +42,8 @@ public class NAVAI : MonoBehaviour
     public AudioClip pain2;
     public AudioClip zaworld;
     public AudioClip killSFX;
+
+    public List<AudioClip> naturalsound;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -50,6 +52,7 @@ public class NAVAI : MonoBehaviour
         agent.updateUpAxis = false;
         agent.speed = speed;
         agent.acceleration = acceleration;
+        player = PlayerController.Instance.gameObject;
     }
     private void OnDrawGizmosSelected()
     {
@@ -75,14 +78,15 @@ public class NAVAI : MonoBehaviour
                 break;
             case AIState.move:
                 Vector3 point;
-                int a = Random.RandomRange(0, 5);
-                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.COMBAT_MODE&& myType==AItype.passiv)
+                int a = Random.Range(0, 5);
+                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.SHOOTING_MODE)
                 {
                     if (!hasMove)
                     {
-                        agent.SetDestination(Camera.main.transform.forward);
+                        Debug.Log("ho mon dieu il fonce droit sur nous");
+                        agent.SetDestination(Camera.main.transform.position);
                         hasMove = true;
-                        audioSource.PlayOneShot(zaworld);
+                        audioSource.PlayOneShot(naturalsound[Random.Range(0,naturalsound.Count)]);
                     }
                     //Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                     mysate = AIState.idle;

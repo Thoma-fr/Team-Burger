@@ -424,6 +424,8 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   isup: 0
   updateRot: 0
+  normaleSprite: {fileID: 0}
+  rotatedSprite: {fileID: 0}
 --- !u!65 &5769312946302069166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -508,7 +510,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.42
+  m_Volume: 0.859
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -552,7 +554,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.998
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -621,6 +623,25 @@ MonoBehaviour:
   pain2: {fileID: 8300000, guid: 93ab0c31ab274f44bb7fb4c5df74930b, type: 3}
   zaworld: {fileID: 8300000, guid: 6f5ccd5e1ece4734ba5c3e5704aeee8c, type: 3}
   killSFX: {fileID: 0}
+  naturalsound:
+  - {fileID: 8300000, guid: 81024e36426af31478328f6116c30251, type: 3}
+  - {fileID: 8300000, guid: 661332d6a342de4458d78bce30c59487, type: 3}
+  - {fileID: 8300000, guid: 40abd98ab3de4634da107db42cc0f0d1, type: 3}
+  - {fileID: 8300000, guid: 47196f90f3e7db74aa203e0d394d82f4, type: 3}
+  - {fileID: 8300000, guid: c84b3c546a39f0e488e7c28b5d6ebd72, type: 3}
+  - {fileID: 8300000, guid: 93ab0c31ab274f44bb7fb4c5df74930b, type: 3}
+  - {fileID: 8300000, guid: 99a561609f163b941935d1d928dc4b86, type: 3}
+  - {fileID: 8300000, guid: bcf5af2e27988b542a314a7ee9af0e1f, type: 3}
+  - {fileID: 8300000, guid: d09265c4d1be4cf4d848f36c98853278, type: 3}
+  - {fileID: 8300000, guid: 3e8c5615415549d419eaaa8f60516abd, type: 3}
+  - {fileID: 8300000, guid: 44585255342bca147b0428586557f4c4, type: 3}
+  - {fileID: 8300000, guid: 21f3f4ebf379b5a4db003ccf4587cee5, type: 3}
+  - {fileID: 8300000, guid: 8296e0b11abc472408cfc42a577cffee, type: 3}
+  - {fileID: 8300000, guid: 754dec7553f947d44a702b4b0af2c283, type: 3}
+  - {fileID: 8300000, guid: a5486c1559806154e90970f939f15ed3, type: 3}
+  - {fileID: 8300000, guid: 3cb1d3a8976e96b47b8a606cdc64b30b, type: 3}
+  - {fileID: 8300000, guid: 5d7af08ce09890544a13cbc3d18704ea, type: 3}
+  - {fileID: 8300000, guid: 6f5ccd5e1ece4734ba5c3e5704aeee8c, type: 3}
 --- !u!195 &972869132
 NavMeshAgent:
   m_ObjectHideFlags: 0

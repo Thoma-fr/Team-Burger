@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: fa27968c541abae4c83e95a86887bbbc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 482
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e895cce7ec4fe419a31a42864b060f
+      internalID: -2116232695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0
+        width: 494
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f740ee6decb1464fa2142979b4187f7
+      internalID: -1302788353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 0
+        width: 479
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee98c12d95799a4ba50520c56a44456
+      internalID: 1517212388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 0
+        width: 475
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3329bd58bb116244bf2ebaac45f6868
+      internalID: 1725363119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 0
+        width: 478
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823d94fb49f7e8a439f8c3713b6f67f5
+      internalID: -1748801984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2515
+        y: 0
+        width: 471
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be0c0a99d7744714e8987608055d0a58
+      internalID: 877729604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3014
+        y: 0
+        width: 454
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 041c8851a2ae3094ba1b1ee34004325a
+      internalID: -1312238927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3511
+        y: 0
+        width: 455
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abbbe6a8431f434391145a2efd2ae4a
+      internalID: 2055600176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 4017
+        y: 0
+        width: 447
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a97125b04fec5744bd180cabf14ab08
+      internalID: -10642846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4515
+        y: 0
+        width: 440
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538ff3a3e0e062a4ba2bdbf918138b44
+      internalID: -313953863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 5013
+        y: 0
+        width: 447
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f139078d706ec8e419ebd9a03b79b329
+      internalID: -1927870814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 5511
+        y: 0
+        width: 444
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecba66e7324179342b1e65124969c3d9
+      internalID: 2008828691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 6001
+        y: 0
+        width: 452
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8a53a476869904aa44df99be93119f
+      internalID: 1144260304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 6495
+        y: 6
+        width: 452
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ba0846f2919494788449c714d2ccea
+      internalID: 1380588489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 6990
+        y: 0
+        width: 447
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7269c87eef4a5429fa46517d68f1ed
+      internalID: 1888716213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: putin-walk-walking-unscreen-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 7476
+        y: 0
+        width: 486
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a68e5685813f89c47b5e838a06e6968d
+      internalID: -696512223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      putin-walk-walking-unscreen-Sheet_1: -1302788353
+      putin-walk-walking-unscreen-Sheet_12: 1144260304
+      putin-walk-walking-unscreen-Sheet_3: 1725363119
+      putin-walk-walking-unscreen-Sheet_9: -313953863
+      putin-walk-walking-unscreen-Sheet_2: 1517212388
+      putin-walk-walking-unscreen-Sheet_5: 877729604
+      putin-walk-walking-unscreen-Sheet_10: -1927870814
+      putin-walk-walking-unscreen-Sheet_0: -2116232695
+      putin-walk-walking-unscreen-Sheet_14: 1888716213
+      putin-walk-walking-unscreen-Sheet_6: -1312238927
+      putin-walk-walking-unscreen-Sheet_4: -1748801984
+      putin-walk-walking-unscreen-Sheet_11: 2008828691
+      putin-walk-walking-unscreen-Sheet_15: -696512223
+      putin-walk-walking-unscreen-Sheet_8: -10642846
+      putin-walk-walking-unscreen-Sheet_7: 2055600176
+      putin-walk-walking-unscreen-Sheet_13: 1380588489
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
