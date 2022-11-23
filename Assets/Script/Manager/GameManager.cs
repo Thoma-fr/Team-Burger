@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
    
-    [SerializeField] public CombatSystem combatSystem;
-    public CombatSystem GetCombatSystem { get { return combatSystem; } }
+    [SerializeField] public CombatManagerInGame combatSystem;
+    public CombatManagerInGame GetCombatSystem { get { return combatSystem; } }
 
     [Header("Default Data")]
     [SerializeField] private ScrPlayerData DeafaultPlayerData;
@@ -43,8 +43,7 @@ public class GameManager : MonoBehaviour
     public bool neeInstaRotate;
     public void OnBattleActivation(EnemyController ec)
     {
-       
-            combatSystem.StartBattlePhase(ec);
+            // combatSystem.StartBattlePhase(ec);
     }
 
     public void RotateWorld(Transform rot)

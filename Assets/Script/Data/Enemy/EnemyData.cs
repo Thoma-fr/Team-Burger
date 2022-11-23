@@ -47,6 +47,13 @@ public class EnemyData : BaseData
 [System.Serializable]
 public struct Attack
 {
+    public Attack(string _name, int _damage)
+    {
+        attName = _name;
+        damage = _damage;
+    }
+
+
     public string attName;
 
     // NOUVEAU
