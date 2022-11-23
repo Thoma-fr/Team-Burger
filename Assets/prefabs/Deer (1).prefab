@@ -422,6 +422,8 @@ MonoBehaviour:
   hasRotate: 0
   matPlane: {fileID: 0}
   spriteImage: {fileID: 0}
+  isup: 0
+  updateRot: 0
 --- !u!65 &5769312946302069166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -573,6 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isdead: 0
+  hitcam: {fileID: 7223288023150094324, guid: 83d9d4ed0134778408648c1ba30cddcd, type: 3}
   camFight: {fileID: 0}
   myType: 0
   mysate: 2
