@@ -80,7 +80,7 @@ public class NAVAI : MonoBehaviour
                 {
                     if (!hasMove)
                     {
-                        agent.SetDestination(Camera.main.transform.position);
+                        agent.SetDestination(Camera.main.transform.forward);
                         hasMove = true;
                         audioSource.PlayOneShot(zaworld);
                     }
