@@ -50,6 +50,8 @@ MonoBehaviour:
   hasRotate: 0
   matPlane: {fileID: 5415767311182880774}
   spriteImage: {fileID: 7350593942565004719}
+  isup: 0
+  updateRot: 0
 --- !u!208 &2259150666349073001
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -180,6 +182,8 @@ MonoBehaviour:
   hasRotate: 0
   matPlane: {fileID: 0}
   spriteImage: {fileID: 0}
+  isup: 0
+  updateRot: 0
 --- !u!1 &7350593942565004719
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,8 +256,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1768496667
+  m_SortingLayer: 2
   m_SortingOrder: 6
   m_Sprite: {fileID: -1460903702, guid: b7e5f450b00ce4441916a0e2ab1c1d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -265,7 +269,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 1
+  m_SpriteSortPoint: 0
 --- !u!61 &1792191651
 BoxCollider2D:
   m_ObjectHideFlags: 0
