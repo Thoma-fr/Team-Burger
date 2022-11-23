@@ -76,7 +76,7 @@ public class NAVAI : MonoBehaviour
             case AIState.move:
                 Vector3 point;
                 int a = Random.RandomRange(0, 5);
-                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.COMBAT_MODE)
+                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.COMBAT_MODE&& myType==AItype.passiv)
                 {
                     if (!hasMove)
                     {
@@ -99,6 +99,8 @@ public class NAVAI : MonoBehaviour
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                         mysate = AIState.idle;
                     }
+                    if (a == 3 && myType == AItype.passiv)
+                        anim.SetTrigger("Dance");
                     if (myType == AItype.agressive)
                         SearchForTarget();
                 }

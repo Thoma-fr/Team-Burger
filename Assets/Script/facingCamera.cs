@@ -10,7 +10,7 @@ public class facingCamera : MonoBehaviour
     public bool isup;
     private PlayerController pc;
     public bool updateRot;
-
+    public Sprite normaleSprite, rotatedSprite;
     private PlayerController.PLAYER_MODE playerenum;
     // Start is called before the first frame update
     void Start()
@@ -57,6 +57,7 @@ public class facingCamera : MonoBehaviour
                 spriteImage.GetComponent<SpriteRenderer>().enabled = false;
             }
             Debug.Log("hello1");
+            //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = rotatedSprite;
             transform.DOLocalRotateQuaternion(GameManager.instance.mainCam.transform.rotation, 0.8f).SetEase(Ease.OutBounce).OnComplete(() => hasRotate = true);
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.07f);
             hasRotate = true;
@@ -77,6 +78,7 @@ public class facingCamera : MonoBehaviour
                 spriteImage.GetComponent<SpriteRenderer>().enabled = true;
             }
             Debug.Log("func2");
+            //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = normaleSprite;
             transform.DORotate(new Vector3(0, 0, 0), 0f).OnComplete(() => hasRotate = false);
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.02f);
             hasRotate = false;

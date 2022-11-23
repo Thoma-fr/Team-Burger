@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5415767311177568640}
   - component: {fileID: 5415767311177568641}
-  - component: {fileID: 2259150666349073001}
   m_Layer: 0
   m_Name: tree (1)
   m_TagString: Untagged
@@ -48,26 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasRotate: 0
-  matPlane: {fileID: 5415767311182880774}
+  matPlane: {fileID: 0}
   spriteImage: {fileID: 7350593942565004719}
   isup: 0
   updateRot: 0
---- !u!208 &2259150666349073001
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5415767311177568646}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.235, y: 1.42, z: 0.00001}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.01, y: 1.24, z: 0}
-  m_TimeToStationary: 0.5
+  normaleSprite: {fileID: -1460903702, guid: b7e5f450b00ce4441916a0e2ab1c1d05, type: 3}
+  rotatedSprite: {fileID: 21300000, guid: 813abeec432b6984b88e5e1a6bc389a6, type: 3}
 --- !u!1 &5415767311182880774
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +169,8 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   isup: 0
   updateRot: 0
+  normaleSprite: {fileID: 0}
+  rotatedSprite: {fileID: 0}
 --- !u!1 &7350593942565004719
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7350593942565004719}
   m_LocalRotation: {x: -0.065539226, y: -0, z: -0, w: 0.99785006}
-  m_LocalPosition: {x: 0.05000019, y: 2.5300002, z: -0.3000023}
+  m_LocalPosition: {x: 0.05000019, y: 2.22, z: -0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,8 +245,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1768496667
   m_SortingLayer: 2
-  m_SortingOrder: 6
-  m_Sprite: {fileID: -1460903702, guid: b7e5f450b00ce4441916a0e2ab1c1d05, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 813abeec432b6984b88e5e1a6bc389a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
