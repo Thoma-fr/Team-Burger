@@ -14,9 +14,14 @@ public class CombatManagerInGame : MonoBehaviour
 	private EnemyData enemyData;
 	private PlayerData playerData;
 
-	private GameObject dialogueGroupe;
+	[SerializeField] private Transform dialogueBloc;
+	private TextMeshProUGUI dialogueText;
 
-	bool SetSliderValueEnemy = false, SetSliderValuePlayer = false, useConsomable = false;
+	[SerializeField] private Transform commandBloc;
+	[SerializeField] private Transform playerStat;
+
+
+	bool useConsomable = false, waitPlayerInput = false;
 
 	public enum BATTLE_STATE
 	{
@@ -25,7 +30,8 @@ public class CombatManagerInGame : MonoBehaviour
 		INTRO,
 		START,
 		CHOICE,
-		FIGHT,
+		PLAYER_ACTION,
+		ENEMY_ACTION,
 		END,
 	}
 
@@ -33,14 +39,24 @@ public class CombatManagerInGame : MonoBehaviour
 	void Start()
 	{
 		playerData = GameManager.instance.GetPlayerData;
-		dialogueGroupe = gameObject.transform.GetChild(0).gameObject;
+		dialogueText = dialogueBloc.GetChild(0).GetComponent<TextMeshProUGUI>();
 		// --------------------------------------------------------------------------- DEBUG --------------------------------------------------------------------------- //
 		playerData.weaponInHand = playerData.weapons[0];
 		// ------------------------------------------------------------------------- FIN DEBUG ------------------------------------------------------------------------- //
+
+		// Désactivation
+		commandBloc.gameObject.SetActive(false);
+		dialogueBloc.gameObject.SetActive(false);
 	}
 
 	void Update()
 	{
+		if (waitPlayerInput && Input.anyKeyDown)
+        {
+			state += 1;
+			waitPlayerInput = false;
+        }
+
 		if (state == lastState)
 			return;
 
@@ -49,6 +65,15 @@ public class CombatManagerInGame : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
+				if(enemyController)
+                {
+					enemyData = enemyController.m_data;
+					enemyController.InitCombat();
+					/*commandBloc.gameObject.SetActive(true);
+					dialogueBloc.gameObject.SetActive(true);*/
+				}
+				else
+					state = BATTLE_STATE.NONE;
 
 				/*Cursor.visible = true;
 				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
@@ -84,6 +109,11 @@ public class CombatManagerInGame : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.INTRO:
+				dialogueBloc.gameObject.SetActive(true);
+				dialogueText.text = "INTRODUCTION";
+
+				StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, 2));
+
 				/*transparence.alpha = 1;
 
 				Sequence myStartSequence = DOTween.Sequence();
@@ -108,10 +138,12 @@ public class CombatManagerInGame : MonoBehaviour
 				if (enemy._animatorCtrl != null)
 					myStartSequence.AppendCallback(() => enemyAnimator.runtimeAnimatorController = enemy._animatorCtrl);*/
 
-				state = BATTLE_STATE.START;
 				break;
 
 			case BATTLE_STATE.START:
+				dialogueText.text = "START";
+				waitPlayerInput = true;
+
 				/*dialogueBloc.SetActive(true);
 				// dialogueBloc.transform.DOLocalMoveY(25, 0.5f);
 				dialogueText.text = "Un jeune beer est apparue. Vous sortez un gros fusil";*/
@@ -119,18 +151,49 @@ public class CombatManagerInGame : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.CHOICE:
+				dialogueText.text = "CHOICE";
+				commandBloc.gameObject.SetActive(true);
+
 				/*commandeBloc.SetActive(true);
 				// commandeBloc.transform.DOLocalMoveY(25, 0.5f);
 				dialogueText.text = "WHAT SHOULD YOU DO ?";*/
 				break;
 
-			case BATTLE_STATE.FIGHT:
+			case BATTLE_STATE.PLAYER_ACTION:
+				dialogueText.text = "ATTACK OF THE PLAYER";
+				if (useConsomable)
+                {
+					state = BATTLE_STATE.ENEMY_ACTION;
+					break;
+                }
+
+				if (enemyController.TakeDamage(playerData.weaponInHand.damage))
+					state = BATTLE_STATE.END;
+				else
+					state = BATTLE_STATE.ENEMY_ACTION;
+
 				/*dialogueText.text = "";
 				commandeBloc.SetActive(false);*/
 				// StartCoroutine(FightPhase());
 				break;
 
+			case BATTLE_STATE.ENEMY_ACTION:
+				dialogueText.text = "ATTACK OF THE ENEMY";
+				enemyController.EnemyAttacking(out int damage);
+				playerData.healthPoint -= damage;
+
+				if (playerData.healthPoint <= 0)
+					state = BATTLE_STATE.END;
+				else
+					state = BATTLE_STATE.CHOICE;
+
+				break;
+
 			case BATTLE_STATE.END:
+
+				dialogueBloc.gameObject.SetActive(false);
+				// commandBloc.gameObject.SetActive(false);
+
 				/*transparence.interactable = false;
 				transparence.blocksRaycasts = false;
 				Sequence myEndSequence = DOTween.Sequence();
@@ -151,6 +214,7 @@ public class CombatManagerInGame : MonoBehaviour
 		transparence.interactable = true;
 		transparence.blocksRaycasts = true;
 	}
+	*/
 
 	private IEnumerator NextStateWithDelay(BATTLE_STATE _nextState, float duration)
 	{
@@ -158,6 +222,7 @@ public class CombatManagerInGame : MonoBehaviour
 		state = _nextState;
 	}
 
+	/*
 	private IEnumerator FightPhase()
 	{
 		yield return new WaitForSeconds(0.5f);
@@ -232,18 +297,17 @@ public class CombatManagerInGame : MonoBehaviour
 				state = BATTLE_STATE.CHOICE;
 		}
 	}
+	*/
 
 	public void StartBattlePhase(EnemyController other)
 	{
 		enemyController = other;
-		enemyData = enemyController.m_data;
 		state = BATTLE_STATE.INIT;
 	}
-	*/
-
+	
 	public void OnAttack()
 	{
-		state = BATTLE_STATE.FIGHT;
+		state = BATTLE_STATE.PLAYER_ACTION;
 	}
 
 	public void Browser(int what)
@@ -257,13 +321,13 @@ public class CombatManagerInGame : MonoBehaviour
 	public void UseWeapon(Weapon other)
 	{
 		playerData.weaponInHand = other;
-		state = BATTLE_STATE.FIGHT;
+		state = BATTLE_STATE.PLAYER_ACTION;
 	}
 
 	public void UseConsomable(Item other)
 	{
 		useConsomable = true;
-		state = BATTLE_STATE.FIGHT;
+		state = BATTLE_STATE.PLAYER_ACTION;
 	}
 
 	/*

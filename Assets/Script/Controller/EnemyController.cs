@@ -18,14 +18,14 @@ public class EnemyController : BaseController , IShootable<PlayerData>
     private Slider slider;
 
     private bool isSetSliderValue = false;
-
-    private bool isInCombat = false;
+    private bool isInCombat = true;
 
     private void Awake()
     {
         nameText = canvasParent.GetChild(0).GetComponent<TextMeshProUGUI>();
         slider = canvasParent.GetChild(1).GetComponent<Slider>();
         pvText = slider.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        canvasParent.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -59,7 +59,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         if (!isInCombat)
             return;
 
-        canvasParent.LookAt(Camera.main.transform);
+        canvasParent.rotation = Quaternion.LookRotation(canvasParent.transform.position - Camera.main.transform.position, Vector3.up);
 
         if (isSetSliderValue)
             pvText.text = ((int)slider.value).ToString();
@@ -88,6 +88,11 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         return true;
     }*/
 
+    public void InitCombat()
+    {
+        canvasParent.gameObject.SetActive(true);
+    }
+
     public bool TakeDamage(int damage)
     {
         isSetSliderValue = true;
@@ -98,9 +103,9 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         takeDamageSequence.AppendCallback(() => isSetSliderValue = false);
 
         if (m_data.healthPoint <= 0)
-            return false;
-        else
             return true;
+        else
+            return false;
     }
 
     public void OnInteraction(PlayerData actuator)

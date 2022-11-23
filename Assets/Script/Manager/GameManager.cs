@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public bool neeInstaRotate;
     public void OnBattleActivation(EnemyController ec)
     {
-            // combatSystem.StartBattlePhase(ec);
+        combatSystem.StartBattlePhase(ec);
     }
 
     public void RotateWorld(Transform rot)
