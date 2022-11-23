@@ -13,7 +13,7 @@ public class BulletMove : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
 
     }
     void Update()

@@ -1,0 +1,2323 @@
+fileFormatVersion: 2
+guid: 5a45171aa2c812844a98df3048bc3570
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1723
+        width: 124
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a574554a549da5e4a827932763ad51a8
+      internalID: 1291926747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1723
+        width: 86
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e5f4fe8766deaf44b805159faf6b448
+      internalID: 1239876136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 1723
+        width: 83
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517952b77f9b00640a7a2891960c7d9d
+      internalID: 1060675423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 1723
+        width: 87
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb251ff9e500adb4392aa24be42c36b3
+      internalID: -36415167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2201
+        y: 1723
+        width: 87
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db26df5c845d5084c89795d08cdbce53
+      internalID: 1539347861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 1723
+        width: 87
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a7e8547dfd23d418ffb9db429b8b2d
+      internalID: -1972234948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3177
+        y: 1723
+        width: 124
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537783107157fa24984f3ae1555e04ef
+      internalID: 1796782318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3694
+        y: 1723
+        width: 107
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30da5526f4475384f96d225c214a230c
+      internalID: -872579847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 4169
+        y: 1723
+        width: 107
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f09ca1d3a7f75b48be15d1ace5ed273
+      internalID: -199431313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4673
+        y: 1727
+        width: 104
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be3148788d329e24abe7ca4d7d472602
+      internalID: -1113332502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 5174
+        y: 1727
+        width: 103
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca33858ff775dd845bf91ee8829ed250
+      internalID: 1169372546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 5674
+        y: 1723
+        width: 95
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0b5bcbd416ecf4f9ad8e25bdd2eeda
+      internalID: 187838127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 6199
+        y: 1723
+        width: 74
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 999827bedcd6cbd478a50fb26b1c3255
+      internalID: 1191046805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 6692
+        y: 1723
+        width: 81
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92a897951a16e24e99d7dfad255a6c0
+      internalID: 1615387346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 7187
+        y: 1723
+        width: 82
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061ecbe5bef40a04f8430ee804d03dbf
+      internalID: 1128878272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 7670
+        y: 1723
+        width: 83
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d1075897aa7d3439ab926c3f827089
+      internalID: -1333547795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 8137
+        y: 1719
+        width: 120
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490f939c3f4f0784888f14c4538c5b3e
+      internalID: -628886126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1392
+        width: 124
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6bb87f66009484e99f411ee3d5e55d
+      internalID: 445706485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1392
+        width: 82
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bf7b4b624700344833905206197994
+      internalID: 1336079781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 1392
+        width: 83
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0298fa17674365741b2a80a029fdc9c3
+      internalID: -1023375183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 1392
+        width: 86
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba504cf3a64590d41811a10bbfdb7539
+      internalID: 959847291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 1392
+        width: 86
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8115c9eff203d33438e8a89673d04f3c
+      internalID: 531187775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 1392
+        width: 87
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b0c6d21718a7de4292b6b6a2cf730e2
+      internalID: 295278637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 3177
+        y: 1392
+        width: 124
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6c9b97b3a2d81a45883953ed3336886
+      internalID: 1275575622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 3694
+        y: 1388
+        width: 90
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650b54034da9d3f42b2be261aea6996f
+      internalID: 1355461914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 4169
+        y: 1392
+        width: 107
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80aacd694891e80418e351258ca4a06e
+      internalID: -2007284463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 4669
+        y: 1392
+        width: 108
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991f6b83b39011343bba55321d01fa2e
+      internalID: -328439936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 5169
+        y: 1392
+        width: 99
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be69983710272042b00026921bba900
+      internalID: 1858978836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 5678
+        y: 1396
+        width: 91
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f49c3ee5b7339428c058a9440eaed7
+      internalID: 1553304712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 6199
+        y: 1392
+        width: 78
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3969dfb1dc23f4ebc7aa4e3502cceb
+      internalID: 111217254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 6691
+        y: 1392
+        width: 82
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 001d2267323cc0d44947b036d16b689c
+      internalID: -693888726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 7187
+        y: 1392
+        width: 86
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d678a4bd9670e994f9046ab582e94e5c
+      internalID: 1627921883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 7662
+        y: 1392
+        width: 91
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b728cc24b2e1446a32013ec3e50944
+      internalID: -130318802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 8142
+        y: 1388
+        width: 115
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ff7966183fb2d449b66a4d2bb8594d
+      internalID: 759189344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1061
+        width: 145
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ed90cee491c2847b9f2805f637f478
+      internalID: -89670406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1061
+        width: 83
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7ca48c1ee7dff43860251c57d484de
+      internalID: 546291788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 1061
+        width: 87
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90a6e3df92f0f24e819dbe9d06b12cb
+      internalID: 976474343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 1061
+        width: 88
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcdfb8b9336950478041506376844ad
+      internalID: -763056335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 1061
+        width: 86
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb88ecd5f8b1f0845b2678c605772f48
+      internalID: -1301263120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 1061
+        width: 87
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2300da17fddfb294fb4461dab79b4cf2
+      internalID: -24490771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 3185
+        y: 1061
+        width: 120
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dac9e1d4f75ac4ba86377474f3c44f
+      internalID: -1986819765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 3694
+        y: 1057
+        width: 90
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f1917a8b38b68443af6a6d8a2d0dbaa
+      internalID: -1811356628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 4169
+        y: 1061
+        width: 111
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fb91736fe477a4098823d64636025b
+      internalID: -775498038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 4677
+        y: 1061
+        width: 104
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4144e6db36fda40b7ef93729e36c13
+      internalID: -655905006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 5173
+        y: 1057
+        width: 96
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f746ed03cabf6dc4b95ebed9f7d0601b
+      internalID: -1715280809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 5678
+        y: 1070
+        width: 95
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c58d43d190b288246b38c38149912b42
+      internalID: 215567487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 6197
+        y: 1061
+        width: 88
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70564f388cc5dd48ba2c4106a839e86
+      internalID: 411295175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 6691
+        y: 1061
+        width: 82
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980415730cda59d4eb4d32aef1c1a2e1
+      internalID: 1754640476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 7187
+        y: 1061
+        width: 82
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bcc68e9585230e46a0a3068c3cbc133
+      internalID: -1037642193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 7645
+        y: 1061
+        width: 104
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc61e352ff8aa141906df96f7cf8296
+      internalID: 821974555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 8142
+        y: 1057
+        width: 115
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3a44c50a8b4f345bd86cc651cb2c1e
+      internalID: -393515062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 730
+        width: 141
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8f53cec1c5a8744797b04b7f2802117
+      internalID: 1103198204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 730
+        width: 87
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74535750f4812454099f8182402ecad2
+      internalID: 334233280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 730
+        width: 83
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bb232476e747746ac8cf40eac97887
+      internalID: 1727818151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 730
+        width: 87
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293ea1792ef63744dbfa8c4956da36ee
+      internalID: 2081123252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 730
+        width: 86
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b463c7d588830e48a5be5b425dadd82
+      internalID: -304360007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 2702
+        y: 730
+        width: 86
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e80b7563318c474a9cb2018ce661ab2
+      internalID: 2123568421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 3197
+        y: 730
+        width: 108
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ca3ff1f7188424a8c6d58341d76dba
+      internalID: 244767984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 3681
+        y: 730
+        width: 103
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375abb41378507b45b1cf39587372d41
+      internalID: -967818731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 4169
+        y: 730
+        width: 112
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a8af4e48197db429a2a36c910b8156
+      internalID: 228342499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 4686
+        y: 730
+        width: 99
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764a265440e385e4c8441b7512946521
+      internalID: -1697861614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 5182
+        y: 726
+        width: 82
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9c1d0ad59cf6047810bcc3a4214dbe
+      internalID: -1484717513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 5682
+        y: 743
+        width: 95
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2eb10a3cb4a2e740b7e17e08dab9b39
+      internalID: 815345138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 6195
+        y: 730
+        width: 86
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f0c841c67cbea40a764325727f0a87
+      internalID: -1680210358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 6691
+        y: 730
+        width: 86
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6fe0a749022b4468aca78522b71d13
+      internalID: -261597195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 7188
+        y: 730
+        width: 85
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cee6f3899c4404459d6251a0e98f2ee
+      internalID: -1640013789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 7637
+        y: 730
+        width: 120
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38242c87a6309741824d2ad114bd676
+      internalID: -723184697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 8146
+        y: 730
+        width: 111
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e0cbf937054da41867ce3c0b1ee0b4
+      internalID: 1647891806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 399
+        width: 132
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fda2f10b9949a4c98d741f41c7cd75
+      internalID: -2054057614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 399
+        width: 87
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9974fbe9aa77fbd4782802de630fbdb3
+      internalID: -954039582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 399
+        width: 87
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95681a3c149aa5c4197d20c611197453
+      internalID: -385240784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 1705
+        y: 399
+        width: 87
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c1b5d342a5e3643806ff5ecc6037db
+      internalID: 2000415004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 399
+        width: 86
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b14557a11440d469c44c8d9fa67bbe
+      internalID: -625570358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 2697
+        y: 399
+        width: 100
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d3a2ff1208a2094ba8ff50861ba0248
+      internalID: 1524563281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 3197
+        y: 399
+        width: 108
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ca8a29f83d3134c9ebf9065f56489f
+      internalID: -821508249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 3677
+        y: 399
+        width: 103
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bd9941e47c4064d95f44e20c160172
+      internalID: -1935361581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 4173
+        y: 399
+        width: 108
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94119f63ef395a441b1676366ce207e2
+      internalID: 1746961312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 4686
+        y: 399
+        width: 98
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25192121fefb2040adcf92961b7f4dd
+      internalID: -959657458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 5173
+        y: 395
+        width: 91
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4cb62765c3798d4a82e15f36ae9996c
+      internalID: -562276897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 5686
+        y: 403
+        width: 91
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 449f70fae3ea55a40b987222238e61aa
+      internalID: 52226040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 6195
+        y: 399
+        width: 86
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20fe687d6e9dbb74ca89fa1a84f39543
+      internalID: -1465467224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 6691
+        y: 399
+        width: 86
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507bdcf26a7659641ae2cf97322e4a99
+      internalID: -1243517839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 7187
+        y: 399
+        width: 78
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e452ee369687cd34faafe4a0479a325b
+      internalID: -929117320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 7633
+        y: 395
+        width: 128
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2548de606d8f1aa42acf05ed924ee45b
+      internalID: -1543545921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 68
+        width: 111
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489b5d24aac465c4b84e97e96df49110
+      internalID: 1539691775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 68
+        width: 91
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506b7a231cb083e4bb34300f16266377
+      internalID: -1840926562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 68
+        width: 87
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715c4a131c113554c94837a0fe69900e
+      internalID: -1393545207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 68
+        width: 87
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b5b3c4ee708a14c8bea60d44dd00ed
+      internalID: 1565704727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 68
+        width: 87
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af8ced0a7d7156e46ae3fc2abd8db79f
+      internalID: -496832512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 2689
+        y: 68
+        width: 112
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45def9db3742b0b4d9d0c958e269115e
+      internalID: -1072829712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 3197
+        y: 68
+        width: 108
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05748fb829c63234ab8a0da11b3e7d52
+      internalID: -527125999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 3669
+        y: 68
+        width: 111
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263099c7054aace44a2fa15980bad8e0
+      internalID: 1581126470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 4173
+        y: 68
+        width: 108
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4cc6c2fd742054dbf69c3658b52ede
+      internalID: -692107183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 4682
+        y: 68
+        width: 99
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d105edefcd6f734983324f681660ae5
+      internalID: 263915478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 5161
+        y: 64
+        width: 107
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a964b115d445364e8ed2d4364545d4c
+      internalID: 1717188528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 5690
+        y: 68
+        width: 87
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8826d82e47c2e2f47af4d4cede901d11
+      internalID: -714476638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 6195
+        y: 68
+        width: 82
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b09057992e8514680d0381aa2acf8d
+      internalID: 1960481335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 6691
+        y: 68
+        width: 86
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4bdcddfd49ed9947bf6eb66b9598aef
+      internalID: 1245298390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 7174
+        y: 68
+        width: 91
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab58dbaea741984c88f0d0b94eede51
+      internalID: 258412437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deer-deer-dancing-unscreen-Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 7637
+        y: 64
+        width: 124
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a62f4f86d42fadf40b0a7d7c20894ad3
+      internalID: -2082071371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      deer-deer-dancing-unscreen-Sheet_19: -1023375183
+      deer-deer-dancing-unscreen-Sheet_62: 815345138
+      deer-deer-dancing-unscreen-Sheet_10: 1169372546
+      deer-deer-dancing-unscreen-Sheet_89: -1072829712
+      deer-deer-dancing-unscreen-Sheet_53: 1727818151
+      deer-deer-dancing-unscreen-Sheet_36: 976474343
+      deer-deer-dancing-unscreen-Sheet_63: -1680210358
+      deer-deer-dancing-unscreen-Sheet_25: -2007284463
+      deer-deer-dancing-unscreen-Sheet_87: 1565704727
+      deer-deer-dancing-unscreen-Sheet_6: 1796782318
+      deer-deer-dancing-unscreen-Sheet_5: -1972234948
+      deer-deer-dancing-unscreen-Sheet_73: 1524563281
+      deer-deer-dancing-unscreen-Sheet_8: -199431313
+      deer-deer-dancing-unscreen-Sheet_99: -2082071371
+      deer-deer-dancing-unscreen-Sheet_55: -304360007
+      deer-deer-dancing-unscreen-Sheet_78: -562276897
+      deer-deer-dancing-unscreen-Sheet_64: -261597195
+      deer-deer-dancing-unscreen-Sheet_21: 531187775
+      deer-deer-dancing-unscreen-Sheet_40: -1986819765
+      deer-deer-dancing-unscreen-Sheet_80: -1465467224
+      deer-deer-dancing-unscreen-Sheet_97: 1245298390
+      deer-deer-dancing-unscreen-Sheet_88: -496832512
+      deer-deer-dancing-unscreen-Sheet_15: -1333547795
+      deer-deer-dancing-unscreen-Sheet_61: -1484717513
+      deer-deer-dancing-unscreen-Sheet_60: -1697861614
+      deer-deer-dancing-unscreen-Sheet_76: 1746961312
+      deer-deer-dancing-unscreen-Sheet_44: -1715280809
+      deer-deer-dancing-unscreen-Sheet_75: -1935361581
+      deer-deer-dancing-unscreen-Sheet_69: -954039582
+      deer-deer-dancing-unscreen-Sheet_82: -929117320
+      deer-deer-dancing-unscreen-Sheet_31: 1627921883
+      deer-deer-dancing-unscreen-Sheet_33: 759189344
+      deer-deer-dancing-unscreen-Sheet_16: -628886126
+      deer-deer-dancing-unscreen-Sheet_90: -527125999
+      deer-deer-dancing-unscreen-Sheet_94: 1717188528
+      deer-deer-dancing-unscreen-Sheet_50: -393515062
+      deer-deer-dancing-unscreen-Sheet_84: 1539691775
+      deer-deer-dancing-unscreen-Sheet_95: -714476638
+      deer-deer-dancing-unscreen-Sheet_17: 445706485
+      deer-deer-dancing-unscreen-Sheet_81: -1243517839
+      deer-deer-dancing-unscreen-Sheet_0: 1291926747
+      deer-deer-dancing-unscreen-Sheet_26: -328439936
+      deer-deer-dancing-unscreen-Sheet_32: -130318802
+      deer-deer-dancing-unscreen-Sheet_13: 1615387346
+      deer-deer-dancing-unscreen-Sheet_49: 821974555
+      deer-deer-dancing-unscreen-Sheet_83: -1543545921
+      deer-deer-dancing-unscreen-Sheet_38: -1301263120
+      deer-deer-dancing-unscreen-Sheet_4: 1539347861
+      deer-deer-dancing-unscreen-Sheet_45: 215567487
+      deer-deer-dancing-unscreen-Sheet_48: -1037642193
+      deer-deer-dancing-unscreen-Sheet_71: 2000415004
+      deer-deer-dancing-unscreen-Sheet_11: 187838127
+      deer-deer-dancing-unscreen-Sheet_51: 1103198204
+      deer-deer-dancing-unscreen-Sheet_58: -967818731
+      deer-deer-dancing-unscreen-Sheet_65: -1640013789
+      deer-deer-dancing-unscreen-Sheet_14: 1128878272
+      deer-deer-dancing-unscreen-Sheet_12: 1191046805
+      deer-deer-dancing-unscreen-Sheet_47: 1754640476
+      deer-deer-dancing-unscreen-Sheet_91: 1581126470
+      deer-deer-dancing-unscreen-Sheet_98: 258412437
+      deer-deer-dancing-unscreen-Sheet_9: -1113332502
+      deer-deer-dancing-unscreen-Sheet_29: 111217254
+      deer-deer-dancing-unscreen-Sheet_46: 411295175
+      deer-deer-dancing-unscreen-Sheet_23: 1275575622
+      deer-deer-dancing-unscreen-Sheet_56: 2123568421
+      deer-deer-dancing-unscreen-Sheet_68: -2054057614
+      deer-deer-dancing-unscreen-Sheet_67: 1647891806
+      deer-deer-dancing-unscreen-Sheet_54: 2081123252
+      deer-deer-dancing-unscreen-Sheet_52: 334233280
+      deer-deer-dancing-unscreen-Sheet_1: 1239876136
+      deer-deer-dancing-unscreen-Sheet_22: 295278637
+      deer-deer-dancing-unscreen-Sheet_28: 1553304712
+      deer-deer-dancing-unscreen-Sheet_96: 1960481335
+      deer-deer-dancing-unscreen-Sheet_57: 244767984
+      deer-deer-dancing-unscreen-Sheet_39: -24490771
+      deer-deer-dancing-unscreen-Sheet_34: -89670406
+      deer-deer-dancing-unscreen-Sheet_85: -1840926562
+      deer-deer-dancing-unscreen-Sheet_86: -1393545207
+      deer-deer-dancing-unscreen-Sheet_92: -692107183
+      deer-deer-dancing-unscreen-Sheet_18: 1336079781
+      deer-deer-dancing-unscreen-Sheet_24: 1355461914
+      deer-deer-dancing-unscreen-Sheet_35: 546291788
+      deer-deer-dancing-unscreen-Sheet_20: 959847291
+      deer-deer-dancing-unscreen-Sheet_7: -872579847
+      deer-deer-dancing-unscreen-Sheet_79: 52226040
+      deer-deer-dancing-unscreen-Sheet_43: -655905006
+      deer-deer-dancing-unscreen-Sheet_70: -385240784
+      deer-deer-dancing-unscreen-Sheet_27: 1858978836
+      deer-deer-dancing-unscreen-Sheet_42: -775498038
+      deer-deer-dancing-unscreen-Sheet_93: 263915478
+      deer-deer-dancing-unscreen-Sheet_77: -959657458
+      deer-deer-dancing-unscreen-Sheet_30: -693888726
+      deer-deer-dancing-unscreen-Sheet_59: 228342499
+      deer-deer-dancing-unscreen-Sheet_72: -625570358
+      deer-deer-dancing-unscreen-Sheet_66: -723184697
+      deer-deer-dancing-unscreen-Sheet_3: -36415167
+      deer-deer-dancing-unscreen-Sheet_37: -763056335
+      deer-deer-dancing-unscreen-Sheet_74: -821508249
+      deer-deer-dancing-unscreen-Sheet_41: -1811356628
+      deer-deer-dancing-unscreen-Sheet_2: 1060675423
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

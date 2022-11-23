@@ -264,10 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
+  m_AmplitudeGain: 8
+  m_FrequencyGain: 0.3
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1751848381
 GameObject:
@@ -329,7 +329,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.29
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 3045420005962117778}
   - component: {fileID: 3045420005962117785}
   - component: {fileID: 3045420005962117779}
+  - component: {fileID: 3045420005962117781}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -546,7 +547,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -903738828, guid: f18705a19561e1240bf1dee5aa7e09dd, type: 3}
+  m_Sprite: {fileID: -2029681714, guid: 21f6aeded5bcc014c910760f662d386d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -575,7 +576,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerMode: 0
-  speed: 5
+  speed: 250
   FPSvcam: {fileID: 760549099}
   mainCam: {fileID: 0}
   target: {fileID: 727051307}
@@ -977,3 +978,23 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -5, z: 0}
+--- !u!95 &3045420005962117781
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010073021274621992}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5e052130bc53314e94475a34d3d0525, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

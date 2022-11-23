@@ -40,7 +40,7 @@ public class NAVAI : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip pain;
     public AudioClip pain2;
-
+    public AudioClip zaworld;
     public AudioClip killSFX;
     private void Start()
     {
@@ -75,18 +75,33 @@ public class NAVAI : MonoBehaviour
                 break;
             case AIState.move:
                 Vector3 point;
-                if (RandomPoint(transform.position, range, out point))
+                int a = Random.RandomRange(0, 5);
+                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.COMBAT_MODE)
                 {
                     if (!hasMove)
                     {
-                        agent.SetDestination(point);
+                        agent.SetDestination(Camera.main.transform.forward);
                         hasMove = true;
+                        audioSource.PlayOneShot(zaworld);
                     }
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    //Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                     mysate = AIState.idle;
                 }
-                if (myType == AItype.agressive)
-                    SearchForTarget();
+                else
+                {
+                    if (RandomPoint(transform.position, range, out point))
+                    {
+                        if (!hasMove)
+                        {
+                            agent.SetDestination(point);
+                            hasMove = true;
+                        }
+                        Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                        mysate = AIState.idle;
+                    }
+                    if (myType == AItype.agressive)
+                        SearchForTarget();
+                }
                 break;
             case AIState.flee:
                 break;
@@ -158,7 +173,7 @@ public class NAVAI : MonoBehaviour
                 camFight.SetActive(true);
                 camFight.transform.parent = null;
             }
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject.transform);
             GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
             GameManager.instance.RotateWorld(GameManager.instance.mainCam);
         }
