@@ -41,9 +41,26 @@ public class GameManager : MonoBehaviour
     public bool hasRotate;
 
     public bool neeInstaRotate;
+
+    public delegate void PlayerStatChangedDelegate();
+    public PlayerStatChangedDelegate onPlayerStatChanged;
+
+    private void Awake()
+    {
+        playerData = new PlayerData(DeafaultPlayerData.playerData);
+
+        if (instance == null)
+            instance = this;
+    }
+
     public void OnBattleActivation(EnemyController ec)
     {
         combatSystem.StartBattlePhase(ec);
+    }
+
+    public void UpdateAllUI()
+    {
+        onPlayerStatChanged();
     }
 
     public void RotateWorld(Transform rot)
@@ -63,13 +80,5 @@ public class GameManager : MonoBehaviour
         //    }
 
         //}
-    }
-
-    private void Awake()
-    {
-        playerData = new PlayerData(DeafaultPlayerData.playerData);
-        
-        if (instance == null)
-            instance = this;
     }
 }

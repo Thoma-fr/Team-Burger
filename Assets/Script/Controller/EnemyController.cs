@@ -25,7 +25,9 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         nameText = canvasParent.GetChild(0).GetComponent<TextMeshProUGUI>();
         slider = canvasParent.GetChild(1).GetComponent<Slider>();
         pvText = slider.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+
         canvasParent.gameObject.SetActive(false);
+        transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0;
     }
 
     private void Start()
@@ -39,7 +41,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         pvText.text = ((int)slider.value).ToString();
     }
 
-    public string EnemyAttacking(out int damage)
+    public int EnemyAttacking(out string attName)
     {
         Attack current;
         if (m_data.attacks.Count >= 1)
@@ -50,8 +52,8 @@ public class EnemyController : BaseController , IShootable<PlayerData>
             Debug.Log("Attack par défault");
         }
 
-        damage = current.damage;
-        return current.attName;
+        attName = current.attName;
+        return current.damage;
     }
 
     private void Update()
@@ -65,35 +67,13 @@ public class EnemyController : BaseController , IShootable<PlayerData>
             pvText.text = ((int)slider.value).ToString();
     }
 
-    /*public bool Subscribing(out EnemyController ec, out EnemyData data)
-    {
-        try
-        {
-
-
-            ec = this;
-            data = m_data;
-            return true;
-        }
-        catch
-        {
-            ec = null;
-            data = null;
-            return false;
-        }
-    }
-
-    public bool UnSubscribing()
-    {
-        return true;
-    }*/
-
     public void InitCombat()
     {
         canvasParent.gameObject.SetActive(true);
+        transform.GetChild(0).GetComponent<CanvasGroup>().DOFade(1, 0.8f);
     }
 
-    public bool TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         isSetSliderValue = true;
         m_data.healthPoint -= damage;
@@ -101,11 +81,6 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         Sequence takeDamageSequence = DOTween.Sequence();
         takeDamageSequence.Append(slider.DOValue(m_data.healthPoint, 1.8f));
         takeDamageSequence.AppendCallback(() => isSetSliderValue = false);
-
-        if (m_data.healthPoint <= 0)
-            return true;
-        else
-            return false;
     }
 
     public void OnInteraction(PlayerData actuator)
