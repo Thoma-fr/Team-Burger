@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
+using UnityEngine.VFX;
 
 enum AIState { idle, flee,move, attack,Traped }
 
@@ -20,18 +21,16 @@ public class NAVAI : MonoBehaviour
     [SerializeField] private Animator anim;
     private bool hasMove;
     private float targetDistance;
-    [Range(0, 20)]
-    public float range;
 
-    [Range(0, 20)]
+    public float range;
     public float sight;
 
     [SerializeField] private float maxIdleTime;
 
     
     [Header("nav parameter")]
-    public float speed;
-    public float acceleration;
+    public float speed=3.5f;
+    public float acceleration=8f;
 
     private GameObject player;
     //audio
@@ -42,7 +41,7 @@ public class NAVAI : MonoBehaviour
     public AudioClip pain2;
     public AudioClip zaworld;
     public AudioClip killSFX;
-
+    private VisualEffect visualEffect;
     public List<AudioClip> naturalsound;
     private void Start()
     {
@@ -53,6 +52,7 @@ public class NAVAI : MonoBehaviour
         agent.speed = speed;
         agent.acceleration = acceleration;
         player = PlayerController.Instance.gameObject;
+        visualEffect = GetComponent<VisualEffect>();
     }
     private void OnDrawGizmosSelected()
     {
@@ -69,6 +69,14 @@ public class NAVAI : MonoBehaviour
     private void Update()
     {
         anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
+        if (agent.velocity.x > 0)
+        {
+            visualEffect.SetFloat("DirVel", agent.acceleration* -1);
+            visualEffect.SetFloat("Start", agent.acceleration);
+            visualEffect.SetBool("IsWalking", true);
+        }
+        else
+            visualEffect.SetBool("IsWalking", false);
         FlipSpriteX();
         switch (mysate)
         {

@@ -3,25 +3,14 @@ using UnityEngine;
 
 public class facingCamera : MonoBehaviour
 {
-    public bool hasRotate;
-    private Transform rot;
-    public GameObject matPlane;
-    public GameObject spriteImage;
-    public bool isup;
-    private PlayerController pc;
-    public bool updateRot;
-    public Sprite normaleSprite, rotatedSprite;
-    private PlayerController.PLAYER_MODE playerenum;
+    private bool hasRotate;
+    private bool isup;
+
     // Start is called before the first frame update
     void Start()
     {
         isup = true;
-        playerenum = PlayerController.playerInstance.playerMode;
-        if(matPlane!= null)
-            matPlane.SetActive(false);
-        
         GameManager.instance.faceTheCam.Add(gameObject);
-        //baseORder = GetComponent<SpriteRenderer>().sortingOrder;
     }
     private void Update()
     {
@@ -44,20 +33,11 @@ public class facingCamera : MonoBehaviour
                 break;
         }
     }
-    
-    // Update is called once per frame
     public void rotateTowardPlayer()
     {
-        //rot = a;
         if (!hasRotate)
         {
-            if (matPlane != null)
-            {
-                matPlane.SetActive(true);
-                spriteImage.GetComponent<SpriteRenderer>().enabled = false;
-            }
             Debug.Log("hello1");
-            //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = rotatedSprite;
             transform.DOLocalRotateQuaternion(GameManager.instance.mainCam.transform.rotation, 0.8f).SetEase(Ease.OutBounce).OnComplete(() => hasRotate = true);
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.07f);
             hasRotate = true;
@@ -72,13 +52,7 @@ public class facingCamera : MonoBehaviour
     {
         if (!isup)
         {
-            if (matPlane != null)
-            {
-                matPlane.SetActive(false);
-                spriteImage.GetComponent<SpriteRenderer>().enabled = true;
-            }
             Debug.Log("func2");
-            //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = normaleSprite;
             transform.DORotate(new Vector3(0, 0, 0), 0f).OnComplete(() => hasRotate = false);
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.02f);
             hasRotate = false;

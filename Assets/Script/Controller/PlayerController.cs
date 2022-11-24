@@ -14,7 +14,8 @@ using Unity.Mathematics;
 
 public class PlayerController : BaseController
 {
-	public bool isVise = false;
+	
+	[HideInInspector] public bool isVise = false;
 	private Animator animator;
 	private SpriteRenderer sp;
 	public static PlayerController Instance { get; private set; }
@@ -35,7 +36,7 @@ public class PlayerController : BaseController
 	public Camera mainCam;
 	public GameObject target;
 	private Vector3 mousepos;
-	public float distance;
+	[SerializeField]private float distance;
 
 	public TilemapCollider2D water;
 	[SerializeField] private LayerMask interact;
