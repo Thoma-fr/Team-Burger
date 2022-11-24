@@ -88,7 +88,6 @@ public class NAVAI : MonoBehaviour
                         hasMove = true;
                         audioSource.PlayOneShot(naturalsound[Random.Range(0,naturalsound.Count)]);
                     }
-                    //Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                     mysate = AIState.idle;
                 }
                 else
@@ -103,7 +102,7 @@ public class NAVAI : MonoBehaviour
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                         mysate = AIState.idle;
                     }
-                    if (a == 3 && myType == AItype.passiv)
+                    if (a == 3 && myType == AItype.passiv && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.SHOOTING_MODE)
                         anim.SetTrigger("Dance");
                     if (myType == AItype.agressive)
                         SearchForTarget();
