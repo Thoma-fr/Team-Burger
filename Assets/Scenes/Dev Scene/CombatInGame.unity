@@ -303,13 +303,14 @@ MonoBehaviour:
       name: 
       description: 
       price: 0
+      sprite: {fileID: 0}
       damage: 0
       shell: 0
       maxShell: 0
     money: 0
   enemyPrefab: {fileID: 0}
   faceTheCam: []
-  mainCam: {fileID: 0}
+  mainCam: {fileID: 405673315}
   test: {fileID: 0}
   isShooting: 0
   hasRotate: 0
@@ -739,6 +740,7 @@ GameObject:
   - component: {fileID: 796354541}
   - component: {fileID: 796354540}
   - component: {fileID: 796354539}
+  - component: {fileID: 796354542}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -829,6 +831,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &796354542
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796354537}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1057942838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,18 +1206,18 @@ MonoBehaviour:
   iDEnemy: 0
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.9058824, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0.5810958, b: 0, a: 1}
+    key2: {r: 0.11764707, g: 0.6156863, b: 0, a: 0}
+    key3: {r: 0.9056604, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
+    ctime0: 16384
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 65535
     ctime4: 0
     ctime5: 0
     ctime6: 0
@@ -1216,8 +1230,8 @@ MonoBehaviour:
     atime5: 0
     atime6: 0
     atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
+    m_Mode: 1
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   canvasParent: {fileID: 796354538}
 --- !u!1 &1731192179
@@ -1442,7 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

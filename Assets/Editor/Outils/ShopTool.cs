@@ -11,8 +11,13 @@ public class ShopTool : Editor
     {
         Shop myShop = (Shop)target;
         base.OnInspectorGUI();//affiche l'éditeur de base 
+        
+        myShop.itemname = EditorGUILayout.TextField(myShop.itemname);
+        myShop.description = EditorGUILayout.TextArea(myShop.description);
+        myShop.price = EditorGUILayout.IntField(myShop.price);
 
-        if(GUILayout.Button("Add Item"))//fais spawn un bouton qui déclanche la fonction AddItems
+
+        if (GUILayout.Button("Add Item"))//fais spawn un bouton qui déclanche la fonction AddItems
         {
             myShop.AddItems();
         }

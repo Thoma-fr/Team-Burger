@@ -12,7 +12,7 @@ public class ScrItemsData : ScriptableObject
         thisItem = null;
         foreach(Item item in itemsData)
         {
-            if(item.itemName == itemName)
+            if(item.name == itemName)
             {
                 thisItem = item;
                 return true;

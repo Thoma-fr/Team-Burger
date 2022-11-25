@@ -16,6 +16,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
     private TextMeshProUGUI pvText;
     private TextMeshProUGUI nameText;
     private Slider slider;
+    private Image fill;
 
     private bool isSetSliderValue = false;
     private bool isInCombat = true;
@@ -25,7 +26,10 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         nameText = canvasParent.GetChild(0).GetComponent<TextMeshProUGUI>();
         slider = canvasParent.GetChild(1).GetComponent<Slider>();
         pvText = slider.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        fill = slider.transform.GetChild(1).GetComponent<Image>();
+
         canvasParent.gameObject.SetActive(false);
+        transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0;
     }
 
     private void Start()
@@ -33,13 +37,16 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         if(iDEnemy < GameManager.instance.GetDefaultEnemiesData.allEnemiesData.Count)
             m_data = new EnemyData(GameManager.instance.GetDefaultEnemiesData.allEnemiesData[iDEnemy]);
 
+        canvasParent.GetComponent<Canvas>().worldCamera = Camera.main;
+
         nameText.text = m_data.name;
         slider.maxValue = m_data.maxHealth;
         slider.value = m_data.healthPoint;
         pvText.text = ((int)slider.value).ToString();
+        fill.color = gradient.Evaluate(1.0f);
     }
 
-    public string EnemyAttacking(out int damage)
+    public int EnemyAttacking(out string attName)
     {
         Attack current;
         if (m_data.attacks.Count >= 1)
@@ -50,8 +57,8 @@ public class EnemyController : BaseController , IShootable<PlayerData>
             Debug.Log("Attack par défault");
         }
 
-        damage = current.damage;
-        return current.attName;
+        attName = current.attName;
+        return current.damage;
     }
 
     private void Update()
@@ -59,41 +66,22 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         if (!isInCombat)
             return;
 
-        canvasParent.rotation = Quaternion.LookRotation(canvasParent.transform.position - Camera.main.transform.position, Vector3.up);
+        canvasParent.rotation = Quaternion.LookRotation(canvasParent.transform.position - GameManager.instance.mainCam.position, -Vector3.forward);
 
         if (isSetSliderValue)
+        {
             pvText.text = ((int)slider.value).ToString();
-    }
-
-    /*public bool Subscribing(out EnemyController ec, out EnemyData data)
-    {
-        try
-        {
-
-
-            ec = this;
-            data = m_data;
-            return true;
-        }
-        catch
-        {
-            ec = null;
-            data = null;
-            return false;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
         }
     }
-
-    public bool UnSubscribing()
-    {
-        return true;
-    }*/
 
     public void InitCombat()
     {
         canvasParent.gameObject.SetActive(true);
+        transform.GetChild(0).GetComponent<CanvasGroup>().DOFade(1, 0.8f);
     }
 
-    public bool TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         isSetSliderValue = true;
         m_data.healthPoint -= damage;
@@ -101,11 +89,6 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         Sequence takeDamageSequence = DOTween.Sequence();
         takeDamageSequence.Append(slider.DOValue(m_data.healthPoint, 1.8f));
         takeDamageSequence.AppendCallback(() => isSetSliderValue = false);
-
-        if (m_data.healthPoint <= 0)
-            return true;
-        else
-            return false;
     }
 
     public void OnInteraction(PlayerData actuator)

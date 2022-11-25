@@ -13,15 +13,27 @@ MonoBehaviour:
   m_Name: ItemsData
   m_EditorClassIdentifier: 
   itemsData:
-  - name: alex
-    description: ggg
+  - name: Grape
+    description: Miam
     price: 0
+    sprite: {fileID: 0}
     currentStack: 0
-    itemName: alex
-    maxStackable: 2
-  - name: oui
-    description: 
+    maxStackable: 1
+  - name: Queux d'amarage
+    description: Elle est lourde et en fonte
     price: 1000
+    sprite: {fileID: 0}
     currentStack: 0
-    itemName: oui
-    maxStackable: 5
+    maxStackable: 0
+  - name: Ordinateur HP
+    description: Fast as f*** boi
+    price: 1000
+    sprite: {fileID: 0}
+    currentStack: 0
+    maxStackable: 0
+  - name: Statue de Saint Sir++
+    description: "Rien \xE0 dire, juste ... PARFAIT !"
+    price: 1000
+    sprite: {fileID: 0}
+    currentStack: 0
+    maxStackable: 0

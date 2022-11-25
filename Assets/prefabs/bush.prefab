@@ -46,9 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287e8d6c4768f5e4682c575ad5228b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasRotate: 0
-  matPlane: {fileID: 5415767311182880774}
-  spriteImage: {fileID: 7350593942565004719}
 --- !u!1 &5415767311182880774
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,9 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287e8d6c4768f5e4682c575ad5228b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasRotate: 0
-  matPlane: {fileID: 0}
-  spriteImage: {fileID: 0}
 --- !u!1 &7350593942565004719
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,9 +227,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingLayerID: 1768496667
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0fd0dd4bf826fc940a01848df4b0f088, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1

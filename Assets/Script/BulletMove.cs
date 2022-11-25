@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    public float speed;
-    public float rotationSpeed;
-    public GameObject vCam;
-    public GameObject bullet;
+    [SerializeField]private float speed;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private GameObject vCam;
+    [SerializeField] private GameObject bullet;
     
     // Update is called once per frame
     private void Start()

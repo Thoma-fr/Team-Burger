@@ -20,8 +20,14 @@ public class CombatManagerInGame : MonoBehaviour
 	[SerializeField] private Transform commandBloc;
 	[SerializeField] private Transform playerStat;
 
+	public delegate void Callback();
 
-	bool useConsomable = false, waitPlayerInput = false;
+	/*[Header("Dialogue")]
+	[SerializeField, TextArea(2,5), Tooltip("")] private string introDialogue;*/
+
+
+	private bool useConsomable = false, waitPlayerInput = false;
+	private float dialogueBoxStartY, commandeBoxStartX;
 
 	public enum BATTLE_STATE
 	{
@@ -40,9 +46,9 @@ public class CombatManagerInGame : MonoBehaviour
 	{
 		playerData = GameManager.instance.GetPlayerData;
 		dialogueText = dialogueBloc.GetChild(0).GetComponent<TextMeshProUGUI>();
-		// --------------------------------------------------------------------------- DEBUG --------------------------------------------------------------------------- //
-		playerData.weaponInHand = playerData.weapons[0];
-		// ------------------------------------------------------------------------- FIN DEBUG ------------------------------------------------------------------------- //
+
+		dialogueBoxStartY = dialogueBloc.localPosition.y;
+		commandeBoxStartX = commandBloc.localPosition.x;
 
 		// Désactivation
 		commandBloc.gameObject.SetActive(false);
@@ -67,237 +73,75 @@ public class CombatManagerInGame : MonoBehaviour
 			case BATTLE_STATE.INIT:
 				if(enemyController)
                 {
+                    //PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
+                    dialogueText.text = "Que ............ !? ............ !? ............ ???";
+
 					enemyData = enemyController.m_data;
 					enemyController.InitCombat();
-					/*commandBloc.gameObject.SetActive(true);
-					dialogueBloc.gameObject.SetActive(true);*/
+
+					dialogueBloc.localPosition = new Vector2(dialogueBloc.localPosition.x, -700);
+					commandBloc.localPosition = new Vector2(1160, commandBloc.localPosition.y);
 				}
 				else
 					state = BATTLE_STATE.NONE;
-
-				/*Cursor.visible = true;
-				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
-				background.color = new Color32(40, 40, 40, 255);
-				// dialogueBloc.transform.localPosition = new Vector2(dialogueBloc.transform.localPosition.x, -40);
-				dialogueBloc.SetActive(false);
-				// commandeBloc.transform.localPosition = new Vector2(commandeBloc.transform.localPosition.x, -40);
-				commandeBloc.SetActive(false);
-
-				rectMask2D.padding = new Vector4(0, 347, 0, 347);
-
-				// ---------------- Enemy ---------------- //
-				sliderEnemy.maxValue = enemy.maxHealth;
-				sliderEnemy.value = enemy.healthPoint;
-				hpEnemy.text = enemy.healthPoint + "/" + enemy.maxHealth;
-				nameEnemy.text = enemy.name;
-				imageEnemy.sprite = enemy.battleSprite;
-				imageEnemy.color = new Color32(40, 40, 40, 0);
-				enemyStat.transform.localPosition = new Vector2(-400, enemyStat.transform.localPosition.y);
-				imageEnemy.gameObject.transform.localPosition = new Vector2(-200, 0);
-
-				// ---------------- Player ---------------- //
-				sliderPlayer.maxValue = player.maxHealth;
-				sliderPlayer.value = player.healthPoint;
-				hpPlayer.text = player.healthPoint + "/" + player.maxHealth;
-				namePlayer.text = player.name;
-				imagePlayer.sprite = player.battleSprite;
-				imagePlayer.color = new Color32(40, 40, 40, 0);
-				playerStat.transform.localPosition = new Vector2(400, playerStat.transform.localPosition.y);
-				imagePlayer.gameObject.transform.localPosition = new Vector2(200, imagePlayer.gameObject.transform.localPosition.y);*/
 
 				state = BATTLE_STATE.INTRO;
 				break;
 
 			case BATTLE_STATE.INTRO:
+				// ANIMATIONS
 				dialogueBloc.gameObject.SetActive(true);
-				dialogueText.text = "INTRODUCTION";
-
-				StartCoroutine(NextStateWithDelay(BATTLE_STATE.START, 2));
-
-				/*transparence.alpha = 1;
-
-				Sequence myStartSequence = DOTween.Sequence();
-				// Background
-				myStartSequence.Append(DOTween.To(() => rectMask2D.padding, window => rectMask2D.padding = window, new Vector4(0, 0, 0, 0), 1));
-				myStartSequence.Insert(0.5f, background.DOColor(new Color(1, 1, 1), 0.5f));
-				myStartSequence.PrependInterval(0.7f);
-				// Sprite Position
-				myStartSequence.Append(imageEnemy.gameObject.transform.DOLocalMoveX(0, 2f).SetEase(Ease.Linear));
-				myStartSequence.Join(imagePlayer.gameObject.transform.DOLocalMoveX(0, 2f).SetEase(Ease.Linear));
-				myStartSequence.Join(imageEnemy.DOFade(1, 0.5f));
-				myStartSequence.Join(imagePlayer.DOFade(1, 0.5f));
-				// Sprite Color
-				myStartSequence.Insert(2.5f, imageEnemy.DOColor(new Color(1, 1, 1), 0.7f));
-				myStartSequence.Join(imagePlayer.DOColor(new Color(1, 1, 1), 0.7f));
-				// Statistics
-				myStartSequence.Append(enemyStat.transform.DOLocalMoveX(-180, 0.5f).SetEase(Ease.OutBack));
-				myStartSequence.Insert(4f, playerStat.transform.DOLocalMoveX(180, 0.5f).SetEase(Ease.OutBack));
-				// Callback
-				myStartSequence.AppendCallback(EndIntroduction);
-
-				if (enemy._animatorCtrl != null)
-					myStartSequence.AppendCallback(() => enemyAnimator.runtimeAnimatorController = enemy._animatorCtrl);*/
+				Sequence intro = DOTween.Sequence();
+				intro.Append(dialogueBloc.DOLocalMoveY(dialogueBoxStartY, 0.7f).SetEase(Ease.OutElastic));
+				intro.AppendCallback(() => state = BATTLE_STATE.START);
 
 				break;
 
 			case BATTLE_STATE.START:
-				dialogueText.text = "START";
-				waitPlayerInput = true;
+				StartCoroutine(TypeSentence("Un ennemi apparait ! Il n'est pas content.", () => waitPlayerInput = true));
 
-				/*dialogueBloc.SetActive(true);
-				// dialogueBloc.transform.DOLocalMoveY(25, 0.5f);
-				dialogueText.text = "Un jeune beer est apparue. Vous sortez un gros fusil";*/
-				// StartCoroutine(NextStateWithDelay(BATTLE_STATE.CHOICE, 3));
 				break;
 
 			case BATTLE_STATE.CHOICE:
-				dialogueText.text = "CHOICE";
 				commandBloc.gameObject.SetActive(true);
+				commandBloc.localPosition = new Vector2(1160, commandBloc.localPosition.y);
+				StartCoroutine(TypeSentence("Que voulez-vous faire ?", () => commandBloc.DOLocalMoveX(commandeBoxStartX, 0.2f).SetEase(Ease.Linear)));
 
-				/*commandeBloc.SetActive(true);
-				// commandeBloc.transform.DOLocalMoveY(25, 0.5f);
-				dialogueText.text = "WHAT SHOULD YOU DO ?";*/
 				break;
 
 			case BATTLE_STATE.PLAYER_ACTION:
-				dialogueText.text = "ATTACK OF THE PLAYER";
 				if (useConsomable)
                 {
-					state = BATTLE_STATE.ENEMY_ACTION;
+					StartCoroutine(TypeSentence("Vous utilisez un item extraordinaire ! Wow, bien jouer ?", () => state = BATTLE_STATE.ENEMY_ACTION));
 					break;
                 }
 
-				if (enemyController.TakeDamage(playerData.weaponInHand.damage))
-					state = BATTLE_STATE.END;
-				else
-					state = BATTLE_STATE.ENEMY_ACTION;
-
-				/*dialogueText.text = "";
-				commandeBloc.SetActive(false);*/
-				// StartCoroutine(FightPhase());
+				StartCoroutine(CheckLife("Vous utilisez votre fusil !!!", () => enemyController.TakeDamage(playerData.weaponInHand.damage), BATTLE_STATE.ENEMY_ACTION));
+				GameManager.instance.UpdateAllUI();
 				break;
 
 			case BATTLE_STATE.ENEMY_ACTION:
-				dialogueText.text = "ATTACK OF THE ENEMY";
-				enemyController.EnemyAttacking(out int damage);
-				playerData.healthPoint -= damage;
+				playerData.healthPoint -= enemyController.EnemyAttacking(out string attName);
 
-				if (playerData.healthPoint <= 0)
-					state = BATTLE_STATE.END;
-				else
-					state = BATTLE_STATE.CHOICE;
-
+				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", () => GameManager.instance.UpdateAllUI(), BATTLE_STATE.CHOICE));
 				break;
 
 			case BATTLE_STATE.END:
-
-				dialogueBloc.gameObject.SetActive(false);
-				// commandBloc.gameObject.SetActive(false);
-
-				/*transparence.interactable = false;
-				transparence.blocksRaycasts = false;
-				Sequence myEndSequence = DOTween.Sequence();
-				myEndSequence.AppendInterval(1f);
-				myEndSequence.Append(transparence.DOFade(0, 1));
-				myEndSequence.AppendCallback(() => GameManager.instance.faceTheCam.Remove(enemiGameObj));
-				myEndSequence.AppendCallback(() => Destroy(enemiGameObj));
-				Cursor.visible = false;
+				enemyController.gameObject.GetComponent<NAVAI>().die();
 				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
-				PlayerController.playerInstance.isVise = false;*/
+
+				Sequence outro = DOTween.Sequence();
+				outro.Append(dialogueBloc.DOLocalMoveY(-700, 0.7f).SetEase(Ease.Linear));
+				outro.AppendCallback(() => dialogueBloc.gameObject.SetActive(false));
 				break;
 		}
 	}
-
-	/*private void EndIntroduction()
-	{
-		state = BATTLE_STATE.START;
-		transparence.interactable = true;
-		transparence.blocksRaycasts = true;
-	}
-	*/
 
 	private IEnumerator NextStateWithDelay(BATTLE_STATE _nextState, float duration)
 	{
 		yield return new WaitForSeconds(duration);
 		state = _nextState;
 	}
-
-	/*
-	private IEnumerator FightPhase()
-	{
-		yield return new WaitForSeconds(0.5f);
-		dialogueText.text = "Le chasseur utilise " + player.weaponInHand.name;
-		yield return new WaitForSeconds(0.5f);
-
-		// ATTACK JOUEUR
-		if (!useConsomable)
-		{
-			enemy.healthPoint -= player.weaponInHand.damage;
-			if (enemy._animatorCtrl != null)
-				enemyAnimator.SetTrigger("Hit");
-
-			imageEnemy.transform.DOShakePosition(0.7f, enemy.maxHealth / player.weaponInHand.damage * 2, 10, 90);
-			SetSliderValueEnemy = true;
-			sliderEnemy.DOValue(enemy.healthPoint, 1.5f);
-			yield return new WaitForSeconds(3f);
-			SetSliderValueEnemy = false;
-		}
-		else
-			useConsomable = false;
-
-		// L'enemie n'a plus de vie
-		if (enemy.healthPoint <= 0)
-		{
-			dialogueText.text = "L'ennemie est KO !";
-			yield return new WaitForSeconds(0.5f);
-			Sequence mySequence = DOTween.Sequence();
-			mySequence.Append(imageEnemy.transform.DOLocalMoveY(-80, 0.5f));
-			mySequence.Join(enemyStat.transform.DOLocalMoveX(-400, 0.5f));
-			mySequence.Insert(0.2f, imageEnemy.DOFade(0, 0.3f));
-
-			yield return new WaitForSeconds(1f);
-			dialogueText.text = "Félicitaion, tu as gagné 2512 de tune !";
-			state = BATTLE_STATE.END;
-		}
-		else
-		{
-			Attack enemyAtt = enemy.attacks[Random.Range(0, enemy.attacks.Count - 1)];
-			dialogueText.text = "L'ennemie utilise " + enemyAtt.attName;
-			yield return new WaitForSeconds(0.5f);
-
-			// ATTACK ENNEMIE
-			player.healthPoint -= enemyAtt.damage;
-			// SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
-
-			if (enemy._animatorCtrl != null)
-				enemyAnimator.SetTrigger("Attack");
-
-			yield return new WaitForSeconds(0.2f);
-
-			this.transform.DOShakePosition(0.7f, player.maxHealth / enemyAtt.damage * 2, 10, 90);
-			SetSliderValuePlayer = true;
-			sliderPlayer.DOValue(player.healthPoint, 1.5f);
-			yield return new WaitForSeconds(3f);
-			SetSliderValuePlayer = false;
-
-			// Le joueur n'a plus de vie
-			if (enemy.healthPoint <= 0)
-			{
-				dialogueText.text = "Le chasseur est KO !";
-				yield return new WaitForSeconds(0.5f);
-				Sequence mySequence = DOTween.Sequence();
-				mySequence.Append(imagePlayer.transform.DOLocalMoveY(-80, 0.5f));
-				mySequence.Join(playerStat.transform.DOLocalMoveX(400, 0.5f));
-				mySequence.Insert(0.2f, imagePlayer.DOFade(0, 0.3f));
-
-				yield return new WaitForSeconds(1f);
-				state = BATTLE_STATE.END;
-			}
-			else
-				state = BATTLE_STATE.CHOICE;
-		}
-	}
-	*/
 
 	public void StartBattlePhase(EnemyController other)
 	{
@@ -328,6 +172,40 @@ public class CombatManagerInGame : MonoBehaviour
 	{
 		useConsomable = true;
 		state = BATTLE_STATE.PLAYER_ACTION;
+	}
+
+	private IEnumerator CheckLife(string message, Callback action, BATTLE_STATE nextState)
+    {
+		yield return StartCoroutine(TypeSentence(message, action));
+		yield return new WaitForSeconds(1.8f);
+
+		if (enemyController.m_data.healthPoint <= 0)
+        {
+			yield return StartCoroutine(TypeSentence("Félicitation vous avez vaincu l'ennemi. ........... Vous récupérer une récompense !"));
+			state = BATTLE_STATE.END;
+        }
+		else if (enemyController.m_data.healthPoint <= 0)
+        {
+			yield return StartCoroutine(TypeSentence("L'ennemi a été plus fort que vous. Vous êtes désormait mort. Pour rejouer veuillez aller sur https//ecodestructor.shop et acheter le jeu pour 19.99€."));
+			state = BATTLE_STATE.END;
+        }
+		else
+			state = nextState;
+    }
+
+	IEnumerator TypeSentence(string sentence, Callback callback = null)
+	{
+		dialogueText.text = "";
+		foreach (char letter in sentence.ToCharArray())
+		{
+			dialogueText.text += letter;
+			yield return new WaitForSeconds(0.02f);
+		}
+
+		yield return new WaitForSeconds(0.3f);
+
+		if (callback != null)
+			callback();
 	}
 
 	/*

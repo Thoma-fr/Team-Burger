@@ -8,6 +8,8 @@ TagManager:
   - Bush
   - Bullet
   - Trap
+  - NPC
+  - decors
   layers:
   - Default
   - TransparentFX
@@ -48,6 +50,9 @@ TagManager:
   - name: map
     uniqueID: 1094190247
     locked: 0
-  - name: Tree
+  - name: 3D
     uniqueID: 1768496667
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 3497116965
     locked: 0

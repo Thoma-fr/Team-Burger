@@ -13,11 +13,10 @@ public class BrowserManager : MonoBehaviour
     [SerializeField] private GameObject UIBrowserPrefab;
     [SerializeField] private TextMeshProUGUI GUIText;
     [SerializeField] private int numberShow = 4;
-    [SerializeField] private int stepPosition = 10;
+    [SerializeField] private Transform parentPages;
     int pageID = 0;
     int lastPageID;
     int maxPage;
-    float maxHeight;
 
     [Header("Description Browser")]
     [SerializeField] private GameObject DescriptionRoot;
@@ -37,7 +36,6 @@ public class BrowserManager : MonoBehaviour
     {
         browserList = source.Cast<Object>().ToList();
         maxPage = (int)(source.Count / numberShow);
-        maxHeight = (stepPosition * (numberShow / 2.0f)) - stepPosition / 2;
         pageID = 0;
         lastPageID = -1;
         DisplayPage();
@@ -66,7 +64,6 @@ public class BrowserManager : MonoBehaviour
     private void DisplayPage()
     {
         pageID = Mathf.Clamp(pageID, 0, maxPage);
-
         GUIText.text = "Page " + (pageID + 1) + "/" + (maxPage + 1);
 
         if (pageID == lastPageID)
@@ -81,8 +78,8 @@ public class BrowserManager : MonoBehaviour
         {
             if(pageID * numberShow + id < browserList.Count)
             {
-                GameObject instance = Instantiate<GameObject>(UIBrowserPrefab, this.transform);
-                instance.transform.localPosition = new Vector2(0 , maxHeight - (id * stepPosition));
+                GameObject instance = Instantiate<GameObject>(UIBrowserPrefab, parentPages);
+                // instance.transform.localPosition = new Vector2(0 , maxHeight - (id * stepPosition));
                 instance.GetComponent<BrowserIObject>().obj = browserList[pageID * numberShow + id];
                 //instance.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = browserList[pageID * numberShow + id].GetName();
                 //instance.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = browserList[pageID * numberShow + id].GetContent();
@@ -101,7 +98,7 @@ public class BrowserManager : MonoBehaviour
             DescriptionRoot.SetActive(true);
 
         selectedObject = other;
-        //descriptionImage.sprite = what.sprit;
+        descriptionImage.sprite = other.sprite;
         descriptionText.text = other.description;
     }
 

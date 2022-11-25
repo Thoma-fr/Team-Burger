@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public class Volumehit : MonoBehaviour
 {
-    public Volume Volume;
+    [SerializeField] private Volume Volume;
 
     private void Start()
     {
