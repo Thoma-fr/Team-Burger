@@ -75,7 +75,8 @@ public class NAVAI : MonoBehaviour
     }
     private void Update()
     {
-        anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
+        if(anim!=null)
+            anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
         if (agent.velocity.x > 0)
         {
             visualEffect.SetFloat("DirVel", agent.acceleration* -1);
@@ -187,14 +188,14 @@ public class NAVAI : MonoBehaviour
         {
             //Debug.Log("hit");
             Time.timeScale = 1f;
-            collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            //collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             Instantiate(hitcam, collision.contacts[0].point, transform.rotation);
             if (camFight != null)
             {
                 camFight.SetActive(true);
                 camFight.transform.parent = null;
             }
-            Destroy(collision.gameObject.transform);
+            Destroy(collision.gameObject);
             GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
             GameManager.instance.RotateWorld(GameManager.instance.mainCam);
         }

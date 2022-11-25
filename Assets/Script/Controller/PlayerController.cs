@@ -11,10 +11,11 @@ using UnityEngine.Tilemaps;
 using System;
 using System.Threading;
 using Unity.Mathematics;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerController : BaseController
 {
-	
+	[SerializeField]private GameObject minimap;
 	[HideInInspector] public bool isVise = false;
 	private Animator animator;
 	private SpriteRenderer sp;
@@ -87,6 +88,7 @@ public class PlayerController : BaseController
         switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
+				minimap.SetActive(true);
                 canvasReticle.SetActive(false);
                 target.GetComponent<SpriteRenderer>().enabled = true;
                
@@ -113,6 +115,7 @@ public class PlayerController : BaseController
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
+				minimap.SetActive(false);
                 canvasReticle.SetActive(true);
 				target.GetComponent<SpriteRenderer>().enabled = false;
                 canvasReticle.transform.position = Input.mousePosition;
