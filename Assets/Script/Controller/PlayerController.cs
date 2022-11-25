@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
-using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEngine.VFX;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 using System;
-using System.Threading;
-using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 
 public class PlayerController : BaseController
 {
