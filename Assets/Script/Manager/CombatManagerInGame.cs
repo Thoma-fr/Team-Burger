@@ -17,6 +17,9 @@ public class CombatManagerInGame : MonoBehaviour
 	[SerializeField] private Transform dialogueBloc;
 	private TextMeshProUGUI dialogueText;
 
+	[SerializeField] private TextMeshProUGUI count;
+	private int nbAnimalCount = 0;
+
 	[SerializeField] private Transform commandBloc;
 	[SerializeField] private Transform playerStat;
 
@@ -59,6 +62,8 @@ public class CombatManagerInGame : MonoBehaviour
 		commandBloc.gameObject.SetActive(false);
 		dialogueBloc.gameObject.SetActive(false);
 		sourceAudio = gameObject.GetComponent<AudioSource>();
+
+		count.text = "0";
 	}
 
 	void Update()
@@ -193,6 +198,8 @@ public class CombatManagerInGame : MonoBehaviour
 		if (enemyController.m_data.healthPoint <= 0)
         {
 			yield return StartCoroutine(TypeSentence("Félicitation vous avez vaincu l'ennemi. ........... Vous récupérer une récompense !"));
+			nbAnimalCount++;
+			count.text = nbAnimalCount.ToString();
 			state = BATTLE_STATE.END;
         }
 		else if (enemyController.m_data.healthPoint <= 0)
