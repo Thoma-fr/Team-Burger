@@ -35,20 +35,20 @@ public class Shop : MonoBehaviour
         //requestedItems.Add(itemAdded);
         foreach (Item item in requestedItems)
         {
-            if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName) != null)
+            if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.name == item.name) != null)
             {
-                string st = GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName).itemName;
+                string st = GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.name == item.name).name;
 
-                if (st == item.itemName)//hhoooo c'est bo un debug qui fait de la couleur 
+                if (st == item.name)//hhoooo c'est bo un debug qui fait de la couleur 
                 {
-                    Debug.Log("<color=green>the item :" + item.itemName + "</color> has been added to the Shop");
+                    Debug.Log("<color=green>the item :" + item.name + "</color> has been added to the Shop");
                     itemTosell.Add(item);// hop hop hop ont ajoute ça a la liste des items a vendre
 
                 }
             }
             else //si le nom de l'item existe pas, ça fait une erreur
             {
-                Debug.LogError("<color=red>the item : " + item.itemName + "</color> has not been added to the Shop");
+                Debug.LogError("<color=red>the item : " + item.name + "</color> has not been added to the Shop");
             }// un Log.Error car ça fait menacant bhouuuuu en plus y'a du rouge bbooooooo
 
         }
@@ -60,7 +60,7 @@ public class Shop : MonoBehaviour
         {
             GameObject go = Instantiate(prefab, itemsParent);
             buttons.Add(go);
-            go.GetComponent<ItemShopInfo>().nameText.GetComponent<TextMeshProUGUI>().text = i.itemName;
+            go.GetComponent<ItemShopInfo>().nameText.GetComponent<TextMeshProUGUI>().text = i.name;
             go.GetComponent<ItemShopInfo>().priceText.GetComponent<TextMeshProUGUI>().text = i.price.ToString();
 
         }

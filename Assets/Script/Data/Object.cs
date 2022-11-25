@@ -7,4 +7,5 @@ public class Object
     public string name;
     public string description;
     public int price;
+    public Sprite sprite;
 }

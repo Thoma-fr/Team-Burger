@@ -6,12 +6,11 @@ using UnityEngine;
 public class Item : Object
 {
 	public int currentStack;
-	public string itemName;
 	public int maxStackable;
 
 	public Item(string b_name, int b_maxStackable)
 	{
-		itemName = b_name;
+		name = b_name;
 		maxStackable = b_maxStackable;
 	}
 

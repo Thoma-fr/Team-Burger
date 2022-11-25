@@ -98,7 +98,7 @@ public class BrowserManager : MonoBehaviour
             DescriptionRoot.SetActive(true);
 
         selectedObject = other;
-        //descriptionImage.sprite = what.sprit;
+        descriptionImage.sprite = other.sprite;
         descriptionText.text = other.description;
     }
 
