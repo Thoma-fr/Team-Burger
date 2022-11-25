@@ -73,7 +73,7 @@ public class CombatManagerInGame : MonoBehaviour
 			case BATTLE_STATE.INIT:
 				if(enemyController)
                 {
-                    //PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
+                    PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
                     dialogueText.text = "Que ............ !? ............ !? ............ ???";
 
 					enemyData = enemyController.m_data;

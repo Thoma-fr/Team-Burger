@@ -154,8 +154,8 @@ public class CombatSystem : MonoBehaviour
 				// Callback
 				myStartSequence.AppendCallback(EndIntroduction);
 
-				if (enemy._animatorCtrl != null)
-					myStartSequence.AppendCallback(() => enemyAnimator.runtimeAnimatorController = enemy._animatorCtrl);
+				/*if (enemy._animatorCtrl != null)
+					myStartSequence.AppendCallback(() => enemyAnimator.runtimeAnimatorController = enemy._animatorCtrl);*/
 
 				break;
 
@@ -216,8 +216,8 @@ public class CombatSystem : MonoBehaviour
 		if (!useConsomable)
 		{
 			enemy.healthPoint -= player.weaponInHand.damage;
-			if (enemy._animatorCtrl != null)
-				enemyAnimator.SetTrigger("Hit");
+			/*if (enemy._animatorCtrl != null)
+				enemyAnimator.SetTrigger("Hit");*/
 
 			imageEnemy.transform.DOShakePosition(0.7f, enemy.maxHealth / player.weaponInHand.damage * 2, 10, 90);
 			SetSliderValueEnemy = true;
@@ -252,8 +252,8 @@ public class CombatSystem : MonoBehaviour
 			player.healthPoint -= enemyAtt.damage;
 			// SetSlider(sliderPlayer, hpPlayer, player.healthPoint, player.maxHealth);
 
-			if (enemy._animatorCtrl != null)
-				enemyAnimator.SetTrigger("Attack");
+			/*if (enemy._animatorCtrl != null)
+				enemyAnimator.SetTrigger("Attack");*/
 
 			yield return new WaitForSeconds(0.2f);
 

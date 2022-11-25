@@ -29,7 +29,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         fill = slider.transform.GetChild(1).GetComponent<Image>();
 
         canvasParent.gameObject.SetActive(false);
-        transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0;
+        canvasParent.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     private void Start()

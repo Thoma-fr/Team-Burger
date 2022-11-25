@@ -35,9 +35,9 @@ public class UIPlayerStat : MonoBehaviour
         weaponInHand.sprite = GameManager.instance.GetPlayerData.weaponInHand.sprite;
     }
 
-    private void OnDisable()
+    /*private void OnDisable()
     {
         GameManager.instance.onPlayerStatChanged -= UpdateLifeBar;
         GameManager.instance.onPlayerStatChanged -= UpdateStat;
-    }
+    }*/
 }

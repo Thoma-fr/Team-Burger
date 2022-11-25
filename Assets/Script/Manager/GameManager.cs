@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using static UnityEditor.Progress;
 using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +46,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         playerData = new PlayerData(DeafaultPlayerData.playerData);
         playerData.weaponInHand = DefaultWeaponsData.weapons[4];
         for (int i = 0; i < 3; i++)
@@ -54,9 +56,6 @@ public class GameManager : MonoBehaviour
             playerData.inventory.Add(DefaultItemsData.itemsData[Random.Range(0, DefaultItemsData.itemsData.Count)]);
             playerData.weapons.Add(DefaultWeaponsData.weapons[Random.Range(0, DefaultWeaponsData.weapons.Count)]);
         }
-
-        if (instance == null)
-            instance = this;
     }
 
     public void OnBattleActivation(EnemyController ec)
