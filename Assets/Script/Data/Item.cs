@@ -14,6 +14,15 @@ public class Item : Object
 		maxStackable = b_maxStackable;
 	}
 
+	public Item(Item clone)
+	{
+		currentStack = clone.currentStack;
+		maxStackable = clone.maxStackable;
+		name = clone.name;
+		description = clone.description;
+		price = clone.price;
+}
+
 	public void UseItem()
 	{
 		Debug.Log("Item Used");

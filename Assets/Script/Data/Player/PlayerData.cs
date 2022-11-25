@@ -50,10 +50,9 @@ public class PlayerData : BaseData
         {
             if (GameManager.instance.GetDefaultItemsData.ContainItem(item.name, out Item info))
             {
-                Debug.Log(inventory.Count);
-                inventory.Add(info);
-                Debug.Log(inventory.Count);
-                inventory[inventory.IndexOf(info)].currentStack = number;
+                Item itemToAdd = new Item(GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.name == info.name));
+                inventory.Add(itemToAdd);
+                inventory[inventory.IndexOf(itemToAdd)].currentStack = Mathf.Clamp(number, 1, itemToAdd.maxStackable);
             }
         }
     }
