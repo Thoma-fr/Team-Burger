@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 
 public class Shop : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private Transform itemsParent;
     [SerializeField] private GameObject shopPanel;
-    
+
+    public string itemname;
+    public string description;
+    public int price;
+    Item itemAdded;
 
 
     [Header("Item a ajouter dans le magasin")]
@@ -23,7 +28,11 @@ public class Shop : MonoBehaviour
     [SerializeField] private ScrItemsData GetDefaultItemsData;
     public void AddItems()//si y'a une erreur de null référence il faut metre en play et arrèter 
     {
-        
+        //itemAdded.name= itemname;
+        //itemAdded.description= description;
+        //itemAdded.price= price;
+
+        //requestedItems.Add(itemAdded);
         foreach (Item item in requestedItems)
         {
             if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName) != null)
