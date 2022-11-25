@@ -27,10 +27,10 @@ public class NAVAI : MonoBehaviour
 
     [SerializeField] private float maxIdleTime;
 
-    
+
     [Header("nav parameter")]
-    public float speed=3.5f;
-    public float acceleration=8f;
+    public float speed;
+    public float acceleration;
 
     private GameObject player;
     //audio
@@ -49,10 +49,17 @@ public class NAVAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        if (speed == 0)
+        {
+            speed = 3.5f;
+            acceleration = 8;
+        }
         agent.speed = speed;
         agent.acceleration = acceleration;
         player = PlayerController.Instance.gameObject;
         visualEffect = GetComponent<VisualEffect>();
+
+
     }
     private void OnDrawGizmosSelected()
     {
