@@ -61,7 +61,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         if (!isInCombat)
             return;
 
-        canvasParent.rotation = Quaternion.LookRotation(canvasParent.transform.position - Camera.main.transform.position, Vector3.up);
+        canvasParent.rotation = Quaternion.LookRotation(canvasParent.transform.position - GameManager.instance.mainCam.position, -Vector3.forward);
 
         if (isSetSliderValue)
             pvText.text = ((int)slider.value).ToString();

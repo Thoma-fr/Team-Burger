@@ -233,7 +233,14 @@ public class NAVAI : MonoBehaviour
         }
 
     }
-
+    public void die()
+    {
+        isdead = true;
+        GameManager.instance.faceTheCam.Remove(gameObject);
+        Destroy(camFight);
+        Destroy(gameObject);
+        PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+    }
     public void FlipSpriteX()
     {
         if(myType==AItype.agressive)
