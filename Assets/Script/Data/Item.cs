@@ -17,7 +17,6 @@ public class Item : Object
 	public Item(Item clone)
 	{
 		currentStack = clone.currentStack;
-		itemName = clone.itemName;
 		maxStackable = clone.maxStackable;
 		name = clone.name;
 		description = clone.description;
