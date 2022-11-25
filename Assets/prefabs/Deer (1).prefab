@@ -897,7 +897,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  canvasParent: {fileID: 0}
+  canvasParent: {fileID: 5839584596608259050}
 --- !u!82 &972869133
 AudioSource:
   m_ObjectHideFlags: 0

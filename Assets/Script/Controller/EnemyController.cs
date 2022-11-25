@@ -33,6 +33,8 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         if(iDEnemy < GameManager.instance.GetDefaultEnemiesData.allEnemiesData.Count)
             m_data = new EnemyData(GameManager.instance.GetDefaultEnemiesData.allEnemiesData[iDEnemy]);
 
+        canvasParent.GetComponent<Canvas>().worldCamera = Camera.main;
+
         nameText.text = m_data.name;
         slider.maxValue = m_data.maxHealth;
         slider.value = m_data.healthPoint;
