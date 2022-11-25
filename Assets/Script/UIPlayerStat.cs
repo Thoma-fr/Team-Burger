@@ -9,6 +9,7 @@ public class UIPlayerStat : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI statText;
+    [SerializeField] private Image weaponInHand;
 
     private void Start()
     {
@@ -30,7 +31,8 @@ public class UIPlayerStat : MonoBehaviour
 
     private void UpdateStat()
     {
-        statText.text = GameManager.instance.GetPlayerData.healthPoint.ToString();
+        statText.text = GameManager.instance.GetPlayerData.name + "\n\nStatistic :\nVie Restante : " + GameManager.instance.GetPlayerData.healthPoint + "\nVieTotale : " + GameManager.instance.GetPlayerData.maxHealth + "\nMonnaie : " + GameManager.instance.GetPlayerData.money;
+        weaponInHand.sprite = GameManager.instance.GetPlayerData.weaponInHand.sprite;
     }
 
     private void OnDisable()

@@ -46,9 +46,6 @@ public class CombatManagerInGame : MonoBehaviour
 	{
 		playerData = GameManager.instance.GetPlayerData;
 		dialogueText = dialogueBloc.GetChild(0).GetComponent<TextMeshProUGUI>();
-		// --------------------------------------------------------------------------- DEBUG --------------------------------------------------------------------------- //
-		playerData.weaponInHand = playerData.weapons[0];
-		// ------------------------------------------------------------------------- FIN DEBUG ------------------------------------------------------------------------- //
 
 		dialogueBoxStartY = dialogueBloc.localPosition.y;
 		commandeBoxStartX = commandBloc.localPosition.x;
@@ -120,6 +117,7 @@ public class CombatManagerInGame : MonoBehaviour
                 }
 
 				StartCoroutine(CheckLife("Vous utilisez votre fusil !!!", () => enemyController.TakeDamage(playerData.weaponInHand.damage), BATTLE_STATE.ENEMY_ACTION));
+				GameManager.instance.UpdateAllUI();
 				break;
 
 			case BATTLE_STATE.ENEMY_ACTION:
