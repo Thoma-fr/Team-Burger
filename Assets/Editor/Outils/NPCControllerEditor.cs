@@ -16,7 +16,7 @@ public class NPCControllerEditor : Editor
     private int choice = 0;
     private SerializedProperty nameProperty, sentencesProperty, altSentencesProperty, stateProperty; 
 
-    private ReorderableList zoneList, itemList;
+    private ReorderableList zoneList, itemList, audioList;
 
 
     private void OnEnable()
@@ -30,12 +30,14 @@ public class NPCControllerEditor : Editor
 
         zoneList = new ReorderableList(serializedObject, serializedObject.FindProperty("zoneToUnlock"), true, true, true, true);
         itemList = new ReorderableList(serializedObject, serializedObject.FindProperty("itemToGive"), true, true, true, true);
+        audioList = new ReorderableList(serializedObject, serializedObject.FindProperty("sons"), true, true, true, true);
 
         zoneList.drawElementCallback = DrawListZones;
         zoneList.drawHeaderCallback = DrawHeaderZones;
         itemList.drawElementCallback = DrawListItems;
         itemList.drawHeaderCallback = DrawHeaderItems;
-
+        audioList.drawElementCallback = DrawListAudio;
+        audioList.drawHeaderCallback = DrawHeaderAudio;
 
 
         /*try
@@ -66,6 +68,23 @@ public class NPCControllerEditor : Editor
     void DrawHeaderZones(Rect rect)
     {
         string name = "Zones";
+        EditorGUI.LabelField(rect, name);
+    }
+
+    void DrawListAudio(Rect rect, int index, bool isActive, bool isFocused)
+    {
+        SerializedProperty element = audioList.serializedProperty.GetArrayElementAtIndex(index);
+
+        EditorGUI.LabelField(new Rect(rect.x, rect.y, 100, EditorGUIUtility.singleLineHeight), "Son " + index);
+        EditorGUI.PropertyField(
+            new Rect(rect.x + 50, rect.y, 100, EditorGUIUtility.singleLineHeight),
+            element,
+            GUIContent.none);
+    }
+
+    void DrawHeaderAudio(Rect rect)
+    {
+        string name = "Sons";
         EditorGUI.LabelField(rect, name);
     }
 
@@ -133,6 +152,8 @@ public class NPCControllerEditor : Editor
             itemList.DoLayoutList();
         else if (myObject.state == NPCState.ZONER)
             zoneList.DoLayoutList();
+
+        audioList.DoLayoutList();
 
         serializedObject.ApplyModifiedProperties();
 

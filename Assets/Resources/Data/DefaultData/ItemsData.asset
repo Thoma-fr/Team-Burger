@@ -18,22 +18,22 @@ MonoBehaviour:
     price: 0
     sprite: {fileID: 0}
     currentStack: 0
-    maxStackable: 1
+    maxStackable: 100
   - name: Queux d'amarage
     description: Elle est lourde et en fonte
     price: 1000
     sprite: {fileID: 0}
     currentStack: 0
-    maxStackable: 0
+    maxStackable: 50
   - name: Ordinateur HP
     description: Fast as f*** boi
     price: 1000
     sprite: {fileID: 0}
     currentStack: 0
-    maxStackable: 0
+    maxStackable: 10
   - name: Statue de Saint Sir++
     description: "Rien \xE0 dire, juste ... PARFAIT !"
     price: 1000
     sprite: {fileID: 0}
     currentStack: 0
-    maxStackable: 0
+    maxStackable: 3

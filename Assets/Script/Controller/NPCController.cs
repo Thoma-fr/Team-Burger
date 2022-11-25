@@ -23,10 +23,12 @@ public class NPCController : MonoBehaviour, Interactable
 	public List<Item> itemToGive;
 	public List<GameObject> zoneToUnlock;
 
+	public List<AudioClip> sons;
+
     public void Interact()
 	{
 		PlayerController.Instance.npc = this;
-		
+		GetComponent<AudioSource>().PlayOneShot(sons[Random.Range(0, sons.Count)]);
 
 		switch (state)
 		{
