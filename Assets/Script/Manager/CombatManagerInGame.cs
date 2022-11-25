@@ -21,8 +21,8 @@ public class CombatManagerInGame : MonoBehaviour
 	[SerializeField] private Transform playerStat;
 
 	[Header("Audio")]
-	[SerializeField] private AudioClip attaquePlayerClip;
-	[SerializeField] private AudioClip attaqueEnnemyClip;
+	[SerializeField] private List<AudioClip> attaquePlayerClip;
+	[SerializeField] private List<AudioClip> attaqueEnnemyClip;
 	private AudioSource sourceAudio;
 
 	public delegate void Callback();
@@ -125,14 +125,14 @@ public class CombatManagerInGame : MonoBehaviour
 					break;
                 }
 
-				StartCoroutine(CheckLife("Vous utilisez votre arme !!!", PlayAudio(attaquePlayerClip, () => enemyController.TakeDamage(playerData.weaponInHand.damage)), BATTLE_STATE.ENEMY_ACTION));
+				StartCoroutine(CheckLife("Vous utilisez votre arme !!!", PlayAudio(attaquePlayerClip[Random.Range(0, attaquePlayerClip.Count)], () => enemyController.TakeDamage(playerData.weaponInHand.damage)), BATTLE_STATE.ENEMY_ACTION));
 				GameManager.instance.UpdateAllUI();
 				break;
 
 			case BATTLE_STATE.ENEMY_ACTION:
 				playerData.healthPoint -= enemyController.EnemyAttacking(out string attName);
 
-				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", PlayAudio(attaqueEnnemyClip, () => GameManager.instance.UpdateAllUI()), BATTLE_STATE.CHOICE));
+				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", PlayAudio(attaqueEnnemyClip[Random.Range(0, attaqueEnnemyClip.Count)], () => GameManager.instance.UpdateAllUI()), BATTLE_STATE.CHOICE));
 				break;
 
 			case BATTLE_STATE.END:

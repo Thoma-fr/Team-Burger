@@ -1066,6 +1066,40 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3cb1d3a8976e96b47b8a606cdc64b30b, type: 3}
   - {fileID: 8300000, guid: 5d7af08ce09890544a13cbc3d18704ea, type: 3}
   - {fileID: 8300000, guid: 6f5ccd5e1ece4734ba5c3e5704aeee8c, type: 3}
+  - {fileID: 8300000, guid: ac998599aa3c2de49bc66e397f70d793, type: 3}
+  - {fileID: 8300000, guid: 58befdb40d1b9e741863822f5ec065f1, type: 3}
+  - {fileID: 8300000, guid: ca85e3df9e493f04aa24ac6baa97dc8a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!195 &972869132
 NavMeshAgent:
   m_ObjectHideFlags: 0
