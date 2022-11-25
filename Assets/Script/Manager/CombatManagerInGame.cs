@@ -65,7 +65,8 @@ public class CombatManagerInGame : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
-				if(enemyController)
+                PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
+                if (enemyController)
                 {
 					enemyData = enemyController.m_data;
 					enemyController.InitCombat();
@@ -190,8 +191,9 @@ public class CombatManagerInGame : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.END:
-
-				dialogueBloc.gameObject.SetActive(false);
+				enemyController.gameObject.GetComponent<NAVAI>().die();
+                PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+                dialogueBloc.gameObject.SetActive(false);
 				// commandBloc.gameObject.SetActive(false);
 
 				/*transparence.interactable = false;

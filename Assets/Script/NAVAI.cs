@@ -187,6 +187,7 @@ public class NAVAI : MonoBehaviour
         {
             //Debug.Log("hit");
             Time.timeScale = 1f;
+            collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             Instantiate(hitcam, collision.contacts[0].point, transform.rotation);
             if (camFight != null)
             {
@@ -233,7 +234,14 @@ public class NAVAI : MonoBehaviour
         }
 
     }
-
+    public void die()
+    {
+        isdead = true;
+        GameManager.instance.faceTheCam.Remove(gameObject);
+        Destroy(camFight);
+        Destroy(gameObject);
+        PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+    }
     public void FlipSpriteX()
     {
         if(myType==AItype.agressive)
