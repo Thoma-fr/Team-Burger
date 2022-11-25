@@ -48,10 +48,14 @@ public class GameManager : MonoBehaviour
 
         playerData = new PlayerData(DeafaultPlayerData.playerData);
         playerData.weaponInHand = DefaultWeaponsData.weapons[4];
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
+        {
+            playerData.weapons.Add(DefaultWeaponsData.weapons[Random.Range(0, DefaultWeaponsData.weapons.Count)]);
+        }
+
+        for (int i = 0; i < 15; i++)
         {
             playerData.inventory.Add(DefaultItemsData.itemsData[Random.Range(0, DefaultItemsData.itemsData.Count)]);
-            playerData.weapons.Add(DefaultWeaponsData.weapons[Random.Range(0, DefaultWeaponsData.weapons.Count)]);
         }
     }
 
