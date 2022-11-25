@@ -128,6 +128,9 @@ public class CombatManagerInGame : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.END:
+				enemyController.gameObject.GetComponent<NAVAI>().die();
+				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+
 				Sequence outro = DOTween.Sequence();
 				outro.Append(dialogueBloc.DOLocalMoveY(-700, 0.7f).SetEase(Ease.Linear));
 				outro.AppendCallback(() => dialogueBloc.gameObject.SetActive(false));

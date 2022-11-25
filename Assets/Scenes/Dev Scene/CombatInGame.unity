@@ -309,7 +309,7 @@ MonoBehaviour:
     money: 0
   enemyPrefab: {fileID: 0}
   faceTheCam: []
-  mainCam: {fileID: 0}
+  mainCam: {fileID: 405673315}
   test: {fileID: 0}
   isShooting: 0
   hasRotate: 0
