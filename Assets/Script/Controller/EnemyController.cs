@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using JetBrains.Annotations;
 
 public class EnemyController : BaseController , IShootable<PlayerData>
 {
     [SerializeField] private int iDEnemy;
     [SerializeField] private Gradient gradient;
     [SerializeField] private Transform canvasParent;
-
+    [SerializeField] private GameObject critpoint;
+    
     public EnemyData m_data { get; private set; }
 
     private TextMeshProUGUI pvText;
@@ -29,7 +31,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         fill = slider.transform.GetChild(1).GetComponent<Image>();
 
         canvasParent.gameObject.SetActive(false);
-        transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0;
+        canvasParent.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     private void Start()
@@ -78,13 +80,21 @@ public class EnemyController : BaseController , IShootable<PlayerData>
     public void InitCombat()
     {
         canvasParent.gameObject.SetActive(true);
-        transform.GetChild(0).GetComponent<CanvasGroup>().DOFade(1, 0.8f);
+        canvasParent.GetComponent<CanvasGroup>().DOFade(1, 0.8f);
     }
 
     public void TakeDamage(int damage)
     {
         isSetSliderValue = true;
-        m_data.healthPoint -= damage;
+        int critick = Random.Range(0, 5);
+        if (critick == 3)
+        {
+            critpoint.SetActive(true);
+            StartCoroutine(desableVFX());
+            m_data.healthPoint -= damage * 5;
+        }
+        else
+            m_data.healthPoint -= damage;
 
         Sequence takeDamageSequence = DOTween.Sequence();
         takeDamageSequence.Append(slider.DOValue(m_data.healthPoint, 1.8f));
@@ -93,5 +103,11 @@ public class EnemyController : BaseController , IShootable<PlayerData>
 
     public void OnInteraction(PlayerData actuator)
     { 
+    }
+    IEnumerator desableVFX()
+    {
+        yield return new WaitForSeconds(1);
+        critpoint.SetActive(false);
+
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 
 
 [System.Serializable]
@@ -15,7 +14,7 @@ public class EnemyData : BaseData
     public EnemyData(EnemyData baseEnemyData) : base(baseEnemyData.name, baseEnemyData.battleSprite, baseEnemyData.maxHealth, baseEnemyData.healthPoint)
     {
         attacks = new List<Attack>(baseEnemyData.attacks);
-        _animatorCtrl = baseEnemyData._animatorCtrl;
+        //_animatorCtrl = baseEnemyData._animatorCtrl;
     }
 
     // ANCIEN
@@ -29,7 +28,7 @@ public class EnemyData : BaseData
     [Range(0, 100)]
     public int menace = 50;
 
-    public AnimatorController _animatorCtrl;
+    //public AnimatorController _animatorCtrl;
 
     // ANCIEN
     //public bool alwaysRun;

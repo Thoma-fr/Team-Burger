@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: acceleration
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5769312945652766838, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5769312946104230817, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -110,6 +114,22 @@ PrefabInstance:
     - target: {fileID: 5769312946302069165, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769312946302069166, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8192749
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769312946302069166, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9214778
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769312946302069166, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
+      propertyPath: m_Center.x
+      value: 0.058193207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769312946302069166, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
+      propertyPath: m_Center.y
+      value: 0.6081183
       objectReference: {fileID: 0}
     - target: {fileID: 5769312946731032980, guid: a5d6f826e51d5134aad39e893a1e244a, type: 3}
       propertyPath: m_Controller

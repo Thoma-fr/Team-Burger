@@ -21,10 +21,5 @@ public class Item : Object
 		name = clone.name;
 		description = clone.description;
 		price = clone.price;
-}
-
-	public void UseItem()
-	{
-		Debug.Log("Item Used");
 	}
 }

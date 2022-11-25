@@ -12,7 +12,6 @@ public class Bush : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+   
     }
-
-    
 }

@@ -75,7 +75,8 @@ public class NAVAI : MonoBehaviour
     }
     private void Update()
     {
-        anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
+        if(anim!=null)
+            anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
         if (agent.velocity.x > 0)
         {
             visualEffect.SetFloat("DirVel", agent.acceleration* -1);
@@ -135,7 +136,8 @@ public class NAVAI : MonoBehaviour
                 targetDistance = Vector3.Distance(transform.position, target.position);
                 if (targetDistance < 2f)
                 {
-                    anim.SetTrigger("Attacking");
+                    if (anim != null)
+                        anim.SetTrigger("Attacking");
                     kill(target.gameObject);
 
 
@@ -187,14 +189,14 @@ public class NAVAI : MonoBehaviour
         {
             //Debug.Log("hit");
             Time.timeScale = 1f;
-            collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            //collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             Instantiate(hitcam, collision.contacts[0].point, transform.rotation);
             if (camFight != null)
             {
                 camFight.SetActive(true);
                 camFight.transform.parent = null;
             }
-            Destroy(collision.gameObject.transform);
+            Destroy(collision.gameObject);
             GameManager.instance.OnBattleActivation(GetComponent<EnemyController>());
             GameManager.instance.RotateWorld(GameManager.instance.mainCam);
         }
@@ -241,7 +243,9 @@ public class NAVAI : MonoBehaviour
         GameManager.instance.faceTheCam.Remove(gameObject);
         Destroy(camFight);
         Destroy(gameObject);
-        PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+        Debug.Log("die");
+            if(GameManager.instance.combatSystem.enemyController.gameObject==gameObject)
+                PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
     }
     public void FlipSpriteX()
     {

@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8704793375457171390
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1280962258498319189, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280962258498319189, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280962258498319189, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2031417284, guid: 28660f0b5b89c694985fc8bdec4268cf, type: 3}
+    - target: {fileID: 1280962258498319189, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234463106275523927, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5f8be61e54a3775408434682325496b4, type: 2}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.862339
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.7653217
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648397316009707832, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398190651815922136, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: m_Name
+      value: PNJNico
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: NPCname
+      value: Nicolas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sentences
+      value: Salut !$*$Que pensez vous du temps qui passe quand la pluie?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: altSentences
+      value: "Allez tiens.$*$Je t'ai d\xE9bloqu\xE9 le passage \xE0 l'ouest."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sons.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sons.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e288a16d5fa1b514e98ae8e10be9283d, type: 3}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sons.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 94e2e47a4770d0a4d8f15c047027bdbf, type: 3}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sons.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 57eff26eb9a109041a7e11feae749a25, type: 3}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sons.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 05e71c6a26818804ab3b0a1246cf1123, type: 3}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: sons.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: ef71c5abd3937bd4894a89a56509be29, type: 3}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: zoneToUnlock.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311563058739566231, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+      propertyPath: zoneToUnlock.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+--- !u!1 &6333590568761220710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3398190651815922136, guid: 9d7895d70b54c4741aad75e46fc58cb7, type: 3}
+  m_PrefabInstance: {fileID: 8704793375457171390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1379548971
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333590568761220710}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

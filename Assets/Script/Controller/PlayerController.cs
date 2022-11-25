@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
-using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEngine.VFX;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 using System;
-using System.Threading;
-using Unity.Mathematics;
 
 public class PlayerController : BaseController
 {
-	
+	[SerializeField]private GameObject minimap;
 	[HideInInspector] public bool isVise = false;
 	private Animator animator;
 	private SpriteRenderer sp;
@@ -87,6 +83,8 @@ public class PlayerController : BaseController
         switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
+                GetComponent<SpriteRenderer>().enabled = true;
+                minimap.SetActive(true);
                 canvasReticle.SetActive(false);
                 target.GetComponent<SpriteRenderer>().enabled = true;
                
@@ -113,6 +111,7 @@ public class PlayerController : BaseController
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
+				minimap.SetActive(false);
                 canvasReticle.SetActive(true);
 				target.GetComponent<SpriteRenderer>().enabled = false;
                 canvasReticle.transform.position = Input.mousePosition;
@@ -129,6 +128,7 @@ public class PlayerController : BaseController
 					npc.nextSentence();
 				break;
 			case PLAYER_MODE.COMBAT_MODE:
+				GetComponent<SpriteRenderer>().enabled = false;
 				canvasReticle.SetActive(false);
 				break;
 			default:

@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 4504249386282539761}
   - component: {fileID: 4504249386282539763}
   - component: {fileID: 4330232372733227646}
-  - component: {fileID: 296469591220945568}
-  - component: {fileID: 8608140354785594081}
   m_Layer: 0
   m_Name: bushold
   m_TagString: Untagged
@@ -113,35 +111,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.7000053, y: 0.79873866, z: 0.2}
   m_Center: {x: 0, y: 1.5506356, z: 0}
---- !u!114 &296469591220945568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504249386282539760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f38fc8fc7a474e4da64c6e4c3d5ec3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &8608140354785594081
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504249386282539760}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ceb7b5f04645b442b84b6bd0de53e66, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

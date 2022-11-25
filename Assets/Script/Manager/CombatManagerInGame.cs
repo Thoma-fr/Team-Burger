@@ -10,15 +10,23 @@ public class CombatManagerInGame : MonoBehaviour
 	private BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
-	private EnemyController enemyController;
+	public EnemyController enemyController { get; private set; }
 	private EnemyData enemyData;
 	private PlayerData playerData;
 
 	[SerializeField] private Transform dialogueBloc;
 	private TextMeshProUGUI dialogueText;
 
+	[SerializeField] private TextMeshProUGUI count;
+	private int nbAnimalCount = 0;
+
 	[SerializeField] private Transform commandBloc;
 	[SerializeField] private Transform playerStat;
+
+	[Header("Audio")]
+	[SerializeField] private List<AudioClip> attaquePlayerClip;
+	[SerializeField] private List<AudioClip> attaqueEnnemyClip;
+	private AudioSource sourceAudio;
 
 	public delegate void Callback();
 
@@ -53,6 +61,9 @@ public class CombatManagerInGame : MonoBehaviour
 		// Désactivation
 		commandBloc.gameObject.SetActive(false);
 		dialogueBloc.gameObject.SetActive(false);
+		sourceAudio = gameObject.GetComponent<AudioSource>();
+
+		count.text = "0";
 	}
 
 	void Update()
@@ -71,9 +82,10 @@ public class CombatManagerInGame : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
+				Cursor.visible = true;
 				if(enemyController)
                 {
-                    //PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
+                    PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
                     dialogueText.text = "Que ............ !? ............ !? ............ ???";
 
 					enemyData = enemyController.m_data;
@@ -113,23 +125,25 @@ public class CombatManagerInGame : MonoBehaviour
 				if (useConsomable)
                 {
 					StartCoroutine(TypeSentence("Vous utilisez un item extraordinaire ! Wow, bien jouer ?", () => state = BATTLE_STATE.ENEMY_ACTION));
+					GameManager.instance.UpdateAllUI();
+					useConsomable = false;
 					break;
                 }
 
-				StartCoroutine(CheckLife("Vous utilisez votre fusil !!!", () => enemyController.TakeDamage(playerData.weaponInHand.damage), BATTLE_STATE.ENEMY_ACTION));
+				StartCoroutine(CheckLife("Vous utilisez votre arme !!!", PlayAudio(attaquePlayerClip[Random.Range(0, attaquePlayerClip.Count)], () => enemyController.TakeDamage(playerData.weaponInHand.damage)), BATTLE_STATE.ENEMY_ACTION));
 				GameManager.instance.UpdateAllUI();
 				break;
 
 			case BATTLE_STATE.ENEMY_ACTION:
 				playerData.healthPoint -= enemyController.EnemyAttacking(out string attName);
 
-				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", () => GameManager.instance.UpdateAllUI(), BATTLE_STATE.CHOICE));
+				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", PlayAudio(attaqueEnnemyClip[Random.Range(0, attaqueEnnemyClip.Count)], () => GameManager.instance.UpdateAllUI()), BATTLE_STATE.CHOICE));
 				break;
 
 			case BATTLE_STATE.END:
 				enemyController.gameObject.GetComponent<NAVAI>().die();
 				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
-
+				Debug.Log("fight end");
 				Sequence outro = DOTween.Sequence();
 				outro.Append(dialogueBloc.DOLocalMoveY(-700, 0.7f).SetEase(Ease.Linear));
 				outro.AppendCallback(() => dialogueBloc.gameObject.SetActive(false));
@@ -171,6 +185,8 @@ public class CombatManagerInGame : MonoBehaviour
 	public void UseConsomable(Item other)
 	{
 		useConsomable = true;
+		playerData.inventory.Remove(other);
+		playerData.healthPoint = Mathf.Clamp(playerData.healthPoint + 60, 0, playerData.maxHealth);
 		state = BATTLE_STATE.PLAYER_ACTION;
 	}
 
@@ -182,6 +198,8 @@ public class CombatManagerInGame : MonoBehaviour
 		if (enemyController.m_data.healthPoint <= 0)
         {
 			yield return StartCoroutine(TypeSentence("Félicitation vous avez vaincu l'ennemi. ........... Vous récupérer une récompense !"));
+			nbAnimalCount++;
+			count.text = nbAnimalCount.ToString();
 			state = BATTLE_STATE.END;
         }
 		else if (enemyController.m_data.healthPoint <= 0)
@@ -208,20 +226,21 @@ public class CombatManagerInGame : MonoBehaviour
 			callback();
 	}
 
-	/*
 	public void Run()
 	{
 		if (Random.Range(0, 100) >= enemyData.menace)
 		{
-			dialogueText.text = "Vous réusiser à partir";
-			state = BATTLE_STATE.END;
+			StartCoroutine(TypeSentence("Vous réusiser à partir", () => state = BATTLE_STATE.END));
 		}
 		else
 		{
-			dialogueText.text = "Vous réusiser échouer à fuire";
-			commandeBloc.SetActive(false);
-			useConsomable = true;
-			state = BATTLE_STATE.FIGHT;
+			StartCoroutine(TypeSentence("Vous réusiser échouer à fuire.", () => state = BATTLE_STATE.ENEMY_ACTION));
 		}
-	}*/
+	}
+
+	private Callback PlayAudio(AudioClip clip, Callback callback)
+    {
+		sourceAudio.PlayOneShot(clip);
+		return callback;
+    }
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using static UnityEditor.Progress;
 using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
@@ -27,36 +26,42 @@ public class GameManager : MonoBehaviour
     [SerializeField]private PlayerData playerData;
     public PlayerData GetPlayerData { get { return playerData; } }
 
-   
-
-    [Header("Debug")]
-    [SerializeField] private EnemyController enemyPrefab;
+    [Header("Player Death")]
+    [SerializeField] private AudioClip deathClip;
+    private AudioSource sourceAudio;
     
     [Header("FaceCamera")]
     public List<GameObject> faceTheCam = new List<GameObject>();
     public Transform mainCam;
-    public GameObject test;
 
-    public bool isShooting;
-    public bool hasRotate;
-
-    public bool neeInstaRotate;
+    // public bool isShooting;
+    // public bool hasRotate;
+    // public bool neeInstaRotate;
 
     public delegate void PlayerStatChangedDelegate();
     public PlayerStatChangedDelegate onPlayerStatChanged;
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         playerData = new PlayerData(DeafaultPlayerData.playerData);
         playerData.weaponInHand = DefaultWeaponsData.weapons[4];
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
-            playerData.inventory.Add(DefaultItemsData.itemsData[Random.Range(0, DefaultItemsData.itemsData.Count)]);
             playerData.weapons.Add(DefaultWeaponsData.weapons[Random.Range(0, DefaultWeaponsData.weapons.Count)]);
         }
 
-        if (instance == null)
-            instance = this;
+        for (int i = 0; i < 15; i++)
+        {
+            playerData.inventory.Add(DefaultItemsData.itemsData[Random.Range(0, DefaultItemsData.itemsData.Count)]);
+        }
+    }
+
+    private void Start()
+    {
+        sourceAudio = gameObject.GetComponent<AudioSource>();
     }
 
     public void OnBattleActivation(EnemyController ec)
@@ -67,6 +72,9 @@ public class GameManager : MonoBehaviour
     public void UpdateAllUI()
     {
         onPlayerStatChanged();
+
+        if (playerData.healthPoint <= 0)
+            StartCoroutine(PlayerDeath());
     }
 
     public void RotateWorld(Transform rot)
@@ -86,5 +94,12 @@ public class GameManager : MonoBehaviour
         //    }
 
         //}
+    }
+
+    private IEnumerator PlayerDeath()
+    {
+        sourceAudio.PlayOneShot(deathClip);
+        yield return new WaitForSeconds(1.0f);
+        LevelLoader.instance.LoadSceneAnIndex(1);
     }
 }
