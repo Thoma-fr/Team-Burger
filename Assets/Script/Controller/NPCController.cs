@@ -10,6 +10,7 @@ public enum NPCState
 	ZONER
 };
 
+[System.Serializable]
 public class NPCController : MonoBehaviour, Interactable
 {
 	public string NPCname;
@@ -19,11 +20,10 @@ public class NPCController : MonoBehaviour, Interactable
 
 	public NPCState state;
 
-	public List<Item> itemToGive = null;
-	public List<GameObject> zoneToUnlock = null;
+	public List<Item> itemToGive;
+	public List<GameObject> zoneToUnlock;
 
-
-	public void Interact()
+    public void Interact()
 	{
 		PlayerController.Instance.npc = this;
 		

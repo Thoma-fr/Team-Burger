@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4021588835275728866}
   - component: {fileID: 5988327280003119248}
   - component: {fileID: 1280962258498319189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PNJTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,21 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCname: 
-  sentences:
-  - areaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyleareaStyle
-  altSentences:
-  - 
-  giver: 0
-  zoner: 0
-  itemToGive:
-    name: 
-    description: 
-    price: 0
-    currentStack: 0
-    itemName: 
-    maxStackable: 0
-    description: 
-  zoneToUnlock: {fileID: 0}
+  sentences: 
+  altSentences: 
+  state: 0
+  itemToGive: []
+  zoneToUnlock: []
 --- !u!58 &4021588835275728866
 CircleCollider2D:
   m_ObjectHideFlags: 0

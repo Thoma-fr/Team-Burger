@@ -25,7 +25,7 @@ public class PlayerData : BaseData
 
     public void RemoveItemFromInventory(Item item, int number = 1)
     {
-        Item itemTemp = inventory.Find(x => x.itemName == item.itemName);
+        Item itemTemp = inventory.Find(x => x.name == item.name);
         if (itemTemp != null)
         {
             int itemId = inventory.IndexOf(itemTemp);
@@ -39,7 +39,7 @@ public class PlayerData : BaseData
 
     public void AddItemInInventory(Item item, int number = 1)
     {
-        Item itemTemp = inventory.Find(x => x.itemName == item.itemName);
+        Item itemTemp = inventory.Find(x => x.name == item.name);
         if (itemTemp != null)
         {
             int itemId = inventory.IndexOf(itemTemp);
@@ -48,12 +48,11 @@ public class PlayerData : BaseData
         }
         else
         {
-            if (GameManager.instance.GetDefaultItemsData.ContainItem(item.itemName, out Item info))
+            if (GameManager.instance.GetDefaultItemsData.ContainItem(item.name, out Item info))
             {
-                Debug.Log(inventory.Count);
-                inventory.Add(info);
-                Debug.Log(inventory.Count);
-                inventory[inventory.IndexOf(info)].currentStack = number;
+                Item itemToAdd = new Item(GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.name == info.name));
+                inventory.Add(itemToAdd);
+                inventory[inventory.IndexOf(itemToAdd)].currentStack = Mathf.Clamp(number, 1, itemToAdd.maxStackable);
             }
         }
     }
