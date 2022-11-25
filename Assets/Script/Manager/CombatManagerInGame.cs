@@ -10,7 +10,7 @@ public class CombatManagerInGame : MonoBehaviour
 	private BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
-	private EnemyController enemyController;
+	public EnemyController enemyController { get; private set; }
 	private EnemyData enemyData;
 	private PlayerData playerData;
 
@@ -129,7 +129,7 @@ public class CombatManagerInGame : MonoBehaviour
 			case BATTLE_STATE.END:
 				enemyController.gameObject.GetComponent<NAVAI>().die();
 				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
-
+				Debug.Log("fight end");
 				Sequence outro = DOTween.Sequence();
 				outro.Append(dialogueBloc.DOLocalMoveY(-700, 0.7f).SetEase(Ease.Linear));
 				outro.AppendCallback(() => dialogueBloc.gameObject.SetActive(false));

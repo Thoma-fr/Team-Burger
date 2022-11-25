@@ -136,7 +136,8 @@ public class NAVAI : MonoBehaviour
                 targetDistance = Vector3.Distance(transform.position, target.position);
                 if (targetDistance < 2f)
                 {
-                    anim.SetTrigger("Attacking");
+                    if (anim != null)
+                        anim.SetTrigger("Attacking");
                     kill(target.gameObject);
 
 
@@ -242,7 +243,9 @@ public class NAVAI : MonoBehaviour
         GameManager.instance.faceTheCam.Remove(gameObject);
         Destroy(camFight);
         Destroy(gameObject);
-        PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+        Debug.Log("die");
+            if(GameManager.instance.combatSystem.enemyController.gameObject==gameObject)
+                PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
     }
     public void FlipSpriteX()
     {

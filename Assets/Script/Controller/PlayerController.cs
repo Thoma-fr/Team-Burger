@@ -88,7 +88,8 @@ public class PlayerController : BaseController
         switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
-				minimap.SetActive(true);
+                GetComponent<SpriteRenderer>().enabled = true;
+                minimap.SetActive(true);
                 canvasReticle.SetActive(false);
                 target.GetComponent<SpriteRenderer>().enabled = true;
                
@@ -132,6 +133,7 @@ public class PlayerController : BaseController
 					npc.nextSentence();
 				break;
 			case PLAYER_MODE.COMBAT_MODE:
+				GetComponent<SpriteRenderer>().enabled = false;
 				canvasReticle.SetActive(false);
 				break;
 			default:
