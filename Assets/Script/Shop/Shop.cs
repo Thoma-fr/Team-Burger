@@ -4,26 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 
 public class Shop : MonoBehaviour
 {
     [Header("reference")]
-    public GameObject prefab;
-    public Transform itemsParent;
-    public GameObject shopPanel;
-    
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Transform itemsParent;
+    [SerializeField] private GameObject shopPanel;
+
+    public string itemname;
+    public string description;
+    public int price;
+    Item itemAdded;
 
 
     [Header("Item a ajouter dans le magasin")]
-    public List<Item> requestedItems = new List<Item>();
+    [SerializeField] private List<Item> requestedItems = new List<Item>();
     [Header("Item a vendre dans le magasin")]
-    public List<Item> itemTosell= new List<Item>();
+    [SerializeField] private List<Item> itemTosell= new List<Item>();
 
     private List<GameObject> buttons = new List<GameObject>();
-    public ScrItemsData GetDefaultItemsData;
+    [SerializeField] private ScrItemsData GetDefaultItemsData;
     public void AddItems()//si y'a une erreur de null référence il faut metre en play et arrèter 
     {
-        
+        //itemAdded.name= itemname;
+        //itemAdded.description= description;
+        //itemAdded.price= price;
+
+        //requestedItems.Add(itemAdded);
         foreach (Item item in requestedItems)
         {
             if (GameManager.instance.GetDefaultItemsData.itemsData.Find(x => x.itemName == item.itemName) != null)

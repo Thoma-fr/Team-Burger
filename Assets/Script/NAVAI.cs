@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
+using UnityEngine.VFX;
 
 enum AIState { idle, flee,move, attack,Traped }
 
@@ -20,15 +21,13 @@ public class NAVAI : MonoBehaviour
     [SerializeField] private Animator anim;
     private bool hasMove;
     private float targetDistance;
-    [Range(0, 20)]
-    public float range;
 
-    [Range(0, 20)]
+    public float range;
     public float sight;
 
     [SerializeField] private float maxIdleTime;
 
-    
+
     [Header("nav parameter")]
     public float speed;
     public float acceleration;
@@ -42,14 +41,25 @@ public class NAVAI : MonoBehaviour
     public AudioClip pain2;
     public AudioClip zaworld;
     public AudioClip killSFX;
+    private VisualEffect visualEffect;
+    public List<AudioClip> naturalsound;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        if (speed == 0)
+        {
+            speed = 3.5f;
+            acceleration = 8;
+        }
         agent.speed = speed;
         agent.acceleration = acceleration;
+        player = PlayerController.Instance.gameObject;
+        visualEffect = GetComponent<VisualEffect>();
+
+
     }
     private void OnDrawGizmosSelected()
     {
@@ -66,6 +76,14 @@ public class NAVAI : MonoBehaviour
     private void Update()
     {
         anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
+        if (agent.velocity.x > 0)
+        {
+            visualEffect.SetFloat("DirVel", agent.acceleration* -1);
+            visualEffect.SetFloat("Start", agent.acceleration);
+            visualEffect.SetBool("IsWalking", true);
+        }
+        else
+            visualEffect.SetBool("IsWalking", false);
         FlipSpriteX();
         switch (mysate)
         {
@@ -75,16 +93,16 @@ public class NAVAI : MonoBehaviour
                 break;
             case AIState.move:
                 Vector3 point;
-                int a = Random.RandomRange(0, 5);
-                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.COMBAT_MODE)
+                int a = Random.Range(0, 5);
+                if (a == 2 && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.SHOOTING_MODE)
                 {
                     if (!hasMove)
                     {
-                        agent.SetDestination(Camera.main.transform.forward);
+                        Debug.Log("ho mon dieu il fonce droit sur nous");
+                        agent.SetDestination(Camera.main.transform.position);
                         hasMove = true;
-                        audioSource.PlayOneShot(zaworld);
+                        audioSource.PlayOneShot(naturalsound[Random.Range(0,naturalsound.Count)]);
                     }
-                    //Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                     mysate = AIState.idle;
                 }
                 else
@@ -99,6 +117,8 @@ public class NAVAI : MonoBehaviour
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                         mysate = AIState.idle;
                     }
+                    if (a == 3 && myType == AItype.passiv && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.SHOOTING_MODE)
+                        anim.SetTrigger("Dance");
                     if (myType == AItype.agressive)
                         SearchForTarget();
                 }
