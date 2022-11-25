@@ -201,7 +201,7 @@ public class PlayerController : BaseController
 
 	public void Shoot(InputAction.CallbackContext context)
     {
-        if (playerMode != PLAYER_MODE.COMBAT_MODE)
+        if (playerMode == PLAYER_MODE.SHOOTING_MODE)
             if (context.started)
 			{
 				canvasReticle.SetActive(false);

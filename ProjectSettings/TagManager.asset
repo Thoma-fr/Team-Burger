@@ -8,6 +8,8 @@ TagManager:
   - Bush
   - Bullet
   - Trap
+  - NPC
+  - decors
   layers:
   - Default
   - TransparentFX
