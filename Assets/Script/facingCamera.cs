@@ -10,7 +10,7 @@ public class facingCamera : MonoBehaviour
     void Start()
     {
         isup = true;
-        GameManager.instance.faceTheCam.Add(gameObject);
+        //GameManager.instance.faceTheCam.Add(gameObject);
     }
     private void Update()
     {
@@ -38,7 +38,7 @@ public class facingCamera : MonoBehaviour
         if (!hasRotate)
         {
             Debug.Log("hello1");
-            transform.DOLocalRotateQuaternion(GameManager.instance.mainCam.transform.rotation, 0.8f).SetEase(Ease.OutBounce).OnComplete(() => hasRotate = true);
+            transform.DOLocalRotateQuaternion(PlayerController.Instance.FPSvcam.transform.rotation, 0.8f).SetEase(Ease.OutBounce).OnComplete(() => hasRotate = true);
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.07f);
             hasRotate = true;
             isup = false;
