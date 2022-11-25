@@ -26,20 +26,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]private PlayerData playerData;
     public PlayerData GetPlayerData { get { return playerData; } }
 
-   
-
-    [Header("Debug")]
-    [SerializeField] private EnemyController enemyPrefab;
+    [Header("Player Death")]
+    [SerializeField] private AudioClip deathClip;
+    private AudioSource sourceAudio;
     
     [Header("FaceCamera")]
     public List<GameObject> faceTheCam = new List<GameObject>();
     public Transform mainCam;
-    public GameObject test;
 
-    public bool isShooting;
-    public bool hasRotate;
-
-    public bool neeInstaRotate;
+    // public bool isShooting;
+    // public bool hasRotate;
+    // public bool neeInstaRotate;
 
     public delegate void PlayerStatChangedDelegate();
     public PlayerStatChangedDelegate onPlayerStatChanged;
@@ -58,6 +55,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        sourceAudio = gameObject.GetComponent<AudioSource>();
+    }
+
     public void OnBattleActivation(EnemyController ec)
     {
         combatSystem.StartBattlePhase(ec);
@@ -66,6 +68,9 @@ public class GameManager : MonoBehaviour
     public void UpdateAllUI()
     {
         onPlayerStatChanged();
+
+        if (playerData.healthPoint <= 0)
+            StartCoroutine(PlayerDeath());
     }
 
     public void RotateWorld(Transform rot)
@@ -85,5 +90,12 @@ public class GameManager : MonoBehaviour
         //    }
 
         //}
+    }
+
+    private IEnumerator PlayerDeath()
+    {
+        sourceAudio.PlayOneShot(deathClip);
+        yield return new WaitForSeconds(1.0f);
+        LevelLoader.instance.LoadSceneAnIndex(1);
     }
 }

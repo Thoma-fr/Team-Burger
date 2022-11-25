@@ -113,6 +113,7 @@ public class CombatManagerInGame : MonoBehaviour
 				if (useConsomable)
                 {
 					StartCoroutine(TypeSentence("Vous utilisez un item extraordinaire ! Wow, bien jouer ?", () => state = BATTLE_STATE.ENEMY_ACTION));
+					useConsomable = false;
 					break;
                 }
 
@@ -208,20 +209,15 @@ public class CombatManagerInGame : MonoBehaviour
 			callback();
 	}
 
-	/*
 	public void Run()
 	{
 		if (Random.Range(0, 100) >= enemyData.menace)
 		{
-			dialogueText.text = "Vous réusiser à partir";
-			state = BATTLE_STATE.END;
+			StartCoroutine(TypeSentence("Vous réusiser à partir", () => state = BATTLE_STATE.END));
 		}
 		else
 		{
-			dialogueText.text = "Vous réusiser échouer à fuire";
-			commandeBloc.SetActive(false);
-			useConsomable = true;
-			state = BATTLE_STATE.FIGHT;
+			StartCoroutine(TypeSentence("Vous réusiser échouer à fuire.", () => state = BATTLE_STATE.ENEMY_ACTION));
 		}
-	}*/
+	}
 }
