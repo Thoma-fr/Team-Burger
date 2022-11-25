@@ -187,6 +187,7 @@ public class NAVAI : MonoBehaviour
         {
             //Debug.Log("hit");
             Time.timeScale = 1f;
+            collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             Instantiate(hitcam, collision.contacts[0].point, transform.rotation);
             if (camFight != null)
             {
