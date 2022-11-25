@@ -20,6 +20,11 @@ public class CombatManagerInGame : MonoBehaviour
 	[SerializeField] private Transform commandBloc;
 	[SerializeField] private Transform playerStat;
 
+	[Header("Audio")]
+	[SerializeField] private AudioClip attaquePlayerClip;
+	[SerializeField] private AudioClip attaqueEnnemyClip;
+	private AudioSource sourceAudio;
+
 	public delegate void Callback();
 
 	/*[Header("Dialogue")]
@@ -53,6 +58,7 @@ public class CombatManagerInGame : MonoBehaviour
 		// Désactivation
 		commandBloc.gameObject.SetActive(false);
 		dialogueBloc.gameObject.SetActive(false);
+		sourceAudio = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -114,18 +120,19 @@ public class CombatManagerInGame : MonoBehaviour
 				if (useConsomable)
                 {
 					StartCoroutine(TypeSentence("Vous utilisez un item extraordinaire ! Wow, bien jouer ?", () => state = BATTLE_STATE.ENEMY_ACTION));
+					GameManager.instance.UpdateAllUI();
 					useConsomable = false;
 					break;
                 }
 
-				StartCoroutine(CheckLife("Vous utilisez votre fusil !!!", () => enemyController.TakeDamage(playerData.weaponInHand.damage), BATTLE_STATE.ENEMY_ACTION));
+				StartCoroutine(CheckLife("Vous utilisez votre arme !!!", PlayAudio(attaquePlayerClip, () => enemyController.TakeDamage(playerData.weaponInHand.damage)), BATTLE_STATE.ENEMY_ACTION));
 				GameManager.instance.UpdateAllUI();
 				break;
 
 			case BATTLE_STATE.ENEMY_ACTION:
 				playerData.healthPoint -= enemyController.EnemyAttacking(out string attName);
 
-				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", () => GameManager.instance.UpdateAllUI(), BATTLE_STATE.CHOICE));
+				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", PlayAudio(attaqueEnnemyClip, () => GameManager.instance.UpdateAllUI()), BATTLE_STATE.CHOICE));
 				break;
 
 			case BATTLE_STATE.END:
@@ -173,6 +180,8 @@ public class CombatManagerInGame : MonoBehaviour
 	public void UseConsomable(Item other)
 	{
 		useConsomable = true;
+		playerData.inventory.Remove(other);
+		playerData.healthPoint = Mathf.Clamp(playerData.healthPoint + 60, 0, playerData.maxHealth);
 		state = BATTLE_STATE.PLAYER_ACTION;
 	}
 
@@ -221,4 +230,10 @@ public class CombatManagerInGame : MonoBehaviour
 			StartCoroutine(TypeSentence("Vous réusiser échouer à fuire.", () => state = BATTLE_STATE.ENEMY_ACTION));
 		}
 	}
+
+	private Callback PlayAudio(AudioClip clip, Callback callback)
+    {
+		sourceAudio.PlayOneShot(clip);
+		return callback;
+    }
 }
