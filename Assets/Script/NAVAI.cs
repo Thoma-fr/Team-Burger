@@ -227,6 +227,7 @@ public class NAVAI : MonoBehaviour
         {
             target = null;
             tokill.GetComponent<NAVAI>().isdead = true;
+            tokill.GetComponent<NAVAI>().die();
             GameManager.instance.faceTheCam.Remove(tokill);
             Destroy(tokill, 0.5f);
             audioSource.PlayOneShot(killSFX);
