@@ -16,6 +16,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
     private TextMeshProUGUI pvText;
     private TextMeshProUGUI nameText;
     private Slider slider;
+    private Image fill;
 
     private bool isSetSliderValue = false;
     private bool isInCombat = true;
@@ -25,6 +26,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         nameText = canvasParent.GetChild(0).GetComponent<TextMeshProUGUI>();
         slider = canvasParent.GetChild(1).GetComponent<Slider>();
         pvText = slider.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        fill = slider.transform.GetChild(1).GetComponent<Image>();
 
         canvasParent.gameObject.SetActive(false);
         transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0;
@@ -41,6 +43,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         slider.maxValue = m_data.maxHealth;
         slider.value = m_data.healthPoint;
         pvText.text = ((int)slider.value).ToString();
+        fill.color = gradient.Evaluate(1.0f);
     }
 
     public int EnemyAttacking(out string attName)
@@ -66,7 +69,10 @@ public class EnemyController : BaseController , IShootable<PlayerData>
         canvasParent.rotation = Quaternion.LookRotation(canvasParent.transform.position - GameManager.instance.mainCam.position, -Vector3.forward);
 
         if (isSetSliderValue)
+        {
             pvText.text = ((int)slider.value).ToString();
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+        }
     }
 
     public void InitCombat()

@@ -13,27 +13,27 @@ MonoBehaviour:
   m_Name: ItemsData
   m_EditorClassIdentifier: 
   itemsData:
-  - name: Pistol
-    description: ggg
+  - name: Grape
+    description: Miam
     price: 0
+    sprite: {fileID: 0}
     currentStack: 0
-    itemName: alex
     maxStackable: 1
-  - name: Pistol
-    description: 
+  - name: Queux d'amarage
+    description: Elle est lourde et en fonte
     price: 1000
+    sprite: {fileID: 0}
     currentStack: 0
-    itemName: thomas
     maxStackable: 0
-  - name: Pistol
-    description: 
+  - name: Ordinateur HP
+    description: Fast as f*** boi
     price: 1000
+    sprite: {fileID: 0}
     currentStack: 0
-    itemName: Nico
     maxStackable: 0
-  - name: Pistol
-    description: 
+  - name: Statue de Saint Sir++
+    description: "Rien \xE0 dire, juste ... PARFAIT !"
     price: 1000
+    sprite: {fileID: 0}
     currentStack: 0
-    itemName: Pistol
     maxStackable: 0

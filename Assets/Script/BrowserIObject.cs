@@ -14,7 +14,10 @@ public class BrowserIObject : MonoBehaviour
     public void OnActive()
     {
         BrowserManager.instance.DisplayDescription(obj);
+    }
 
+    public void Start()
+    {
         image.sprite = obj.sprite;
         txt.text = obj.name;
     }
