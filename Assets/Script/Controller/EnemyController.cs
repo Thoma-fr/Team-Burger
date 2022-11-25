@@ -78,7 +78,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
     public void InitCombat()
     {
         canvasParent.gameObject.SetActive(true);
-        transform.GetChild(0).GetComponent<CanvasGroup>().DOFade(1, 0.8f);
+        canvasParent.GetComponent<CanvasGroup>().DOFade(1, 0.8f);
     }
 
     public void TakeDamage(int damage)
