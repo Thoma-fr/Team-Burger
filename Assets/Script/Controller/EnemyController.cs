@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using JetBrains.Annotations;
 
 public class EnemyController : BaseController , IShootable<PlayerData>
 {
@@ -84,6 +85,7 @@ public class EnemyController : BaseController , IShootable<PlayerData>
     public void TakeDamage(int damage)
     {
         isSetSliderValue = true;
+        
         m_data.healthPoint -= damage;
 
         Sequence takeDamageSequence = DOTween.Sequence();

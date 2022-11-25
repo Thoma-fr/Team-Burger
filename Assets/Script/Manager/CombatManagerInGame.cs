@@ -71,6 +71,7 @@ public class CombatManagerInGame : MonoBehaviour
 		switch (state)
 		{
 			case BATTLE_STATE.INIT:
+				Cursor.visible = true;
 				if(enemyController)
                 {
                     PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.COMBAT_MODE;
