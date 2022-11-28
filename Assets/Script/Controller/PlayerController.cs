@@ -83,6 +83,7 @@ public class PlayerController : BaseController
         switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
+				Time.timeScale = 1f;
                 GetComponent<SpriteRenderer>().enabled = true;
                 minimap.SetActive(true);
                 canvasReticle.SetActive(false);
@@ -111,7 +112,8 @@ public class PlayerController : BaseController
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
-				minimap.SetActive(false);
+                Time.timeScale = 1f;
+                minimap.SetActive(false);
                 canvasReticle.SetActive(true);
 				target.GetComponent<SpriteRenderer>().enabled = false;
                 canvasReticle.transform.position = Input.mousePosition;
