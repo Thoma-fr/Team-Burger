@@ -141,6 +141,7 @@ public class CombatManagerInGame : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.END:
+				PlayerController.playerInstance.Unvise();
 				enemyController.gameObject.GetComponent<NAVAI>().die();
 				PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
 				Debug.Log("fight end");

@@ -142,7 +142,11 @@ public class PlayerController : BaseController
     {
         throw new NotImplementedException();
     }
-
+	public void Unvise()
+	{
+        FPSvcam.gameObject.SetActive(false);
+        isVise = false;
+    }
     public void vise(InputAction.CallbackContext context)
     {
 		if(playerMode != PLAYER_MODE.COMBAT_MODE)
