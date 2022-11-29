@@ -83,6 +83,7 @@ public class PlayerController : BaseController
         switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
+				
 				Time.timeScale = 1f;
                 GetComponent<SpriteRenderer>().enabled = true;
                 minimap.SetActive(true);

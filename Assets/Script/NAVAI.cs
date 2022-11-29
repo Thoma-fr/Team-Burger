@@ -233,7 +233,7 @@ public class NAVAI : MonoBehaviour
             Destroy(tokill, 0.5f);
             audioSource.PlayOneShot(killSFX);
             mysate = AIState.move;
-            //tokill.GetComponent<NAVAI>().die();
+            tokill.GetComponent<NAVAI>().die();
         }
 
     }
@@ -244,8 +244,14 @@ public class NAVAI : MonoBehaviour
         Destroy(camFight);
         Destroy(gameObject);
         Debug.Log("die");
-            if(GameManager.instance.combatSystem.enemyController.gameObject==gameObject)
+            if (GameManager.instance.combatSystem.enemyController.gameObject == gameObject)
+            {
+            if (PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.COMBAT_MODE)
+                PlayerController.playerInstance.Unvise();
                 PlayerController.playerInstance.playerMode = PlayerController.PLAYER_MODE.ADVENTURE_MODE;
+                GameManager.instance.combatSystem.state = CombatManagerInGame.BATTLE_STATE.END;
+            }
+                
     }
     public void FlipSpriteX()
     {

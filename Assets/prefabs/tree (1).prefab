@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533074643385658035}
   m_LocalRotation: {x: -0, y: -0.9980502, z: 0.062416036, w: 0}
-  m_LocalPosition: {x: -0.2, y: 4.301, z: -0.543}
+  m_LocalPosition: {x: -0.2, y: 3.155, z: -0.399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59,7 +59,10 @@ VisualEffect:
     m_Uint:
       m_Array: []
     m_Int:
-      m_Array: []
+      m_Array:
+      - m_Value: 231
+        m_Name: Num
+        m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
@@ -281,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9ae88fed724704292791f75e8a1693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visualEffect: {fileID: 4064609658365348350}
   shake: {fileID: 8300000, guid: 891077b024f6c1e4ab1fb3ee49a70502, type: 3}
 --- !u!82 &4687806554184636231
 AudioSource:

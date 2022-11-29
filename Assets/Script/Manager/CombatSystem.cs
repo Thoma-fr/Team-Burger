@@ -28,7 +28,7 @@ public class CombatSystem : MonoBehaviour
 
 	private CanvasGroup transparence;
 
-	private BATTLE_STATE state = BATTLE_STATE.NONE;
+	public BATTLE_STATE state = BATTLE_STATE.NONE;
 	private BATTLE_STATE lastState = BATTLE_STATE.NONE;
 
 	private GameObject enemiGameObj;
