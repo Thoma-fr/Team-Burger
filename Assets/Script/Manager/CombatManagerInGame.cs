@@ -110,34 +110,34 @@ public class CombatManagerInGame : MonoBehaviour
 				break;
 
 			case BATTLE_STATE.START:
-				StartCoroutine(TypeSentence("Un ennemi apparait ! Il n'est pas content.", () => waitPlayerInput = true));
+				StartCoroutine(TypeSentence("An enemy appears! He is not happy.", () => waitPlayerInput = true));
 
 				break;
 
 			case BATTLE_STATE.CHOICE:
 				commandBloc.gameObject.SetActive(true);
 				commandBloc.localPosition = new Vector2(1160, commandBloc.localPosition.y);
-				StartCoroutine(TypeSentence("Que voulez-vous faire ?", () => commandBloc.DOLocalMoveX(commandeBoxStartX, 0.2f).SetEase(Ease.Linear)));
+				StartCoroutine(TypeSentence("What do you want to do?", () => commandBloc.DOLocalMoveX(commandeBoxStartX, 0.2f).SetEase(Ease.Linear)));
 
 				break;
 
 			case BATTLE_STATE.PLAYER_ACTION:
 				if (useConsomable)
                 {
-					StartCoroutine(TypeSentence("Vous utilisez un item extraordinaire ! Wow, bien jouer ?", () => state = BATTLE_STATE.ENEMY_ACTION));
+					StartCoroutine(TypeSentence("You use an extraordinary item! Wow, well done?", () => state = BATTLE_STATE.ENEMY_ACTION));
 					GameManager.instance.UpdateAllUI();
 					useConsomable = false;
 					break;
                 }
 
-				StartCoroutine(CheckLife("Vous utilisez votre arme !!!", PlayAudio(attaquePlayerClip[Random.Range(0, attaquePlayerClip.Count)], () => enemyController.TakeDamage(playerData.weaponInHand.damage)), BATTLE_STATE.ENEMY_ACTION));
+				StartCoroutine(CheckLife("You use your weapon!!!", PlayAudio(attaquePlayerClip[Random.Range(0, attaquePlayerClip.Count)], () => enemyController.TakeDamage(playerData.weaponInHand.damage)), BATTLE_STATE.ENEMY_ACTION));
 				GameManager.instance.UpdateAllUI();
 				break;
 
 			case BATTLE_STATE.ENEMY_ACTION:
 				playerData.healthPoint -= enemyController.EnemyAttacking(out string attName);
 
-				StartCoroutine(CheckLife("Votre enemy vous attack avec " + attName + " !!!", PlayAudio(attaqueEnnemyClip[Random.Range(0, attaqueEnnemyClip.Count)], () => GameManager.instance.UpdateAllUI()), BATTLE_STATE.CHOICE));
+				StartCoroutine(CheckLife("Your enemy attacks you with  " + attName + " !!!", PlayAudio(attaqueEnnemyClip[Random.Range(0, attaqueEnnemyClip.Count)], () => GameManager.instance.UpdateAllUI()), BATTLE_STATE.CHOICE));
 				break;
 
 			case BATTLE_STATE.END:
@@ -198,14 +198,14 @@ public class CombatManagerInGame : MonoBehaviour
 
 		if (enemyController.m_data.healthPoint <= 0)
         {
-			yield return StartCoroutine(TypeSentence("Félicitation vous avez vaincu l'ennemi. ........... Vous récupérer une récompense !"));
+			yield return StartCoroutine(TypeSentence("Congratulations you have defeated the enemy ........... You get a reward !"));
 			nbAnimalCount++;
 			count.text = nbAnimalCount.ToString();
 			state = BATTLE_STATE.END;
         }
 		else if (enemyController.m_data.healthPoint <= 0)
         {
-			yield return StartCoroutine(TypeSentence("L'ennemi a été plus fort que vous. Vous êtes désormait mort. Pour rejouer veuillez aller sur https//ecodestructor.shop et acheter le jeu pour 19.99€."));
+			yield return StartCoroutine(TypeSentence("The enemy was stronger than you. You are now dead."));
 			state = BATTLE_STATE.END;
         }
 		else
@@ -231,11 +231,11 @@ public class CombatManagerInGame : MonoBehaviour
 	{
 		if (Random.Range(0, 100) >= enemyData.menace)
 		{
-			StartCoroutine(TypeSentence("Vous réusiser à partir", () => state = BATTLE_STATE.END));
+			StartCoroutine(TypeSentence("You can succeed in leaving", () => state = BATTLE_STATE.END));
 		}
 		else
 		{
-			StartCoroutine(TypeSentence("Vous réusiser échouer à fuire.", () => state = BATTLE_STATE.ENEMY_ACTION));
+			StartCoroutine(TypeSentence("You succeed fail to flee.", () => state = BATTLE_STATE.ENEMY_ACTION));
 		}
 	}
 
