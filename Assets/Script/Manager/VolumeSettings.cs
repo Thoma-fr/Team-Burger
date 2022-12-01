@@ -32,8 +32,6 @@ public class VolumeSettings : MonoBehaviour
 
     private void Awake()
     {
-        
-
         // Fields
         mainField.onSubmit.AddListener(SubmitMainField);
         musicField.onSubmit.AddListener(SubmitMusicField);
@@ -54,6 +52,8 @@ public class VolumeSettings : MonoBehaviour
         musicSlider.value = (data.musicLevel + 80) / 100;
         sfxSlider.value = (data.sfxLevel + 80) / 100;
         ambienceSlider.value = (data.ambienceLevel + 80) / 100;
+
+        gameObject.SetActive(false);
     }
 
     private void SubmitMainField(string value)

@@ -83,6 +83,8 @@ public class PlayerController : BaseController
         switch (playerMode)
 		{
 			case PLAYER_MODE.ADVENTURE_MODE:
+				
+				Time.timeScale = 1f;
                 GetComponent<SpriteRenderer>().enabled = true;
                 minimap.SetActive(true);
                 canvasReticle.SetActive(false);
@@ -112,7 +114,8 @@ public class PlayerController : BaseController
 				break;
 
 			case PLAYER_MODE.SHOOTING_MODE:
-				minimap.SetActive(false);
+                Time.timeScale = 1f;
+                minimap.SetActive(false);
                 canvasReticle.SetActive(true);
 				target.GetComponent<SpriteRenderer>().enabled = false;
                 canvasReticle.transform.position = Input.mousePosition;
@@ -141,10 +144,14 @@ public class PlayerController : BaseController
     {
         throw new NotImplementedException();
     }
-
+	public void Unvise()
+	{
+        FPSvcam.gameObject.SetActive(false);
+        isVise = false;
+    }
     public void vise(InputAction.CallbackContext context)
     {
-		if(playerMode != PLAYER_MODE.COMBAT_MODE)
+		if(playerMode != PLAYER_MODE.COMBAT_MODE && playerMode != PLAYER_MODE.PAUSED)
 			if(context.started)
 			{
 				mainCam.transform.GetComponent<Volume>().enabled = true;
@@ -165,8 +172,8 @@ public class PlayerController : BaseController
                     FPSvcam.gameObject.SetActive(false);
 				}
 			}
-        
 	}
+
 	private void FixedUpdate()
 	{
         //rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
@@ -249,6 +256,12 @@ public class PlayerController : BaseController
 
 	}
 
+	public void PauseGame(InputAction.CallbackContext context)
+    {
+		if(context.performed && PauseManager.instance)
+			PauseManager.instance.PauseGame();
+    }
+
 	private void camshake()
 	{
 		FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
@@ -258,6 +271,7 @@ public class PlayerController : BaseController
 		ADVENTURE_MODE,
 		SHOOTING_MODE,
 		DIALOGUE_MODE,
-		COMBAT_MODE
+		COMBAT_MODE,
+		PAUSED
 	}
 }
