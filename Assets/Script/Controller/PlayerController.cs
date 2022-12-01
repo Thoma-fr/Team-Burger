@@ -103,6 +103,7 @@ public class PlayerController : BaseController
 				target.transform.position = (transform.position + (camDirection * distance));
 
 				if (Input.GetKeyDown("e"))
+					
 					Interact(camDirection);
 
 				if (Input.GetKeyDown("i"))
@@ -239,8 +240,9 @@ public class PlayerController : BaseController
 
 		Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
 
+		Debug.Log(DialogueManager.Instance.animFinish);
 		Collider2D col = Physics2D.OverlapCircle(interactPos, 0.3f, interact);
-		if (col != null)
+		if (col != null && DialogueManager.Instance.animFinish)
 		{
 			col.GetComponent<Interactable>()?.Interact();
 		}
