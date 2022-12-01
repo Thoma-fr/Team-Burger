@@ -150,7 +150,7 @@ public class PlayerController : BaseController
     }
     public void vise(InputAction.CallbackContext context)
     {
-		if(playerMode != PLAYER_MODE.COMBAT_MODE)
+		if(playerMode != PLAYER_MODE.COMBAT_MODE && playerMode != PLAYER_MODE.PAUSED)
 			if(context.started)
 			{
 				mainCam.transform.GetComponent<Volume>().enabled = true;
@@ -171,8 +171,8 @@ public class PlayerController : BaseController
                     FPSvcam.gameObject.SetActive(false);
 				}
 			}
-        
 	}
+
 	private void FixedUpdate()
 	{
         //rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
@@ -254,6 +254,12 @@ public class PlayerController : BaseController
 
 	}
 
+	public void PauseGame(InputAction.CallbackContext context)
+    {
+		if(context.performed && PauseManager.instance)
+			PauseManager.instance.PauseGame();
+    }
+
 	private void camshake()
 	{
 		FPSvcam.transform.DOShakeRotation(0.2f, 90, 10, 90, true);
@@ -263,6 +269,7 @@ public class PlayerController : BaseController
 		ADVENTURE_MODE,
 		SHOOTING_MODE,
 		DIALOGUE_MODE,
-		COMBAT_MODE
+		COMBAT_MODE,
+		PAUSED
 	}
 }

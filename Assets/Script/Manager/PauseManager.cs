@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    public static PauseManager instance { get; private set; }
+
     private static bool isGamePaused = false;
     private CanvasGroup pauseMenu;
+    private PlayerController.PLAYER_MODE previousMode;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -17,20 +27,14 @@ public class PauseManager : MonoBehaviour
         pauseMenu.blocksRaycasts = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }
-    }
-
     public void PauseGame()
     {
         isGamePaused = !isGamePaused;
 
         if (isGamePaused)
         {
+            previousMode = PlayerController.Instance.playerMode;
+            PlayerController.Instance.playerMode = PlayerController.PLAYER_MODE.PAUSED;
             Time.timeScale = 0;
             pauseMenu.alpha = 1;
             pauseMenu.interactable = true;
@@ -38,6 +42,7 @@ public class PauseManager : MonoBehaviour
         }
         else
         {
+            PlayerController.Instance.playerMode = previousMode;
             Time.timeScale = 1;
             pauseMenu.alpha = 0;
             pauseMenu.interactable = false;
