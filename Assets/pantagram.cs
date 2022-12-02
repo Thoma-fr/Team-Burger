@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine.Rendering;
 using Unity.VisualScripting;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine.VFX;
 
 public class pantagram : MonoBehaviour
 {
@@ -50,13 +51,13 @@ public class pantagram : MonoBehaviour
 
         yield return new WaitForSeconds(spawnRate);
         foreach (GameObject obj in vfx)
-            obj.SetActive(true);
+            obj.GetComponent<VisualEffect>().SetBool("Active",true);
         yield return new WaitForSeconds(spawnRate);
         audioSource.PlayOneShot(AudioClip);
         yield return new WaitForSeconds(1f);
         Instantiate(deerprefabs, transform.position,Quaternion.Euler(0,0,0));
         foreach (GameObject obj in vfx)
-            obj.SetActive(false);
+            obj.GetComponent<VisualEffect>().SetBool("Active", false);
         StartCoroutine(spawn());
     }
 }
