@@ -43,6 +43,8 @@ public class NAVAI : MonoBehaviour
     public AudioClip killSFX;
     private VisualEffect visualEffect;
     public List<AudioClip> naturalsound;
+
+    private Vector3 dir;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -77,10 +79,10 @@ public class NAVAI : MonoBehaviour
     {
         if(anim!=null)
             anim.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
-        if (agent.velocity.x > 0)
+        if (agent.velocity.x != 0 && agent.velocity.y != 0)
         {
-            visualEffect.SetFloat("DirVel", agent.acceleration* -1);
-            visualEffect.SetFloat("Start", agent.acceleration);
+            visualEffect.SetFloat("DirVel", -dir.x);
+            visualEffect.SetFloat("Start", (0));
             visualEffect.SetBool("IsWalking", true);
         }
         else
@@ -113,6 +115,7 @@ public class NAVAI : MonoBehaviour
                         if (!hasMove)
                         {
                             agent.SetDestination(point);
+                            dir = point - transform.localPosition;
                             hasMove = true;
                         }
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
