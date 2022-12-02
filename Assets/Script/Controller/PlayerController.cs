@@ -105,7 +105,6 @@ public class PlayerController : BaseController
 				target.transform.position = (transform.position + (camDirection * distance));
 
 				if (Input.GetKeyDown("e"))
-					
 					Interact(camDirection);
 
 				if (Input.GetKeyDown("i"))
@@ -129,7 +128,9 @@ public class PlayerController : BaseController
 
 			case PLAYER_MODE.DIALOGUE_MODE:
 				if (Input.GetKeyDown("e"))
+                {
 					npc.nextSentence();
+                }
 				break;
 			case PLAYER_MODE.COMBAT_MODE:
 				GetComponent<SpriteRenderer>().enabled = false;
@@ -137,7 +138,7 @@ public class PlayerController : BaseController
 				break;
 			default:
 				break;
-		}   
+		}
 	}
 
     private void ToggleInventory()
@@ -179,7 +180,6 @@ public class PlayerController : BaseController
         //rb.MovePosition(transform.position + direction.normalized * Time.fixedDeltaTime * speed);
 		rb.velocity =direction.normalized * Time.fixedDeltaTime * speed;
 
-        Debug.Log(rb.velocity.x);
         animator.SetFloat("Velocity", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("VelocityY", rb.velocity.y);
         if (rb.velocity.x < 0)

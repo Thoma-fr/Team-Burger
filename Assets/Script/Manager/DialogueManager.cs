@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
 	public void StartDialogue(string dial)
 	{
+		animFinish = false;
 		dialogueHolder.SetActive(true);
 		Sequence intro = DOTween.Sequence();
 		intro.Append(dialogueHolder.transform.DOMoveY(pos, 0.5f).SetEase(Ease.Linear));
@@ -32,7 +33,7 @@ public class DialogueManager : MonoBehaviour
 		
 
 		// affiche le nom
-		nameText.GetComponent<TextMeshPro>().text = PlayerController.Instance.npc.NPCname;
+		nameText.GetComponent<TextMeshProUGUI>().text = PlayerController.Instance.npc.NPCname;
 
 		// efface les anciennes phrases
 		sentences.Clear();
@@ -52,7 +53,6 @@ public class DialogueManager : MonoBehaviour
 		// si il n'y a plus de phrase à afficher
 		if (sentences.Count == 0)
 		{
-			animFinish = false;
 			EndDialogue();
 			return;
 		}
@@ -69,12 +69,12 @@ public class DialogueManager : MonoBehaviour
 
 	IEnumerator TypeSentence(string sentence)
 	{
-		dialogueText.GetComponent<TextMeshPro>().text = "";
+		dialogueText.GetComponent<TextMeshProUGUI>().text = "";
 		// toCharArray sépare chaque caractère pour les mettre dans une array
 		foreach (char letter in sentence.ToCharArray())
 		{
 			// ajoute la lette au texte
-			dialogueText.GetComponent<TextMeshPro>().text += letter;
+			dialogueText.GetComponent<TextMeshProUGUI>().text += letter;
 			// attend quelque frame 
 			yield return null;
 		}
@@ -82,6 +82,7 @@ public class DialogueManager : MonoBehaviour
 
 	void EndDialogue()
 	{
+		animFinish = false;
 		Sequence outro = DOTween.Sequence();
 		outro.Append(dialogueHolder.transform.DOMoveY(pos - 210, 0.5f).SetEase(Ease.Linear));
 		outro.OnComplete(() => { dialogueHolder.SetActive(false);});

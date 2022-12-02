@@ -29,7 +29,6 @@ public class NPCController : MonoBehaviour, Interactable
 	{
         if (DialogueManager.Instance.animFinish)
         {
-			DialogueManager.Instance.animFinish = false;
 			PlayerController.Instance.npc = this;
 			GetComponent<AudioSource>().PlayOneShot(sons[Random.Range(0, sons.Count)]);
 
@@ -59,9 +58,6 @@ public class NPCController : MonoBehaviour, Interactable
 	}
 	public void nextSentence()
 	{
-		if (DialogueManager.Instance.animFinish)
-		{
-			DialogueManager.Instance.DisplayNextSentence();
-		}
+		DialogueManager.Instance.DisplayNextSentence();
 	}
 }
