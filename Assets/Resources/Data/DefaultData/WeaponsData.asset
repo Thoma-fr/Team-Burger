@@ -27,7 +27,7 @@ MonoBehaviour:
     damage: 80
     shell: 0
     maxShell: 0
-  - name: "Canon superpos\xE9"
+  - name: Superimposed cannon
     description: The weapon of the hunters by excellence
     price: 0
     sprite: {fileID: 1974598875, guid: 8ff090e57b8683d4f972edc3a7665930, type: 3}
@@ -41,14 +41,14 @@ MonoBehaviour:
     damage: 40
     shell: 0
     maxShell: 0
-  - name: Couteau tactic
+  - name: Tactical knife
     description: This is a classic knife... but tactical!
     price: 0
     sprite: {fileID: -1311549393, guid: 8ff090e57b8683d4f972edc3a7665930, type: 3}
     damage: 15
     shell: 0
     maxShell: 0
-  - name: "Fusil \xE0 pompe semi-auto"
+  - name: Semi-auto pump action rifle
     description: Empty your gun faster than McCree
     price: 0
     sprite: {fileID: -944391446, guid: 8ff090e57b8683d4f972edc3a7665930, type: 3}

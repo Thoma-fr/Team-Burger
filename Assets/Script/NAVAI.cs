@@ -104,7 +104,10 @@ public class NAVAI : MonoBehaviour
                         Debug.Log("ho mon dieu il fonce droit sur nous");
                         agent.SetDestination(Camera.main.transform.position);
                         hasMove = true;
-                        audioSource.PlayOneShot(naturalsound[Random.Range(0,naturalsound.Count)]);
+                        int Shitpost = Random.Range(0, 100);
+                        if (Shitpost == 50)
+                            audioSource.PlayOneShot(naturalsound[Random.Range(0, naturalsound.Count)]);
+                        
                     }
                     mysate = AIState.idle;
                 }
@@ -121,7 +124,8 @@ public class NAVAI : MonoBehaviour
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                         mysate = AIState.idle;
                     }
-                    if (a == 3 && myType == AItype.passiv && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.SHOOTING_MODE)
+                    int b = Random.Range(0, 50);
+                    if (b == 3 && myType == AItype.passiv && PlayerController.playerInstance.playerMode == PlayerController.PLAYER_MODE.SHOOTING_MODE)
                         anim.SetTrigger("Dance");
                     if (myType == AItype.agressive)
                         SearchForTarget();
